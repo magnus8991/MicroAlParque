@@ -1,0 +1,336 @@
+
+<div class="container">
+  <div class="jumbotron">
+    <h3>Registro de Manipulador de Alimento</h3>
+    <div class="card" style="width: 100%;">
+      <div class="card-body">
+          <form [formGroup]="formularioRegistro">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="cabecera-formulario"> <p>Datos personales manipulador de alimentos</p> </div>
+                  <div class="form-group">
+                    <label>Nombre del manipulador:</label>
+                    <input type="text" formControlName="nombre" [(ngModel)]="servicio.Nombre" placeholder ="aqui el nombre del servicio" class="form-control">
+                    <div
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                      <div *ngIf="nombre.errors.required">
+                        el nombre es un valor requerido
+                      </div>
+                      <div *ngIf="nombre.errors.minlength">
+                        el nombre del servicio debe tener mas de 7 caracteres
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Sexo :</label>
+                    <select name="" id="" class="form-control">
+                      <option value="">Masculino</option>
+                      <option value="">Femenino</option>
+                    </select>
+                    <div
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                      <div *ngIf="nombre.errors.required">
+                        el nombre es un valor requerido
+                      </div>
+                      <div *ngIf="nombre.errors.minlength">
+                        el nombre del servicio debe tener mas de 7 caracteres
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Estado Civil :</label>
+                    <select name="" id="" class="form-control">
+                      <option value="">Soltero</option>
+                      <option value="">Casado</option>
+                      <option value="">Divorciado</option>
+                      <option value="">Viudo</option>
+                    </select>
+                    <div
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                      <div *ngIf="nombre.errors.required">
+                        el nombre es un valor requerido
+                      </div>
+                      <div *ngIf="nombre.errors.minlength">
+                        el nombre del servicio debe tener mas de 7 caracteres
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Pais de procedencia:</label>
+                    <input type="text" formControlName="nombre" [(ngModel)]="servicio.Nombre" placeholder ="aqui el nombre del servicio" class="form-control">
+                    <div
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                      <div *ngIf="nombre.errors.required">
+                        el nombre es un valor requerido
+                      </div>
+                      <div *ngIf="nombre.errors.minlength">
+                        el nombre del servicio debe tener mas de 7 caracteres
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Nivel Educativo:</label>
+                    <select name="" id="" class="form-control">
+                      <option value="">preescolar</option>
+                      <option value="">educación básica</option>
+                      <option value="">educación media</option>
+                      <option value="">Pregrado</option>
+                      <option value="">Posgrado</option>
+                    </select>
+                    <div
+                      *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                      <div *ngIf="nombre.errors.required">
+                        el nombre es un valor requerido
+                      </div>
+                      <div *ngIf="nombre.errors.minlength">
+                        el nombre del servicio debe tener mas de 7 caracteres
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="cabecera-formulario"> <p>Conocimientos </p> </div>
+                  <div class="form-group">
+                    <p>¿Conoce las normas de higiene para manipulación de alimentos?</p>
+                    <input type="radio" id="male" name="gender" value="male" >
+                    <label for="male">Si</label><br>
+                    <input type="radio"id="female" name="gender" value="female" >
+                    <label for="female"> No</label><br>
+                    <input type="radio" id="other" name="gender" value="other" >
+                    <label for="other"> Algunas</label>
+                    <div
+                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                      <div *ngIf="descripcion.errors.required">
+                        la descripcion es requerida
+                      </div>
+                      <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                        la descripcion debe tener mas de 40 caracteres y menos de 100
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
+                    <input type="radio" id="male" name="gender" value="male" >
+                    <label for="male">Si</label><br>
+                    <input type="radio"id="female" name="gender" value="female" >
+                    <label for="female"> No</label>
+                    <div
+                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                      <div *ngIf="descripcion.errors.required">
+                        la descripcion es requerida
+                      </div>
+                      <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                        la descripcion debe tener mas de 40 caracteres y menos de 100
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>¿De qué trata la  resolución 2674 del 2013?:</label>
+                    <textarea rows="" formControlName ="descripcion" class="form-control" [(ngModel)]="servicio.Descripcion" placeholder="Aqui tu descripcion del servicio"></textarea>
+                    <div
+                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                      <div *ngIf="descripcion.errors.required">
+                        la descripcion es requerida
+                      </div>
+                      <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                        la descripcion debe tener mas de 40 caracteres y menos de 100
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>¿Qué tipo de contaminación de los alimentos conoce?:</label>
+                    <textarea rows="" formControlName ="descripcion" class="form-control" [(ngModel)]="servicio.Descripcion" placeholder="Aqui tu descripcion del servicio"></textarea>
+                    <div
+                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                      <div *ngIf="descripcion.errors.required">
+                        la descripcion es requerida
+                      </div>
+                      <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                        la descripcion debe tener mas de 40 caracteres y menos de 100
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <p>¿Considera que manipular alimentos con las uñas largas y pintadas puede ser inapropiado?</p>
+                    <input type="radio" id="male" name="gender" value="male" >
+                    <label for="male">Si</label><br>
+                    <input type="radio"id="female" name="gender" value="female" >
+                    <label for="female"> No</label>
+                    <div
+                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                      <div *ngIf="descripcion.errors.required">
+                        la descripcion es requerida
+                      </div>
+                      <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                        la descripcion debe tener mas de 40 caracteres y menos de 100
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+
+
+
+
+
+
+              <div class="col-md-6">
+                <div class="cabecera-formulario"> <p>Actitudes</p> </div>
+                <div class="form-group">
+                  <p>¿Considera necesaria una capacitación sobre normas de higiene y manipulación de alimentos para mejorar sus procesos y su negocio?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Ha renovado el último año su certificado médico?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Se ha realizado los exámenes para manipuladores de alimentos (KOH de uñas, Frotis de garganta y coprológico?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Considera que manipular alimentos con las uñas largas y pintadas puede ser inapropiado?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Considera que el uso de prendas puede afectar negativamente el proceso de manipulación de alimentos?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="cabecera-formulario"> <p>Practicas</p> </div>
+                <div class="form-group">
+                  <p>¿Utiliza bata,  tapa bocas y malla para cubrir el cabello mientras manipula alimentos?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Manipula alimentos y dinero al mismo tiempo?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>¿Con qué frecuencia se lava las manos para manipular alimentos?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <p>Al momento de preparar alimentos ¿retira sus prendas?</p>
+                  <input type="radio" id="male" name="gender" value="male" >
+                  <label for="male">Si</label><br>
+                  <input type="radio"id="female" name="gender" value="female" >
+                  <label for="female"> No</label>
+                  <div
+                    *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+                    <div *ngIf="descripcion.errors.required">
+                      la descripcion es requerida
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength || descripcion.errors.maxLength">
+                      la descripcion debe tener mas de 40 caracteres y menos de 100
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                <button class="button btn-guardar"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Manipulador </button>
+                <button class="button btn-cancelar"><i class="fas fa-window-close"></i>Cancelar</button>
+          </form>
+      </div>
+  </div>
+  </div>
+</div>
+

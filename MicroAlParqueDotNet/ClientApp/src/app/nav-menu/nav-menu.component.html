@@ -1,0 +1,19 @@
+<input type="checkbox" id="check">
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>
+<div class="sidebar">
+  <ul>
+    <header> </header>
+    <li><a [routerLink]='["/"]'><i class="fas fa-home"></i> Inicio</a></li>
+    <li><a [routerLink]='["registro-restaurante"]'><i class="fas fa-utensils"></i>Restaurantes</a></li>
+    <li><a [routerLink]='["registro-manipulador-alimento"]'><i class="fas fa-user"></i>Manipuladores</a></li>
+    <li><a [routerLink]='["/"]'><i class="fas fa-clipboard-list"></i> Encuestas</a></li>
+    <li><a [routerLink]='["/"]'><i class="fas fa-search"></i> Consultas</a></li>
+  </ul>
+</div>
+<section>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</section>
