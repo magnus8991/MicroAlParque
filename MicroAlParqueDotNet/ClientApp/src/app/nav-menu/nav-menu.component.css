@@ -92,7 +92,7 @@ label #cancel {
 }
 
 label #btn:hover, label #cancel:hover {
-  color:rgb(29, 27, 27);
+  color:rgb(209, 9, 9);
 }
 
 #check:checked ~ .sidebar {

@@ -7,6 +7,12 @@ header {
     z-index: 100;
 }
 
+img {
+    height: 45px; width: 45px;
+    margin-top: -18px !important;
+    margin-right: 20px !important;
+}
+
 h1 {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -26,6 +32,11 @@ a:hover h1 {
 
 a:hover .negro {
     color: #FFFF;
+}
+
+a:hover img {
+    margin-left: 10px !important;
+    transition: all .3s;
 }
 
 .decorador-lateral {
