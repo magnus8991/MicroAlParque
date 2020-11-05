@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-manipulador',
@@ -10,6 +11,6 @@ export class RegistroManipuladorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
 }
