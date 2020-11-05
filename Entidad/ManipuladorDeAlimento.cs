@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace Entidad
+{
+    public class ManipuladorDeAlimento : Persona
+    {
+        [StringLength(15)]
+        public string EstadoCivil { get; set; }
+        [StringLength(15)]
+        public string PaísDeProcedencia { get; set; }
+        [StringLength(15)]
+        public string NivelEducativo { get; set; }
+        public virtual List<Respuesta> respuestas  { get; set; }
+
+    }
+}
