@@ -9,6 +9,7 @@ namespace Entidad
     {
         [Key]
         public int ListaChequeoId { get; set; }
-        List<RespuestaChequeo> RespuestaChequeos { get; set; }
+        public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
+        public int RestauranteId { get; set; }
     }
 }

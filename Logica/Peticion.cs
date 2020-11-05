@@ -14,6 +14,9 @@ namespace Logica
             Mensaje = mensaje;
             Error = error;
         }
+        public Peticion(G elemento) {
+            Elemento = elemento;
+        }
         public Peticion() { }
     }
 
