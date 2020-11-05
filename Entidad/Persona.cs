@@ -21,5 +21,6 @@ namespace Entidad
         public string Sexo { get; set; }
         [Column(TypeName = "Int")]
         public int Edad { get; set; }
+        public Persona() { }
     }
 }

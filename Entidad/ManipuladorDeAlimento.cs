@@ -14,6 +14,7 @@ namespace Entidad
         [StringLength(15)]
         public string NivelEducativo { get; set; }
         public int RestauranteId { get; set; }
+        public ManipuladorDeAlimento() { }
 
     }
 }

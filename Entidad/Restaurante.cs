@@ -14,6 +14,7 @@ namespace Entidad
         public string Direccion { get; set; }
         [StringLength(11)]
         public string Identificacion { get; set; }
+        public Restaurante() { }
 
     }
 }

@@ -15,5 +15,6 @@ namespace Entidad
         public string Contraseña { get; set; }
         [StringLength(11)]
         public string Identificacion { get; set; }
+        public Usuario() { }
     }
 }

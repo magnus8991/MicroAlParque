@@ -12,7 +12,8 @@ namespace Entidad
         [StringLength(100)]
         public string ContenidoRespuesta { get; set; }
         public int PreguntaId { get; set; }
-        public int ManipuladorDeAlimentoId { get; set; }
+        public string Identificacion { get; set; }
+        public Respuesta() { }
 
     }
 }

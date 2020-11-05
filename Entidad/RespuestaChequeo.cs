@@ -15,6 +15,6 @@ namespace Entidad
         [Column(TypeName = "decimal(5,2)")]
         public decimal Puntaje { get; set; }
         public int PreguntaId { get; set; }
-
+        public RespuestaChequeo() { }
     }
 }

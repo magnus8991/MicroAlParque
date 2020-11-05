@@ -11,5 +11,6 @@ namespace Entidad
         public int PreguntaId { get; set; }
         [StringLength(190)]
         public string Enunciado { get; set; }
+        public Pregunta() { }
     }
 }
