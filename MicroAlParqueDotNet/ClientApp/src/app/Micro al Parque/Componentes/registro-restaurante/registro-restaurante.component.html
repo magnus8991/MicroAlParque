@@ -37,7 +37,7 @@
                 </div>
               </div>
             </div>
-              <button class="button btn-guardar"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Servicio </button>
+              <button class="button btn-guardar" (click)="Registrar()"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Servicio </button>
               <button class="button btn-cancelar"><i class="fas fa-window-close"></i>Cancelar</button>
         </form>
     </div>

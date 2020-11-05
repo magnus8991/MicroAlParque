@@ -10,5 +10,6 @@ export class ManipuladorDeAlimento {
   estadoCivil: string;
   paisDeProcedencia: string;
   nivelEducativo: string;
+  restauranteId: number;
   respuestas : Respuesta [] = [];
 }

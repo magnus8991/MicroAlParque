@@ -4,3 +4,10 @@ export class Peticion <G>
   error : boolean
   mensaje : string;
 }
+
+export class PeticionConsulta <G>
+{
+  elementos : G[] = [];
+  error : boolean
+  mensaje : string;
+}

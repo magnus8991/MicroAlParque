@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
 import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
+import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encu
     RegistroManipuladorComponent,
     GestionRestauranteComponent,
     GestionManipuladorComponent,
-    EncuestaManipuladorComponent
+    EncuestaManipuladorComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,

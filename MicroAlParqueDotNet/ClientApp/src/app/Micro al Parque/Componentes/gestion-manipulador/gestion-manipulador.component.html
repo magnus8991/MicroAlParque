@@ -3,8 +3,7 @@
     <div class="card-body">
       <h2>Manipuladores de alimento :</h2>
       <button class="btn-azul" (click)="openModalManipulador()">
-        <i class="fas fa-plus-circle"></i> Agregar Manipulador
-      </button>
+        <i class="fas fa-plus-circle"></i> Agregar Manipulador</button>
       <br />
       <br />
       <table class="table table-hover table-sm table-bordered">
@@ -16,8 +15,7 @@
             <th>Nivel de Educacion</th>
             <th>Edad</th>
             <th>Sexo</th>
-            <th></th>
-            <th></th>
+            <th>Operaciones</th>
           </tr>
         </thead>
         <tbody>
@@ -28,8 +26,9 @@
             <td>{{ manipulador.nivelEducativo }}</td>
             <td>{{ manipulador.edad }}</td>
             <td>{{ manipulador.sexo }}</td>
-            <td><button class="btn-azul">Modificar</button></td>
-            <td><button class="btn-eliminar">Eliminar</button></td>
+            <td><button class="btn-azul">Modificar</button>
+              <button class="btn-eliminar">Eliminar</button>
+            </td>
           </tr>
         </tbody>
       </table>

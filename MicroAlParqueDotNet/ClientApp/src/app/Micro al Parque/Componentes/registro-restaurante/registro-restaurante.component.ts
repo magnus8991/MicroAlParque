@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,Validators,FormBuilder} from '@angular/forms';
 import { Restaurante } from '../../Modelos/restaurante';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { RestauranteService } from '../../Servicios/restaurante.service';
 
 @Component({
   selector: 'app-registro-restaurante',
@@ -11,18 +12,26 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class RegistroRestauranteComponent implements OnInit {
 
   formularioRegistro : FormGroup;
-  restaurante : Restaurante = new Restaurante();
+  restaurante : Restaurante;
 
 
   constructor
   (
     private formBuilder : FormBuilder,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private servicioRestaurante: RestauranteService
   )
   { }
 
   ngOnInit(): void {
+    this.restaurante = new Restaurante();
     this.EstablecerValidacionesFormulario ();
+  }
+
+  Registrar() {
+    this.servicioRestaurante.Guardar(this.restaurante).subscribe (r => {
+        this.restaurante = r.elemento;
+    });
   }
 
   EstablecerValidacionesFormulario  ()

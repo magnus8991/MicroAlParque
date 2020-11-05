@@ -8,29 +8,42 @@
 
   <form [formGroup]="formularioRegistro">
     <div class="row">
+      <div class="col-md-12"><div class="cabecera-formulario"> <p>Datos personales del manipulador de alimentos</p></div></div>
       <div class="col-md-6">
-        <div class="cabecera-formulario"> <p>Datos personales del manipulador de alimentos</p> </div>
+        
+        <div class="form-group">
+          <label>Restaurante al que pertenece:</label>
+          <select name="nombreRestaurante" formControlName="nombreRestaurante"  class="form-control">
+              <option *ngFor="let restaurante of restaurantes">{{restaurante.nombre}}</option>
+          </select>
+          <div
+            *ngIf="nombreRestaurante.invalid && (nombreRestaurante.dirty || nombreRestaurante.touched)" class="alert alert-danger">
+            <div *ngIf="nombreRestaurante.errors.required">
+              El nombre restaurante es un valor requerido
+            </div>
+          </div>
+        </div>
 
           <div class="form-group">
-            <label>identificacion del manipulador:</label>
-            <input type="text"  name="identificacion" formControlName="identificacion" [(ngModel)]="manipulador.identificacion" placeholder ="aqui el nombre del servicio" class="form-control">
+            <label>Identificacion del manipulador:</label>
+            <input type="text"  name="identificacion" formControlName="identificacion" [(ngModel)]="manipulador.identificacion" placeholder ="Digite aquí la identificacion" class="form-control">
             <div
               *ngIf="identificacion.invalid && (identificacion.dirty || identificacion.touched)" class="alert alert-danger">
               <div *ngIf="identificacion.errors.required">
-                El nombre es un valor requerido
+                La identificación es un valor requerido
               </div>
               <div *ngIf="identificacion.errors.minlength">
-                El nombre del servicio debe tener mas de 7 caracteres
+                El numero de identificación debe tener más de 7 caracteres
               </div>
               <div *ngIf="identificacion.errors.maxlength">
-                El nombre del servicio debe tener menos de 10 caracteres
+                El numero de identificación debe tener menos de 10 caracteres
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <label>Nombres del manipulador:</label>
-            <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="manipulador.nombres" placeholder ="aqui el nombre del servicio" class="form-control">
+            <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="manipulador.nombres" placeholder ="Digite aquí el nombre del manipulador" class="form-control">
             <div
               *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="alert alert-danger">
               <div *ngIf="nombres.errors.required">
@@ -40,36 +53,37 @@
           </div>
 
           <div class="form-group">
-            <label>primerApellido del manipulador:</label>
-            <input type="text"  name="primerApellido" formControlName="primerApellido" [(ngModel)]="manipulador.primerApellido" placeholder ="aqui el nombre del servicio" class="form-control">
+            <label>Primer Apellido:</label>
+            <input type="text"  name="primerApellido" formControlName="primerApellido" [(ngModel)]="manipulador.primerApellido" placeholder ="Digite aquí el primer apellido" class="form-control">
             <div
               *ngIf="primerApellido.invalid && (primerApellido.dirty || primerApellido.touched)" class="alert alert-danger">
               <div *ngIf="primerApellido.errors.required">
                 El primer Apellido es un valor requerido
               </div>
               <div *ngIf="primerApellido.errors.maxlength">
-                El primer Apellido no debe tener mas de 30 caracteres
+                El primer Apellido no debe tener más de 30 caracteres
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <label>segundoApellido del manipulador:</label>
-            <input type="text" name="segundoApellido" formControlName="segundoApellido" [(ngModel)]="manipulador.segundoApellido" placeholder ="aqui el nombre del servicio" class="form-control">
+            <input type="text" name="segundoApellido" formControlName="segundoApellido" [(ngModel)]="manipulador.segundoApellido" placeholder ="Digite aquí el segundo apellido" class="form-control">
             <div
               *ngIf="segundoApellido.invalid && (segundoApellido.dirty || segundoApellido.touched)" class="alert alert-danger">
               <div *ngIf="segundoApellido.errors.required">
-                El segundoApellido es un valor requerido
+                El segundo apellido es un valor requerido
               </div>
-              <div *ngIf="segundoApellido.errors.minlength">
-                El segundoApellido debe debe tener mas de 30 caracteres
+              <div *ngIf="segundoApellido.errors.maxlength">
+                El segundo apellido no debe debe tener más de 30 caracteres
               </div>
             </div>
           </div>
 
-
       </div>
+
       <div class="col-md-6">
+
         <div class="form-group">
           <label>Sexo :</label>
           <select name="sexo" formControlName="sexo"  class="form-control" [(ngModel)]="manipulador.sexo">
@@ -79,45 +93,45 @@
           <div
             *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="alert alert-danger">
             <div *ngIf="sexo.errors.required">
-              el sexo es un valor requerido
+              El sexo es un valor requerido
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label>edad manipulador:</label>
+          <label>Edad del manipulador:</label>
           <input type="number" name="edad" formControlName="edad" [(ngModel)]="manipulador.edad" placeholder ="aqui el nombre del servicio" class="form-control">
           <div
             *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
             <div *ngIf="edad.errors.required">
-              El segundoApellido es un valor requerido
+              La edad es un valor requerido
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Estado Civil Pais de procedencia:</label>
-          <select name="paisDeProcedencia" formControlName="paisDeProcedencia" class="form-control" [(ngModel)]="manipulador.paisDeProcedencia">
-            <option value="Soltero">Soltero</option>
-            <option value="Casado">Casado</option>
-            <option value="Divorciado">Divorciado</option>
-            <option value="Viudo">Viudo</option>
-          </select>
+          <label>Pais de procedencia:</label>
+          <input type="text" name="paisDeProcedencia" formControlName="paisDeProcedencia" class="form-control" [(ngModel)]="manipulador.paisDeProcedencia">
           <div
             *ngIf="paisDeProcedencia.invalid && (paisDeProcedencia.dirty || paisDeProcedencia.touched)" class="alert alert-danger">
             <div *ngIf="nombre.errors.required">
-              el nombre es un valor requerido
+              El pais es un valor requerido
             </div>
           </div>
         </div>
 
         <div class="form-group">
           <label>Estado Civil:</label>
-          <input type="text"  name="estadoCivil" formControlName="estadoCivil" [(ngModel)]="manipulador.estadoCivil" placeholder ="aqui el nombre del servicio" class="form-control">
+          <select type="text"  name="estadoCivil" formControlName="estadoCivil" [(ngModel)]="manipulador.estadoCivil" placeholder ="Digite aquí el estado civil" class="form-control">
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
+          </select>
           <div
             *ngIf="estadoCivil.invalid && (estadoCivil.dirty || estadoCivil.touched)" class="alert alert-danger">
             <div *ngIf="estadoCivil.errors.required">
-              el nombre es un valor requerido
+              El estado civil es un valor requerido
             </div>
           </div>
         </div>
@@ -125,26 +139,27 @@
         <div class="form-group">
           <label>Nivel Educativo:</label>
           <select name="nivelEducativo" formControlName="nivelEducativo" [(ngModel)]="manipulador.nivelEducativo" class="form-control">
-            <option value="preescolar">preescolar</option>
-            <option value="básica">educación básica</option>
-            <option value="media">educación media</option>
+            <option value="Preescolar">Preescolar</option>
+            <option value="Básica">Educación Básica</option>
+            <option value="Media">Educación Media</option>
             <option value="Pregrado">Pregrado</option>
             <option value="Posgrado">Posgrado</option>
           </select>
           <div
             *ngIf="nivelEducativo.invalid && (nivelEducativo.dirty || nivelEducativo.touched)" class="alert alert-danger">
             <div *ngIf="nivelEducativo.errors.required">
-              el nivelEducativo es un valor requerido
+              El nivel educativo es un valor requerido
             </div>
           </div>
         </div>
+
       </div>
     </div>
-    <button class="button btn-guardar"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Manipulador </button>
+    <button class="button btn-guardar" (click)="Registrar()"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Manipulador </button>
     <button class="button btn-cancelar">Cancelar</button>
   </form>
 
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn-rojo" >Cerrar</button>
+  <button type="button" (click)="activeModal.dismiss('Cross click')" class="btn-rojo" >Cerrar</button>
 </div>

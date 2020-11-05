@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Restaurante } from '../../Modelos/restaurante';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegistroRestauranteComponent } from '../registro-restaurante/registro-restaurante.component';
+import { RestauranteService } from '../../Servicios/restaurante.service';
+import { Mensajes } from '../../Servicios/mensajes';
 
 @Component({
   selector: 'app-gestion-restaurante',
@@ -10,44 +12,26 @@ import { RegistroRestauranteComponent } from '../registro-restaurante/registro-r
 })
 export class GestionRestauranteComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private servicioRestaurante: RestauranteService,
+  private mensajes: Mensajes) { }
+  restaurantes : Restaurante[];
 
-  restaurantes : Restaurante [] = [];
   ngOnInit(): void {
-    this.finjir ();
+    this.restaurantes = [];
+    this.Consultar();
   }
   openModalRestaurante()
   {
     this.modalService.open(RegistroRestauranteComponent, { size: 'l' });
   }
 
-  finjir ()
-  {
-    let restaurante : Restaurante =
-    {
-      idRestaurante : 1,
-      nombre : "Monta carga",
-      direccion : "los cocos ",
-      identificacion : ""
-    };
-    let restaurante2 : Restaurante =
-    {
-      idRestaurante : 1,
-      nombre : "Monta carga",
-      direccion : "los cocos ",
-      identificacion : ""
-    };
-    let restaurante3 : Restaurante =
-    {
-      idRestaurante : 1,
-      nombre : "Monta carga",
-      direccion : "los cocos ",
-      identificacion : ""
-    };
-    this.restaurantes.push(restaurante);
-    this.restaurantes.push(restaurante2);
-    this.restaurantes.push(restaurante3);
-
-
+  Consultar() {
+    this.servicioRestaurante.Consultar().subscribe(result => {
+      if (!result.error) {
+        this.restaurantes = result.elementos;
+        this.mensajes.Mostrar("¡En hora buena!",result.mensaje);
+      } 
+      else this.mensajes.Mostrar("¡Lo sentimos!",result.mensaje);
+    });
   }
 }
