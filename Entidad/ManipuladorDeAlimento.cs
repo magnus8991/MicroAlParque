@@ -10,7 +10,7 @@ namespace Entidad
         [StringLength(15)]
         public string EstadoCivil { get; set; }
         [StringLength(15)]
-        public string PaísDeProcedencia { get; set; }
+        public string PaisDeProcedencia { get; set; }
         [StringLength(15)]
         public string NivelEducativo { get; set; }
         public virtual List<Respuesta> respuestas  { get; set; }

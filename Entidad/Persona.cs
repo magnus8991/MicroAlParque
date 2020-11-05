@@ -9,7 +9,7 @@ namespace Entidad
     public class Persona
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(11)]
         public string Identificacion { get; set; }
         [StringLength(30)]
         public string Nombres { get; set; }
