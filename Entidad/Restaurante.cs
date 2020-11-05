@@ -12,8 +12,8 @@ namespace Entidad
         public string Nombre { get; set; }
         [StringLength(40)]
         public string Direccion { get; set; }
-        public virtual ListaChequeo ListaChequeo { get; set; }
-        public virtual List<ManipuladorDeAlimento> Manipuladores { get; set; }
+        [StringLength(11)]
+        public string Identificacion { get; set; }
 
     }
 }

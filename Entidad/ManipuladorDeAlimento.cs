@@ -13,7 +13,7 @@ namespace Entidad
         public string PaísDeProcedencia { get; set; }
         [StringLength(15)]
         public string NivelEducativo { get; set; }
-        public virtual List<Respuesta> respuestas  { get; set; }
+        public int RestauranteId { get; set; }
 
     }
 }
