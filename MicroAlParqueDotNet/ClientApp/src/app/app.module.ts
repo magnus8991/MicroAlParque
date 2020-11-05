@@ -11,16 +11,11 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { RegistroRestauranteComponent } from './Micro al Parque/Componentes/registro-restaurante/registro-restaurante.component';
-<<<<<<< HEAD
 import { RegistroManipuladorComponent } from './Micro al Parque/Componentes/registro-manipulador/registro-manipulador.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
 import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
-=======
-import { RegistroManipuladorComponent } from './Micro al Parque/Componentes/registro-manipulador/registro-manipulador.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
->>>>>>> 407ce48... modelos y controllers
 
 @NgModule({
   declarations: [
