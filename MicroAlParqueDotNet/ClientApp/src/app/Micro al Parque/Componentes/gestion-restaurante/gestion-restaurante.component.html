@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="jumbotrom">
+    <h2>Gestion de Restaurantes</h2>
+    <div  *ngIf="!restaurantes.length">
+      <h1>Lo sentimos No tienes restaurantes registrados :(</h1>
+      <button class="btn-azul" (click)="openModalRestaurante()">Agregar</button>
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+    <div  *ngIf="restaurantes && restaurantes.length">
+      <div *ngFor="let restaurante of restaurantes">
+        <ul class = "list-group" style = "width: 50%;">
+          <li class = "list-group-item list-group-item-action">
+            <span class = "badge badge-danger">{{restaurante.idRestaurante}} </span> <strong> Nombre :</strong> {{restaurante.nombre}} - <strong> Direccion :</strong> {{restaurante.direccion}}
+          </li>
+        </ul>
+      </div>
+      <button class="btn-azul" (click)="openModalRestaurante()">Agregar</button>
+      <br><br><br><br><br><br><br><br>
+    </div>
+
+  </div>
+</div>
+

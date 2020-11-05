@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card" style="width: 100%">
+    <div class="card-body">
+      <h2>Manipuladores de alimento :</h2>
+      <button class="btn-azul" (click)="openModalManipulador()">
+        <i class="fas fa-plus-circle"></i> Agregar Manipulador
+      </button>
+      <br />
+      <br />
+      <table class="table table-hover table-sm table-bordered">
+        <thead>
+          <tr>
+            <th>Identificacion</th>
+            <th>Nombres</th>
+            <th>Apellido</th>
+            <th>Nivel de Educacion</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let manipulador of manipuladores">
+            <td>{{ manipulador.identificacion }}</td>
+            <td>{{ manipulador.nombres }}</td>
+            <td>{{ manipulador.primerApellido }}</td>
+            <td>{{ manipulador.nivelEducativo }}</td>
+            <td>{{ manipulador.edad }}</td>
+            <td>{{ manipulador.sexo }}</td>
+            <td><button class="btn-azul">Modificar</button></td>
+            <td><button class="btn-eliminar">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <br /><br /><br /><br />
+    </div>
+  </div>
+  <br /><br /><br />
+</div>
