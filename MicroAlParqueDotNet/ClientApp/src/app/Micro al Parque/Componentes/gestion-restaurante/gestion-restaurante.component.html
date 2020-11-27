@@ -1,25 +1,50 @@
-
-<div class="container">
-  <div class="jumbotrom">
-    <h2>Gestion de Restaurantes</h2>
-    <div  *ngIf="!restaurantes.length">
-      <h1>Lo sentimos No tienes restaurantes registrados :(</h1>
-      <button class="btn-azul" (click)="openModalRestaurante()">Agregar</button>
-      <br><br><br><br><br><br><br><br><br><br>
-    </div>
-
-    <div  *ngIf="restaurantes && restaurantes.length">
-      <div *ngFor="let restaurante of restaurantes">
-        <ul class = "list-group" style = "width: 50%;">
-          <li class = "list-group-item list-group-item-action">
-            <span class = "badge badge-danger">{{restaurante.idRestaurante}} </span> <strong> Nombre :</strong> {{restaurante.nombre}} - <strong> Direccion :</strong> {{restaurante.direccion}}
-          </li>
-        </ul>
+<div class="container encabezado" id="cuerpo">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="titulo">GESTIÓN DE RESTAURANTES</h1>
+      <div *ngIf="!restaurantes.length">
+        <h3>¡Lo sentimos, no tienes restaurantes registrados! <i class="fas fa-sad-tear"></i></h3>
+        <div class="col-md-6"><button style="height: 45px;" class="btn btn-secondary condicion" 
+          (click)="RegistrarRestaurante()"><i class="fas fa-plus"></i> Nuevo Restaurante</button></div>
       </div>
-      <button class="btn-azul" (click)="openModalRestaurante()">Agregar</button>
-      <br><br><br><br><br><br><br><br>
+      <div *ngIf="restaurantes.length">
+      <div class="col-md-6">
+        <label [(ngModel)]="searchText" type="text" class="form-control"
+        (ngModelChange)="ModificarListaProvisional()" placeholder="Digite aquí su busqueda"></label>
+      </div>
+        <div class="col-md-6">
+          <div><button style="height: 65px;" class="btn btn-secondary" (click)="openModalRestaurante()">
+              <i class="fas fa-plus"></i> Nuevo Restaurante</button></div>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
-
+  <table class="table table-hover table-sm table-bordered" *ngIf='restaurantes && restaurantes.length'>
+    <thead>
+      <tr>
+        <th>NIT</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Sede</th>
+        <th>Telefono</th>
+        <th>ID del propietario</th>
+        <th>Operaciones</th>
+        <th>Manipuladores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurante of restaurantes | filtroRestaurante: filtroRestaurante; index as i ">
+        <td>{{ restaurante.NIT }}</td>
+        <td>{{ restaurante.nombre }}</td>
+        <td>{{ restaurante.direccion }}</td>
+        <td>{{ restaurante.sede }}</td>
+        <td>{{ restaurante.telefono }}</td>
+        <td>{{ restaurante.idPropietario }}</td>
+        <td><button class="btn btn-secondary" (click)="Modificar(restaurante.NIT)"><i class="fas fa-pen"></i></button>
+          <button class="btn btn-secondary" (click)="delete(restaurante.NIT)"><i class="fas fa-times"></i></button>
+          <button class="btn btn-secondary"><i class="fas fa-users"></i></button>
+        </td>
+        <td><button class="btn btn-secondary"><i class="fas fa-search"></i> Consultar</button></td>
+      </tr>
+    </tbody>
+  </table>

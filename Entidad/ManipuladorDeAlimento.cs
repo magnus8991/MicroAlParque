@@ -13,7 +13,7 @@ namespace Entidad
         public string PaisDeProcedencia { get; set; }
         [StringLength(15)]
         public string NivelEducativo { get; set; }
-        public int RestauranteId { get; set; }
+        public string RestauranteId { get; set; }
         public ManipuladorDeAlimento() { }
 
     }

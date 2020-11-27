@@ -20,7 +20,7 @@ namespace Logica
             Peticion<Restaurante> respuesta = new Peticion<Restaurante>(restaurante);
             try
             {
-                respuesta = BuscarPorIdRestaurante(restaurante.IdRestaurante);
+                respuesta = BuscarPorIdRestaurante(restaurante.NIT);
                 respuesta = (respuesta.Error) ?
                     new Peticion<Restaurante>(restaurante, "Datos guardados correctamente", false) :
                     new Peticion<Restaurante>(null, "El restaurante que intentar guardar ya se encuentra registrado", true);
@@ -36,7 +36,7 @@ namespace Logica
             }
             return respuesta;
         }
-        public Peticion<Restaurante> BuscarPorIdRestaurante(int IdRestaurante)
+        public Peticion<Restaurante> BuscarPorIdRestaurante(string IdRestaurante)
         {
             Peticion<Restaurante> respuesta = new Peticion<Restaurante>(new Restaurante());
             try

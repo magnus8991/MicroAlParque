@@ -1,49 +1,107 @@
-
-<div class="modal-header header">
-  <h1 class="modal-title ">Registrar Restaurante</h1>
-  <button type="button" class="ico"  (click)="activeModal.dismiss('Cross click')">
-    <i class="fas fa-window-close" ></i>
-  </button>
-</div>
-<div class="modal-body">
-
-  <div class="card" >
-    <div class="card-body" >
-        <form [formGroup]="formularioRegistro">
-          <div class="cabecera-formulario"> <p>Registro de Restaurante</p> </div>
-            <div class="form-group">
-              <label>Nombre del Restaurante:</label>
-              <input type="text" formControlName="nombre" [(ngModel)]="restaurante.nombre" placeholder ="aqui el nombre del servicio" class="form-control">
-              <div
-                *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-                <div *ngIf="nombre.errors.required">
-                  el nombre es un valor requerido
-                </div>
-                <div *ngIf="nombre.errors.minlength">
-                  el nombre del restaurante debe tener mas de 7 caracteres
-                </div>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="formularioRegistro">
+      <div class="cabecera-formulario">
+        <p>Registro de Restaurante</p>
+      </div>
+      <div class="row cuerpo">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>NIT del Restaurante:</label>
+            <input type="text" formControlName="NIT" [(ngModel)]="peticion.elemento.NIT"
+              placeholder="Aquí el NIT del restaurante" class="form-control">
+            <div *ngIf="NIT.invalid && (NIT.dirty || NIT.touched)" class="alert alert-danger">
+              <div *ngIf="NIT.errors.required">
+                El NIT es un valor requerido
+              </div>
+              <div *ngIf="NIT.errors.minlength || NIT.errors.maxlength">
+                El NIT del restaurante debe tener entre 6 y 15 caracteres
               </div>
             </div>
-            <div class="form-group">
-              <label>Direccion del restaurante:</label>
-              <input type="text" formControlName ="direccion" [(ngModel)]="restaurante.direccion"  placeholder ="aqui la direccion del restaurante" class="form-control">
-              <div
-                *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger">
-                <div *ngIf="direccion.errors.required">
-                  la direccion del restaurante es requerida
-                </div>
-                <div *ngIf="direccion.errors.maxlength">
-                  la direccion del restaurante no debe exeder 40 caracteres
-                </div>
+          </div>
+          <div class="form-group">
+            <label>Nombre del Restaurante:</label>
+            <input type="text" formControlName="nombre" [(ngModel)]="peticion.elemento.nombre"
+              placeholder="Aquí el nombre del restaurante" class="form-control">
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+              <div *ngIf="nombre.errors.required">
+                El nombre es un valor requerido
+              </div>
+              <div *ngIf="nombre.errors.maxlength">
+                El nombre del restaurante debe tener máximo 30 caracteres
               </div>
             </div>
-              <button class="button btn-guardar" (click)="Registrar()"  [disabled]="formularioRegistro.invalid"><i class="fas fa-save"></i>Registrar Servicio </button>
-              <button class="button btn-cancelar"><i class="fas fa-window-close"></i>Cancelar</button>
-        </form>
-    </div>
-</div>
+          </div>
+          <div class="form-group">
+            <label>Direccion del restaurante:</label>
+            <input type="text" formControlName="direccion" [(ngModel)]="peticion.elemento.direccion"
+              placeholder="Aquí la direccion del restaurante" class="form-control">
+            <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger">
+              <div *ngIf="direccion.errors.required">
+                La direccion del restaurante es requerida
+              </div>
+              <div *ngIf="direccion.errors.maxlength">
+                La direccion del restaurante debe tener máximo 40 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Sede del restaurante:</label>
+            <input type="text" formControlName="sede" [(ngModel)]="peticion.elemento.sede"
+              placeholder="Aquí la sede del restaurante" class="form-control">
+            <div *ngIf="sede.invalid && (sede.dirty || sede.touched)" class="alert alert-danger">
+              <div *ngIf="sede.errors.required">
+                La sede del restaurante es requerida
+              </div>
+              <div *ngIf="sede.errors.maxlength">
+                La sede del restaurante debe tener máximo 20 caracteres
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Teléfono del restaurante:</label>
+            <input type="number" formControlName="telefono" [(ngModel)]="peticion.elemento.telefono"
+              placeholder="Aquí la telefono del restaurante" class="form-control">
+            <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="alert alert-danger">
+              <div *ngIf="telefono.errors.required">
+                El telefono del restaurante es requerida
+              </div>
+              <div *ngIf="telefono.errors.max">
+                El telefono digitado no es válido
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Identificación del Propietario:</label>
+            <input type="text" formControlName="idPropietario" [(ngModel)]="peticion.elemento.idPropietario"
+              placeholder="Aquí la identificación del propietario" class="form-control">
+            <div *ngIf="idPropietario.invalid && (idPropietario.dirty || idPropietario.touched)"
+              class="alert alert-danger">
+              <div *ngIf="idPropietario.errors.required">
+                La identificación es un valor requerido
+              </div>
+              <div *ngIf="idPropietario.errors.maxlength">
+                La identificación del propietario debe tener máximo 11 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn-rojo" >Cerrar</button>
+      <div class="button">
+        <div class="col-md-4">
+          <button class="btn btn-secondary" (click)="Registrar()"><i class="fas fa-save"></i> Registrar
+            Restaurante</button>
+        </div>
+        <div class="col-md-4">
+          <button type="reset" class="btn btn-secondary"><i class="fas fa-broom"></i> Limpiar Formulario</button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-secondary" (click)="onClose()"><i class="fas fa-backward"></i> Retroceder</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

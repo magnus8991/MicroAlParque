@@ -9,7 +9,7 @@ import { Peticion, PeticionConsulta } from '../Modelos/peticion';
 @Injectable({
   providedIn: 'root'
 })
-export class RestauranteService {
+export class ServicioRestaurante {
   baseUrl: string;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string,
@@ -29,7 +29,7 @@ export class RestauranteService {
     return this.http.get<PeticionConsulta<Restaurante>>(this.baseUrl + 'api/Restaurante')
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
-        catchError(this.handleErrorService.handleError<PeticionConsulta<Restaurante>>('Consulta Restaurante', null))
+        catchError(this.handleErrorService.handleError<PeticionConsulta<Restaurante>>('Consultar Restaurante', null))
       );
   }
 
@@ -37,7 +37,23 @@ export class RestauranteService {
     return this.http.get<Peticion<Restaurante>>(this.baseUrl + 'api/Restaurante/' + IdRestaurante)
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
-        catchError(this.handleErrorService.handleError<Peticion<Restaurante>>('Consulta Restaurante', null))
+        catchError(this.handleErrorService.handleError<Peticion<Restaurante>>('Buscar Restaurante', null))
+      );
+  }
+
+  Modificar(restaurante: Restaurante): Observable<Peticion<Restaurante>> {
+    return this.http.put<Peticion<Restaurante>>(this.baseUrl + 'api/Restaurante', restaurante)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Peticion<Restaurante>>('Actualizar Restaurante', null))
+      );
+  }
+
+  Eliminar(NIT: string): Observable<Peticion<Restaurante>> {
+    return this.http.delete<Peticion<Restaurante>>(this.baseUrl + 'api/Restaurante/' + NIT)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Peticion<Restaurante>>('Eliminar Restaurante', null))
       );
   }
 }

@@ -5,6 +5,4 @@ export class Persona {
   segundoApellido: string;
   sexo: string;
   edad : number;
-
-
 }

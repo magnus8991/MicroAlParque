@@ -13,10 +13,12 @@ import { FooterComponent } from './footer/footer.component';
 import { RegistroRestauranteComponent } from './Micro al Parque/Componentes/registro-restaurante/registro-restaurante.component';
 import { RegistroManipuladorComponent } from './Micro al Parque/Componentes/registro-manipulador/registro-manipulador.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActualizacionRestauranteComponent } from './Micro al Parque/Componentes/actualizacion-restaurante/act-restaurante.component';
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
 import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
     GestionRestauranteComponent,
     GestionManipuladorComponent,
     EncuestaManipuladorComponent,
-    AlertModalComponent
+    ActualizacionRestauranteComponent,
+    AlertModalComponent,
+    NosotrosComponent
   ],
   imports: [
     BrowserModule,

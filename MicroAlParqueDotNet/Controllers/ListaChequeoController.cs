@@ -7,10 +7,10 @@ using Logica;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using FarmaciaArias.Models;
+using MicroAlParque.Models;
 using Datos;
 
-namespace FarmaciaArias.Controllers
+namespace MicroAlParque.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

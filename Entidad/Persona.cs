@@ -8,7 +8,6 @@ namespace Entidad
 {
     public class Persona
     {
-        [Key]
         [StringLength(11)]
         public string Identificacion { get; set; }
         [StringLength(30)]
@@ -19,7 +18,6 @@ namespace Entidad
         public string SegundoApellido { get; set; }
         [StringLength(9)]
         public string Sexo { get; set; }
-        [Column(TypeName = "Int")]
         public int Edad { get; set; }
         public Persona() { }
     }

@@ -7,10 +7,10 @@ using Logica;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using FarmaciaArias.Models;
+using MicroAlParque.Models;
 using Datos;
 
-namespace FarmaciaArias.Controllers
+namespace MicroAlParque.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,7 +21,7 @@ namespace FarmaciaArias.Controllers
         {
             _servicioUsuario = new ServicioUsuario(contexto);
         }
-         // GET: api/Lote
+         // GET: api/Usuario
         [HttpGet]
         public ActionResult<PeticionConsulta<UsuarioViewModel>> Consultar()
         {
@@ -29,7 +29,7 @@ namespace FarmaciaArias.Controllers
             return Ok(response);
         }
 
-        // GET: api/Lote/5
+        // GET: api/Usuario/5
         [HttpGet("{IdRestaurante}")]
         public ActionResult<Peticion<UsuarioViewModel>> Buscar(string Identificacion)
         {
@@ -37,7 +37,7 @@ namespace FarmaciaArias.Controllers
             return Ok(response);
         }
         
-        // POST: api/Lote
+        // POST: api/Usuario
         [HttpPost]
         public ActionResult<Peticion<UsuarioViewModel>> Guardar(UsuarioInputModel usuarioInput)
         {
@@ -46,25 +46,31 @@ namespace FarmaciaArias.Controllers
             return Ok(response);
         }
       
-        // DELETE: api/Lote/5
+        // DELETE: api/Usuario/5
         /*[HttpDelete("{codigoP}")]
         public ActionResult<string> Delete(string codigoP)
         {
-            string mensaje = _LoteService.Eliminar(codigoP);
+            string mensaje = _UsuarioService.Eliminar(codigoP);
             return Ok(mensaje);
         }*/
         private Usuario MapearListaChequeo(UsuarioInputModel usuarioInput)
         {
             var Usuario = new Usuario();
             Usuario.Identificacion = usuarioInput.Identificacion;
-            Usuario.TipoUsuario = usuarioInput.TipoUsuario;
+            Usuario.Nombres = usuarioInput.Nombres;
+            Usuario.PrimerApellido = usuarioInput.PrimerApellido;
+            Usuario.SegundoApellido = usuarioInput.SegundoApellido;
+            Usuario.Edad = usuarioInput.Edad;
+            Usuario.Sexo = usuarioInput.Sexo;
             Usuario.NombreUsuario = usuarioInput.NombreUsuario;
             Usuario.Contrasena = usuarioInput.Contrasena;
+            Usuario.Email = usuarioInput.Email;
+            Usuario.Rol = usuarioInput.Rol;
             return Usuario;
         }
-        /*// PUT: api/Lote/5
+        /*// PUT: api/Usuario/5
         [HttpPut("{codigoP}")]
-        public ActionResult<string> Put(string codigoP, Lote Lote)
+        public ActionResult<string> Put(string codigoP, Usuario Usuario)
         {
             throw new NotImplementedException();
         }*/

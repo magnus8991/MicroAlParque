@@ -5,7 +5,7 @@ import { ManipuladorDeAlimento } from '../../Modelos/manipulador-de-alimento';
 import { Restaurante } from '../../Modelos/restaurante';
 import { ManipuladorService } from '../../Servicios/manipulador.service';
 import { Mensajes } from '../../Servicios/mensajes';
-import { RestauranteService } from '../../Servicios/restaurante.service';
+import { ServicioRestaurante } from '../../Servicios/restaurante.service';
 
 @Component({
   selector: 'app-registro-manipulador',
@@ -23,7 +23,7 @@ export class RegistroManipuladorComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private servicioManipulador: ManipuladorService,
     private mensajes: Mensajes,
-    private servicioRestaurante: RestauranteService) { }
+    private servicioRestaurante: ServicioRestaurante) { }
 
   ngOnInit(): void {
     this.EstablecerValidacionesFormulario();
@@ -38,7 +38,7 @@ export class RegistroManipuladorComponent implements OnInit {
 
   Registrar() {
     var index = this.restaurantes.findIndex(r => r.nombre == this.nombreRestaurante.value);
-    this.manipulador.restauranteId = this.restaurantes[index].idRestaurante;
+    this.manipulador.identificacion = this.restaurantes[index].NIT;
     this.servicioManipulador.Guardar(this.manipulador).subscribe(r => {
       if (!r.error) {
         this.manipulador = r.elemento;

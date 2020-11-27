@@ -22,16 +22,11 @@ label {color:rgb(121, 113, 113);}
 button {width: 100%; height: 60px; border: none; box-shadow: 0px 0px 10px -3px black;}
 button:active {background: rgb(240, 234, 234) !important; color: #000000 !important;}
 
-.btn4 {background: #007bff}
-.btn4:hover {background:  #086dda}
+.btn3 {background: #007bff}
+.btn3:hover {background:  #086dda}
 
-.btn3 {background: rgb(116, 67, 233);}
-.btn3:hover {background: rgb(92, 51, 189);}
+.btn2 {background: rgb(116, 67, 233);}
+.btn2:hover {background: rgb(92, 51, 189);}
 
-.btn2 {background: rgb(230, 209, 21);}
-.btn2:hover {background: rgb(218, 179, 8);}
-
-.btn5 {background: #9c611d;}
-.btn5:hover {background: #915109;}
-
-.debajo1 {top: 20px;}
+.btn4 {background: #34daa2;}
+.btn4:hover {background: #32b98c;}

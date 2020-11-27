@@ -26,6 +26,7 @@ namespace Logica
                     new Peticion<Usuario>(null, "El usuario que intentar guardar ya se encuentra registrado", true);
                 if (!respuesta.Error)
                 {
+                    respuesta.Elemento.Estado = "ACTIVE";
                     _contexto.Usuarios.Add(respuesta.Elemento);
                     _contexto.SaveChanges();
                 }
@@ -36,6 +37,12 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public Usuario Validate(string nombreUsuario, string contrasena) 
+        {
+            return _contexto.Usuarios.FirstOrDefault(t => t.NombreUsuario == nombreUsuario && t.Contrasena == contrasena && t.Estado == "ACTIVE");
+        }
+        
         public Peticion<Usuario> BuscarPorIdentificacion(string Identificacion)
         {
             Peticion<Usuario> respuesta = new Peticion<Usuario>(new Usuario());

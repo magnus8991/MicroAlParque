@@ -10,7 +10,7 @@ namespace Entidad
         [Key]
         public int ListaChequeoId { get; set; }
         public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
-        public int RestauranteId { get; set; }
+        public string RestauranteId { get; set; }
         
         public ListaChequeo() {
             RespuestaChequeos = new List<RespuestaChequeo>();

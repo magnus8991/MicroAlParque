@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(MicroAlParqueContext))]
-    [Migration("20201118140611_InitialCreate")]
+    [Migration("20201127225710_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,8 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RestauranteId")
-                        .HasColumnType("int");
+                    b.Property<string>("RestauranteId")
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("ListaChequeoId");
 
@@ -38,18 +38,77 @@ namespace Datos.Migrations
                     b.ToTable("ListasDeChequeo");
                 });
 
-            modelBuilder.Entity("Entidad.Persona", b =>
+            modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
                 {
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Edad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EstadoCivil")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("NivelEducativo")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Nombres")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("PaisDeProcedencia")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("PrimerApellido")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("RestauranteId")
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("SegundoApellido")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Sexo")
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
+
+                    b.HasKey("Identificacion");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Manipuladores");
+                });
+
+            modelBuilder.Entity("Entidad.Pregunta", b =>
+                {
+                    b.Property<int>("PreguntaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Enunciado")
+                        .HasColumnType("nvarchar(190)")
+                        .HasMaxLength(190);
+
+                    b.HasKey("PreguntaId");
+
+                    b.ToTable("Preguntas");
+                });
+
+            modelBuilder.Entity("Entidad.Propietario", b =>
+                {
+                    b.Property<string>("Identificacion")
+                        .HasColumnType("nvarchar(11)")
+                        .HasMaxLength(11);
 
                     b.Property<int>("Edad")
-                        .HasColumnType("Int");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombres")
                         .HasColumnType("nvarchar(30)")
@@ -69,25 +128,7 @@ namespace Datos.Migrations
 
                     b.HasKey("Identificacion");
 
-                    b.ToTable("Personas");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
-                });
-
-            modelBuilder.Entity("Entidad.Pregunta", b =>
-                {
-                    b.Property<int>("PreguntaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Enunciado")
-                        .HasColumnType("nvarchar(190)")
-                        .HasMaxLength(190);
-
-                    b.HasKey("PreguntaId");
-
-                    b.ToTable("Preguntas");
+                    b.ToTable("Propietarios");
                 });
 
             modelBuilder.Entity("Entidad.Respuesta", b =>
@@ -147,16 +188,15 @@ namespace Datos.Migrations
 
             modelBuilder.Entity("Entidad.Restaurante", b =>
                 {
-                    b.Property<int>("IdRestaurante")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("NIT")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
-                    b.Property<string>("Identificacion")
+                    b.Property<string>("IdPropietario")
                         .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
@@ -164,74 +204,82 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(35)")
                         .HasMaxLength(35);
 
-                    b.HasKey("IdRestaurante");
+                    b.Property<string>("Sede")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.HasIndex("Identificacion");
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
+
+                    b.HasKey("NIT");
+
+                    b.HasIndex("IdPropietario");
 
                     b.ToTable("Restaurantes");
                 });
 
             modelBuilder.Entity("Entidad.Usuario", b =>
                 {
-                    b.Property<int>("UsuarioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Contrasena")
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<int>("Edad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(8)")
+                        .HasMaxLength(8);
+
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
-                    b.Property<string>("NombreUsuario")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                    b.Property<string>("Nombres")
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("TipoUsuario")
+                    b.Property<string>("PrimerApellido")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Rol")
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
 
-                    b.HasKey("UsuarioId");
+                    b.Property<string>("SegundoApellido")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
-                    b.HasIndex("Identificacion");
+                    b.Property<string>("Sexo")
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
+
+                    b.HasKey("NombreUsuario");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
-                {
-                    b.HasBaseType("Entidad.Persona");
-
-                    b.Property<string>("EstadoCivil")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
-
-                    b.Property<string>("NivelEducativo")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
-
-                    b.Property<string>("PaisDeProcedencia")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
-
-                    b.Property<int>("RestauranteId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("RestauranteId");
-
-                    b.HasDiscriminator().HasValue("ManipuladorDeAlimento");
                 });
 
             modelBuilder.Entity("Entidad.ListaChequeo", b =>
                 {
                     b.HasOne("Entidad.Restaurante", null)
                         .WithMany()
-                        .HasForeignKey("RestauranteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RestauranteId");
+                });
+
+            modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
+                {
+                    b.HasOne("Entidad.Restaurante", null)
+                        .WithMany()
+                        .HasForeignKey("RestauranteId");
                 });
 
             modelBuilder.Entity("Entidad.Respuesta", b =>
@@ -262,25 +310,9 @@ namespace Datos.Migrations
 
             modelBuilder.Entity("Entidad.Restaurante", b =>
                 {
-                    b.HasOne("Entidad.Persona", null)
+                    b.HasOne("Entidad.Propietario", null)
                         .WithMany()
-                        .HasForeignKey("Identificacion");
-                });
-
-            modelBuilder.Entity("Entidad.Usuario", b =>
-                {
-                    b.HasOne("Entidad.Persona", null)
-                        .WithMany()
-                        .HasForeignKey("Identificacion");
-                });
-
-            modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
-                {
-                    b.HasOne("Entidad.Restaurante", null)
-                        .WithMany()
-                        .HasForeignKey("RestauranteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPropietario");
                 });
 #pragma warning restore 612, 618
         }

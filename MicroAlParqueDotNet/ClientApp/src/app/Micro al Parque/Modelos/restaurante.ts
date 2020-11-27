@@ -1,6 +1,8 @@
 export class Restaurante {
-  idRestaurante: number;
+  NIT: string;
   nombre: string;
   direccion: string;
-  identificacion: string;
+  sede: string;
+  telefono: number;
+  idPropietario: string;
 }

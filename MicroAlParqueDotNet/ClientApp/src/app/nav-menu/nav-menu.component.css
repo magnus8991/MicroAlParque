@@ -1,7 +1,7 @@
 .sidebar {
   font-family: 'Roboto', sans-serif;
   position: fixed; height: 545px !important;
-  left: -250px;   width: 250px;
+  left: -270px;   width: 270px;
   background: rgb(44, 41, 41);
   transition: all .5s ease;
 }
@@ -44,7 +44,7 @@
 
 ul li:hover a {
   font-size: 19px;
-  padding-left: 80px;
+  padding-left: 60px;
   padding-top: 5px;
   text-decoration: none;
   color: rgb(255, 25, 25);
@@ -100,7 +100,7 @@ label #btn:hover, label #cancel:hover {
 }
 
 #check:checked ~ label #btn {
-  left: 250px;
+  left: 270px;
   opacity: 0;
   pointer-events: none;
 }
@@ -110,7 +110,7 @@ label #btn:hover, label #cancel:hover {
 }
 
 #check:checked ~ section {
-  margin-left: 270px;
+  margin-left: 290px;
 }
 
 section {

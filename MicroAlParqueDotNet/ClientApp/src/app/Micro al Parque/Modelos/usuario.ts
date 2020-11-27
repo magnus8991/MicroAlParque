@@ -1,7 +1,8 @@
 import { Persona } from "./persona";
 
-export class Usuario {
+export class Usuario extends Persona {
   nombreUsuario: string;
   contraseña: string;
-  persona: Persona;
+  email: string;
+  rol: string;
 }

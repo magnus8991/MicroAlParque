@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FarmaciaArias.Models
+namespace MicroAlParque.Models
 {
     public class ListaChequeoInputModel
     {
         public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
-        public int RestauranteId { get; set; }
+        public string RestauranteId { get; set; }
 
         public ListaChequeoInputModel() {
             RespuestaChequeos = new List<RespuestaChequeo>();
