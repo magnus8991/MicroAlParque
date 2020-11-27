@@ -59,7 +59,7 @@ namespace FarmaciaArias.Controllers
             Usuario.Identificacion = usuarioInput.Identificacion;
             Usuario.TipoUsuario = usuarioInput.TipoUsuario;
             Usuario.NombreUsuario = usuarioInput.NombreUsuario;
-            Usuario.Contraseña = usuarioInput.Contraseña;
+            Usuario.Contrasena = usuarioInput.Contrasena;
             return Usuario;
         }
         /*// PUT: api/Lote/5

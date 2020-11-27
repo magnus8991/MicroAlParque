@@ -12,7 +12,7 @@ namespace Entidad
         [StringLength(20)]
         public string NombreUsuario { get; set; }
         [StringLength(20)]
-        public string Contraseña { get; set; }
+        public string Contrasena { get; set; }
         [StringLength(11)]
         public string Identificacion { get; set; }
         public Usuario() { }

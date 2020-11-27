@@ -10,7 +10,7 @@ namespace FarmaciaArias.Models
     {
         public string TipoUsuario { get; set; }
         public string NombreUsuario { get; set; }
-        public string Contraseña { get; set; }
+        public string Contrasena { get; set; }
         public string Identificacion { get; set; }
 
         public UsuarioInputModel() { }
@@ -26,7 +26,7 @@ namespace FarmaciaArias.Models
             UsuarioId = usuario.UsuarioId;
             TipoUsuario = usuario.TipoUsuario;
             NombreUsuario = usuario.NombreUsuario;
-            Contraseña = usuario.Contraseña;
+            Contrasena = usuario.Contrasena;
             Identificacion = usuario.Identificacion;
         }
     }
