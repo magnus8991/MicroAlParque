@@ -4,9 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegistroRestauranteComponent } from '../registro-restaurante/registro-restaurante.component';
 import { Mensajes } from '../../Servicios/mensajes';
 import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
-import { RegistroManipuladorComponent } from '../registro-manipulador/registro-manipulador.component';
 import { ActualizacionRestauranteComponent } from '../actualizacion-restaurante/act-restaurante.component';
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
+import { GestionSedeComponent } from '../gestion-sede/gestion-sede.component';
 
 @Component({
   selector: 'app-gestion-restaurante',
@@ -62,8 +62,7 @@ export class GestionRestauranteComponent implements OnInit {
   RegistrarRestaurante() {
     this.modalService.open(RegistroRestauranteComponent, {size: 'xl', backdrop: 'static', keyboard: false}).result.then(r => {
       if (r != null) {
-        var restaurante = new Restaurante();
-        restaurante = r;
+        var restaurante: Restaurante = r;
         if (restaurante.nit != undefined) {
           this.peticion.elementos.push(r);
           this.AsignarValoresTabla(this.peticion.elementos);
@@ -73,21 +72,13 @@ export class GestionRestauranteComponent implements OnInit {
   }
 
   Modificar(nit: string) {
-    const modelo = this.modalService.open(ActualizacionRestauranteComponent, {size: 'xl'});
+    const modelo = this.modalService.open(ActualizacionRestauranteComponent, {backdrop: 'static', keyboard: false});
      var restaurante = this.peticion.elementos.find(r => r.nit == nit);
-     var respuesta = new Peticion<Restaurante>(restaurante);
-     modelo.componentInstance.peticion = respuesta;
+     modelo.componentInstance.restaurante = restaurante;
   }
 
-  /*delete(nit: string) {
-    var i = this.peticion.elementos.findIndex(r => r.nit == nit);
-    this.servicioRestaurante.Eliminar(this.peticion.elementos[i].nit).subscribe(result => {
-      if (!result.error) {
-        this.peticion.elementos.splice(i,1);
-        this.AsignarValoresTabla(this.peticion.elementos);
-        this.mensajes.Mostrar("¡Operación Exitosa!",result.mensaje);
-      }
-      else this.mensajes.Mostrar("¡Oh, no!",result.mensaje);
-    });
-  }*/
+  GestionarSedes(i: number) {
+    const modelo = this.modalService.open(GestionSedeComponent, { size: 'xl' });
+    modelo.componentInstance.IdRestaurante = this.restaurantes[i].nit;
+  }
 }

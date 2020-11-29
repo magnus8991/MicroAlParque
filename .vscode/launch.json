@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MicroAlParqueDotNet/bin/Debug/netcoreapp3.1/ParcialCorte1_ProgWeb.dll",
+            "program": "${workspaceFolder}/MicroAlParqueDotNet/bin/Debug/netcoreapp3.1/MicroAlParque.dll",
             "args": [],
             "cwd": "${workspaceFolder}/MicroAlParqueDotNet",
             "stopAtEntry": false,

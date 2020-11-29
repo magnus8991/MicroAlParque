@@ -31,6 +31,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 
+import { FiltroRestaurantePipe } from './Micro al Parque/pipe/filtro-restaurante.pipe';
+import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede/gestion-sede.component';
+import { FiltroSedePipe } from './Micro al Parque/pipe/filtro-sede.pipe';
+import { ActualizacionSedeComponent } from './Micro al Parque/Componentes/actualizacion-sede/actualizacion-sede.component';
+import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-sede/registro-sede.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +51,9 @@ import {MatInputModule} from '@angular/material/input';
     EncuestaManipuladorComponent,
     ActualizacionRestauranteComponent,
     AlertModalComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    RegistroSedeComponent, FiltroRestaurantePipe,
+    FiltroSedePipe, ActualizacionSedeComponent
 
   ],
   imports: [
@@ -68,7 +76,7 @@ import {MatInputModule} from '@angular/material/input';
     MatStepperModule,
     MatInputModule
   ],
-  entryComponents:[RegistroRestauranteComponent,GestionManipuladorComponent],
+  entryComponents:[GestionRestauranteComponent,GestionSedeComponent],
   providers: [NgbNav],
   bootstrap: [AppComponent]
 })

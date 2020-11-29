@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,8 +10,9 @@ export class AlertModalComponent implements OnInit {
   @Input() title;
   @Input() message;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal, private detect: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.detect.detectChanges();
   }
 }

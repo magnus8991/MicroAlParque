@@ -69,5 +69,28 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public Peticion<Restaurante> Modificar(Restaurante restaurante)
+        {
+            Peticion<Restaurante> respuesta = new Peticion<Restaurante>(restaurante);
+            try
+            {
+                respuesta = BuscarPorIdRestaurante(restaurante.NIT);
+                respuesta = (!respuesta.Error) ?
+                    new Peticion<Restaurante>(respuesta.Elemento, "Datos actualizados correctamente", false) :
+                    new Peticion<Restaurante>(null, "El restaurante que intentar modificar no se encuentra registrado", true);
+                if (!respuesta.Error)
+                {
+                    respuesta.Elemento.Nombre = restaurante.Nombre;
+                    _contexto.Restaurantes.Update(respuesta.Elemento);
+                    _contexto.SaveChanges();
+                }
+            }
+            catch (Exception E)
+            {
+                respuesta = new Peticion<Restaurante>(null, "Error de la aplicación: " + E.Message, true);
+            }
+            return respuesta;
+        }
     }
 }

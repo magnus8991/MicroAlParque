@@ -1,6 +1,6 @@
 using System;
 
-namespace ParcialCorte1_ProgWeb
+namespace MicroAlParque
 {
     public class WeatherForecast
     {

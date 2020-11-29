@@ -1,4 +1,4 @@
-import { FiltroRestaurantePipe } from './filtro-producto.pipe';
+import { FiltroRestaurantePipe } from './filtro-restaurante.pipe';
 
 describe('FiltroRestaurantePipe', () => {
   it('create an instance', () => {

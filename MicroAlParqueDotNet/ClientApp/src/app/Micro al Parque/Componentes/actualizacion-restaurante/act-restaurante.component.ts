@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup,Validators,FormBuilder} from '@angular/forms';
 import { Restaurante } from '../../Modelos/restaurante';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
+import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
+import { Mensajes } from '../../Servicios/mensajes';
 
 @Component({
   selector: 'app-actualizacion-restaurante',
@@ -10,27 +12,29 @@ import { ServicioRestaurante } from '../../Servicios/restaurante.service';
   styleUrls: ['./act-restaurante.component.css']
 })
 export class ActualizacionRestauranteComponent implements OnInit {
-
   formularioActualizacion : FormGroup;
-  restaurante : Restaurante;
+  @Input() restaurante : Restaurante;
+  peticion: Peticion<Restaurante>;
 
 
-  constructor
-  (
-    private formBuilder : FormBuilder,
-    public activeModal: NgbActiveModal,
-    private servicioRestaurante: ServicioRestaurante
-  )
+  constructor (private formBuilder : FormBuilder, public activeModal: NgbActiveModal,
+    private servicioRestaurante: ServicioRestaurante, private mensajes: Mensajes)
   { }
 
   ngOnInit(): void {
-    this.restaurante = new Restaurante();
+    this.peticion = new Peticion(new Restaurante());
+    this.peticion.elemento = this.restaurante;
     this.EstablecerValidacionesFormulario ();
   }
 
-  Registrar() {
-    this.servicioRestaurante.Guardar(this.restaurante).subscribe (r => {
-        this.restaurante = r.elemento;
+  Actualizar() {
+    this.servicioRestaurante.Modificar(this.peticion.elemento).subscribe (r => {
+      if (!r.error) {
+        this.peticion = r;
+        this.mensajes.Mostrar("¡Operación exitosa!",r.mensaje);
+        this.activeModal.close(this.peticion.elemento);
+      }
+      else this.mensajes.Mostrar("¡Oh no!",r.mensaje);
     });
   }
 
@@ -38,18 +42,12 @@ export class ActualizacionRestauranteComponent implements OnInit {
   {
     this.formularioActualizacion = this.formBuilder.group(
       {
-        nombre : ['',[Validators.required,Validators.minLength(7),Validators.maxLength(35)]],
-        direccion : ['',[Validators.required,Validators.maxLength(40)]]
+        nombre : ['',[Validators.required,Validators.minLength(7),Validators.maxLength(35)]]
       }
     );
   }
 
-  get nombre ()
-  {
-    return this.formularioActualizacion.get('nombre');
-  }
-  get direccion ()
-  {
-    return this.formularioActualizacion.get('direccion');
-  }
+  onClose() { this.activeModal.dismiss(); }
+
+  get nombre () {return this.formularioActualizacion.get('nombre');}
 }

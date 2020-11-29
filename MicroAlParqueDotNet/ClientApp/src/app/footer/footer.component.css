@@ -8,6 +8,8 @@ footer {
     bottom: 0 !important;
 }
 
+.lead { font-size: 120%; }
+
 .main1 { 
     display:flex;
     margin:0 auto;

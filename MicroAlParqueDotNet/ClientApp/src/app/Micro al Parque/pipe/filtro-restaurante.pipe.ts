@@ -6,10 +6,10 @@ import { Restaurante } from '../Modelos/restaurante';
 })
 export class FiltroRestaurantePipe implements PipeTransform {
 
-  transform(restaurantes: Restaurante[], filtroProducto: string): any {
-    if (filtroProducto == null) return restaurantes;
-         return restaurantes.filter(r => r.nit.toLowerCase().indexOf(filtroProducto.toLowerCase()) !== -1
-         || r.nombre.toLowerCase().indexOf(filtroProducto.toLowerCase()) !== -1);
+  transform(restaurantes: Restaurante[], filtroRestaurante: string): any {
+    if (filtroRestaurante == null) return restaurantes;
+         return restaurantes.filter(r => r.nit.toLowerCase().indexOf(filtroRestaurante.toLowerCase()) !== -1
+         || r.nombre.toLowerCase().indexOf(filtroRestaurante.toLowerCase()) !== -1);
       }
 
 }
