@@ -20,34 +20,31 @@ import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encu
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FiltroRestaurantePipe } from './Micro al Parque/pipe/filtro-restaurante.pipe';
+import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede/gestion-sede.component';
+import { FiltroSedePipe } from './Micro al Parque/pipe/filtro-sede.pipe';
+import { ActualizacionSedeComponent } from './Micro al Parque/Componentes/actualizacion-sede/actualizacion-sede.component';
+import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-sede/registro-sede.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent,
-    InicioComponent,
-    EncabezadoComponent,
-    FooterComponent,
-    RegistroRestauranteComponent,
-    RegistroManipuladorComponent,
-    GestionRestauranteComponent,
-    GestionManipuladorComponent,
-    EncuestaManipuladorComponent,
-    ActualizacionRestauranteComponent,
-    AlertModalComponent,
-    NosotrosComponent
+    AppComponent, NavMenuComponent,
+    InicioComponent, EncabezadoComponent,
+    FooterComponent, RegistroRestauranteComponent,
+    RegistroManipuladorComponent, GestionRestauranteComponent,
+    GestionSedeComponent, GestionManipuladorComponent,
+    EncuestaManipuladorComponent, ActualizacionRestauranteComponent,
+    AlertModalComponent, NosotrosComponent,
+    RegistroSedeComponent, FiltroRestaurantePipe,
+    FiltroSedePipe, ActualizacionSedeComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    MatIconModule
+    BrowserModule, HttpClientModule,
+    FormsModule, AppRoutingModule,
+    ReactiveFormsModule, NgbModule,
+    BrowserAnimationsModule, MatIconModule
   ],
-  entryComponents:[RegistroRestauranteComponent,GestionManipuladorComponent],
+  entryComponents:[GestionRestauranteComponent,GestionSedeComponent],
   providers: [NgbNav],
   bootstrap: [AppComponent]
 })

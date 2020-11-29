@@ -11,13 +11,7 @@ namespace Entidad
         public string NIT { get; set; }
         [StringLength(35)]
         public string Nombre { get; set; }
-        [StringLength(40)]
-        public string Direccion { get; set; }
-        [StringLength(20)]
-        public string Sede { get; set; }
-        public int Telefono { get; set; }
-        [StringLength(11)]
-        public virtual Propietario Propietario { get; set; }
+        public Propietario Propietario { get; set; }
         public Restaurante() { }
 
     }

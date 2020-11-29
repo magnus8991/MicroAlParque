@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ParcialCorte1_ProgWeb.Controllers
+namespace MicroAlParque.Controllers
 {
     [ApiController]
     [Route("[controller]")]

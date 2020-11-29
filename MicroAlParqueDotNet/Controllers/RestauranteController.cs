@@ -46,29 +46,21 @@ namespace MicroAlParque.Controllers
             return Ok(response);
         }
 
-        // DELETE: api/Lote/5
-        /*[HttpDelete("{codigoP}")]
-        public ActionResult<string> Delete(string codigoP)
+        [HttpPut]
+        public ActionResult<Peticion<RestauranteViewModel>> Modificar(RestauranteInputModel restauranteInput)
         {
-            string mensaje = _LoteService.Eliminar(codigoP);
-            return Ok(mensaje);
-        }*/
+            Restaurante restaurante = MapearRestaurante(restauranteInput);
+            var response = _servicioRestaurante.Modificar(restaurante);
+            return Ok(response);
+        }
+        
         private Restaurante MapearRestaurante(RestauranteInputModel restauranteInput)
         {
             var Restaurante = new Restaurante();
             Restaurante.NIT = restauranteInput.NIT;
             Restaurante.Nombre = restauranteInput.Nombre;
-            Restaurante.Direccion = restauranteInput.Direccion;
-            Restaurante.Sede = restauranteInput.Sede;
-            Restaurante.Telefono = restauranteInput.Telefono;
             Restaurante.Propietario = restauranteInput.Propietario;
             return Restaurante;
         }
-        /*// PUT: api/Lote/5
-        [HttpPut("{codigoP}")]
-        public ActionResult<string> Put(string codigoP, Lote Lote)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

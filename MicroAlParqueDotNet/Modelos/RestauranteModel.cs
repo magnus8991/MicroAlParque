@@ -10,9 +10,6 @@ namespace MicroAlParque.Models
     {
         public string NIT { get; set; }
         public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public string Sede { get; set; }
-        public int Telefono { get; set; }
         public Propietario Propietario { get; set; }
 
         public RestauranteInputModel() { }
@@ -25,9 +22,6 @@ namespace MicroAlParque.Models
         {
             NIT = restaurante.NIT;
             Nombre = restaurante.Nombre;
-            Direccion = restaurante.Direccion;
-            Sede = restaurante.Sede;
-            Telefono = restaurante.Telefono;
             Propietario = restaurante.Propietario;
         }
     }
