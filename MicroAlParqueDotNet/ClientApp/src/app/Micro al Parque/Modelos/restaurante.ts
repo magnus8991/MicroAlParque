@@ -1,8 +1,10 @@
+import { Propietario } from "./persona";
+
 export class Restaurante {
-  NIT: string;
+  nit: string;
   nombre: string;
   direccion: string;
   sede: string;
   telefono: number;
-  idPropietario: string;
+  propietario: Propietario;
 }

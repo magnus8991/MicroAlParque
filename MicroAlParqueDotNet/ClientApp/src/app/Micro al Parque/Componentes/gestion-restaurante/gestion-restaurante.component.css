@@ -13,11 +13,15 @@ fa-sad-tear {color:rgb(121, 113, 113);}
 
 .condicion {margin-left: 53%;}
 
+.notabla {width: 100%;}
+
+.sincondicion {display: flex;}
+
 .btn-secondary {
-  width: 100%; background: #0a7aa7;
+  background: #0a7aa7;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 1.5%;
+  margin-top: 2.6%;
 }
 
 .Advertencia {

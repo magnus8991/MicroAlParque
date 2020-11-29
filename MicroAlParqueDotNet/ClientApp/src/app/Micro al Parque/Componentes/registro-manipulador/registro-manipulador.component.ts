@@ -38,7 +38,7 @@ export class RegistroManipuladorComponent implements OnInit {
 
   Registrar() {
     var index = this.restaurantes.findIndex(r => r.nombre == this.nombreRestaurante.value);
-    this.manipulador.identificacion = this.restaurantes[index].NIT;
+    this.manipulador.identificacion = this.restaurantes[index].nit;
     this.servicioManipulador.Guardar(this.manipulador).subscribe(r => {
       if (!r.error) {
         this.manipulador = r.elemento;

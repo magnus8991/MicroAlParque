@@ -20,3 +20,5 @@ html::-webkit-scrollbar-track {
 html {
     background-color: rgb(233, 227, 227);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -6,3 +6,6 @@ export class Persona {
   sexo: string;
   edad : number;
 }
+export class Propietario extends Persona {
+  
+}

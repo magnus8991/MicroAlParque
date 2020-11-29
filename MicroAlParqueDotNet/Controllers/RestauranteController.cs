@@ -56,11 +56,12 @@ namespace MicroAlParque.Controllers
         private Restaurante MapearRestaurante(RestauranteInputModel restauranteInput)
         {
             var Restaurante = new Restaurante();
+            Restaurante.NIT = restauranteInput.NIT;
             Restaurante.Nombre = restauranteInput.Nombre;
             Restaurante.Direccion = restauranteInput.Direccion;
             Restaurante.Sede = restauranteInput.Sede;
             Restaurante.Telefono = restauranteInput.Telefono;
-            Restaurante.IdPropietario = restauranteInput.IdPropietario;
+            Restaurante.Propietario = restauranteInput.Propietario;
             return Restaurante;
         }
         /*// PUT: api/Lote/5

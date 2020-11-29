@@ -29,9 +29,11 @@ export class GestionRestauranteComponent implements OnInit {
 
   Consultar() {
     this.servicioRestaurante.Consultar().subscribe(result => {
-      if (result != null) {
+      if (result !=null) {
         this.peticion = result;
+        this.AsignarValoresTabla(this.peticion.elementos);
       }
+      else this.mensajes.Mostrar("¡Oh, no!",result.mensaje);
     });
   }
 
@@ -43,7 +45,7 @@ export class GestionRestauranteComponent implements OnInit {
   }
 
   ModificarListaProvisional() {
-    if (this.filtroRestaurante == undefined || this.filtroRestaurante == null) 
+    if (this.filtroRestaurante == undefined || this.filtroRestaurante == null)
       this.AsignarValoresTabla(this.peticion.elementos);
     else {
       var listaFiltrada = this.FiltrarLista();
@@ -52,9 +54,8 @@ export class GestionRestauranteComponent implements OnInit {
   }
 
   FiltrarLista(): Restaurante[] {
-    var listaRestaurantes = this.peticion.elementos.filter(r => r.NIT.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1
-    || r.nombre.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1
-    || r.idPropietario.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1);
+    var listaRestaurantes = this.peticion.elementos.filter(r => r.nit.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1
+    || r.nombre.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1);
       return listaRestaurantes;
   }
 
@@ -63,7 +64,7 @@ export class GestionRestauranteComponent implements OnInit {
       if (r != null) {
         var restaurante = new Restaurante();
         restaurante = r;
-        if (restaurante.NIT != undefined) {
+        if (restaurante.nit != undefined) {
           this.peticion.elementos.push(r);
           this.AsignarValoresTabla(this.peticion.elementos);
         }
@@ -71,16 +72,16 @@ export class GestionRestauranteComponent implements OnInit {
     });
   }
 
-  Modificar(NIT: string) {
+  Modificar(nit: string) {
     const modelo = this.modalService.open(ActualizacionRestauranteComponent, {size: 'xl'});
-     var restaurante = this.peticion.elementos.find(r => r.NIT == NIT);
+     var restaurante = this.peticion.elementos.find(r => r.nit == nit);
      var respuesta = new Peticion<Restaurante>(restaurante);
      modelo.componentInstance.peticion = respuesta;
   }
 
-  delete(NIT: string) {
-    var i = this.peticion.elementos.findIndex(r => r.NIT == NIT);
-    this.servicioRestaurante.Eliminar(this.peticion.elementos[i].NIT).subscribe(result => {
+  /*delete(nit: string) {
+    var i = this.peticion.elementos.findIndex(r => r.nit == nit);
+    this.servicioRestaurante.Eliminar(this.peticion.elementos[i].nit).subscribe(result => {
       if (!result.error) {
         this.peticion.elementos.splice(i,1);
         this.AsignarValoresTabla(this.peticion.elementos);
@@ -88,5 +89,5 @@ export class GestionRestauranteComponent implements OnInit {
       }
       else this.mensajes.Mostrar("¡Oh, no!",result.mensaje);
     });
-  }
+  }*/
 }

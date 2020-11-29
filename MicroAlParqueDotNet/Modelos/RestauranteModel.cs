@@ -13,7 +13,7 @@ namespace MicroAlParque.Models
         public string Direccion { get; set; }
         public string Sede { get; set; }
         public int Telefono { get; set; }
-        public string IdPropietario { get; set; }
+        public Propietario Propietario { get; set; }
 
         public RestauranteInputModel() { }
     }
@@ -28,7 +28,7 @@ namespace MicroAlParque.Models
             Direccion = restaurante.Direccion;
             Sede = restaurante.Sede;
             Telefono = restaurante.Telefono;
-            IdPropietario = restaurante.IdPropietario;
+            Propietario = restaurante.Propietario;
         }
     }
 }

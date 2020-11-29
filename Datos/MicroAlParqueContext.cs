@@ -43,10 +43,7 @@ namespace Datos
             .HasKey(p => p.Identificacion);
             modelBuilder.Entity<ManipuladorDeAlimento>()
             .HasKey(m => m.Identificacion);
-            modelBuilder.Entity<Restaurante>()
-                .HasOne<Propietario>()
-                .WithMany()
-                .HasForeignKey(r => r.IdPropietario);
+            
         }
     }
 }

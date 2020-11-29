@@ -3,6 +3,7 @@ using Entidad;
 using Datos;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logica
 {
@@ -57,7 +58,7 @@ namespace Logica
             PeticionConsulta<Restaurante> respuesta = new PeticionConsulta<Restaurante>();
             try
             {
-                respuesta.Elementos = _contexto.Restaurantes.ToList();
+                respuesta.Elementos = _contexto.Restaurantes.Include(r => r.Propietario).ToList();
                 respuesta = (respuesta.Elementos.Count == 0) ?
                     new PeticionConsulta<Restaurante>(new List<Restaurante>(), "No se han encontrado restaurantes registrados", true) :
                     new PeticionConsulta<Restaurante>(respuesta.Elementos.ToList(), "Consulta realizada con éxito", false);

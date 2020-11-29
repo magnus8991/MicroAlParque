@@ -17,7 +17,7 @@ namespace Entidad
         public string Sede { get; set; }
         public int Telefono { get; set; }
         [StringLength(11)]
-        public string IdPropietario { get; set; }
+        public virtual Propietario Propietario { get; set; }
         public Restaurante() { }
 
     }

@@ -194,13 +194,12 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
-                    b.Property<string>("IdPropietario")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
-
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(35)")
                         .HasMaxLength(35);
+
+                    b.Property<string>("PropietarioIdentificacion")
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Sede")
                         .HasColumnType("nvarchar(20)")
@@ -211,7 +210,7 @@ namespace Datos.Migrations
 
                     b.HasKey("NIT");
 
-                    b.HasIndex("IdPropietario");
+                    b.HasIndex("PropietarioIdentificacion");
 
                     b.ToTable("Restaurantes");
                 });
@@ -308,9 +307,9 @@ namespace Datos.Migrations
 
             modelBuilder.Entity("Entidad.Restaurante", b =>
                 {
-                    b.HasOne("Entidad.Propietario", null)
+                    b.HasOne("Entidad.Propietario", "Propietario")
                         .WithMany()
-                        .HasForeignKey("IdPropietario");
+                        .HasForeignKey("PropietarioIdentificacion");
                 });
 #pragma warning restore 612, 618
         }
