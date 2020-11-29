@@ -1,34 +1,73 @@
-.btn-azul
-{
-  color: white;
-  background-color: rgb(53, 109, 252);
-  border-radius: 6px;
-  font-size: 18px;
-  border: 2px solid rgb(53, 109, 252);
-  padding: 16;
-  height: 37px;
-  margin: 5px;
+
+.encabezado {
+  background: #FFFF;
+  box-shadow: 0px 0px 10px 0px black;
 }
-.btn-azul:hover
-{
-  color: rgb(231, 236, 241);
-  background-color: rgb(27, 91, 255);
-  border: 2px solid rgb(27, 91, 255);
+
+.titulo {text-align: center; font-weight: 700;}
+
+h1, h3 {color:rgb(121, 113, 113);margin-bottom: 3%;}
+
+fa-sad-tear {color:rgb(121, 113, 113);}
+
+.container {padding-top: 5%; padding-bottom: 5%;}
+
+
+
+.condicion {margin-left: 53%;}
+
+.notabla {width: 100%;}
+
+.sincondicion {display: flex;}
+
+.btn-secondary {
+  background: #0a7aa7;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 2.6%;
+  display: flexbox;
 }
-.btn-eliminar
-{
-color: white;
-background-color:  rgb(53, 49, 49);
-border-radius: 6px;
-font-size: 18px;
-border: 2px solid rgb(53, 49, 49);
-padding: 16;
-height: 37px;
-margin: 5px;
+
+.Advertencia {
+  margin-bottom: 17%;
 }
-.btn-eliminar:hover
-{
-color: rgb(231, 236, 241);
-background-color: rgb(39, 38, 38);
-border: 2px solid rgb(39, 38, 38);
+
+.btn-secondary:hover {
+  background: #269dcc;
+}
+
+.btn-secondary:active {
+  background: #58b5da !important;
+  color: #000000 !important;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.btn-secondary {
+  background: #0a7aa7;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 2.6%;
+}
+
+.Advertencia {
+  margin-bottom: 17%;
+}
+
+.btn-secondary:hover {
+  background: #269dcc;
+}
+
+.btn-secondary:active {
+  background: #58b5da !important;
+  color: #000000 !important;
 }

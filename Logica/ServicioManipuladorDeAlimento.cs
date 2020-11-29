@@ -3,6 +3,7 @@ using Entidad;
 using Datos;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logica
 {
@@ -52,12 +53,12 @@ namespace Logica
             }
             return respuesta;
         }
-        public PeticionConsulta<ManipuladorDeAlimento> ConsultarTodos()
+        public PeticionConsulta<ManipuladorDeAlimento> ConsultarTodos(string restauranteId)
         {
             PeticionConsulta<ManipuladorDeAlimento> respuesta = new PeticionConsulta<ManipuladorDeAlimento>();
             try
             {
-                respuesta.Elementos = _contexto.Manipuladores.ToList();
+                respuesta.Elementos = _contexto.Manipuladores.Where(m => m.RestauranteId == restauranteId).ToList();
                 respuesta = (respuesta.Elementos.Count == 0) ?
                     new PeticionConsulta<ManipuladorDeAlimento>(new List<ManipuladorDeAlimento>(), "No se han encontrado manipuladores registrados", true) :
                     new PeticionConsulta<ManipuladorDeAlimento>(respuesta.Elementos.ToList(), "Consulta realizada con éxito", false);
@@ -68,5 +69,6 @@ namespace Logica
             }
             return respuesta;
         }
+
     }
 }

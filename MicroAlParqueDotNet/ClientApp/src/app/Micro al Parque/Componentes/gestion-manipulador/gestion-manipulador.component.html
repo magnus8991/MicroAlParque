@@ -1,39 +1,77 @@
-<div class="container">
-  <div class="card" style="width: 100%">
-    <div class="card-body">
-      <h2>Manipuladores de alimento :</h2>
-      <button class="btn-azul" (click)="openModalManipulador()">
-        <i class="fas fa-plus-circle"></i> Agregar Manipulador</button>
-      <br />
-      <br />
-      <table class="table table-hover table-sm table-bordered" *ngIf='manipuladores && manipuladores.length'>
-        <thead>
-          <tr>
-            <th>Identificacion</th>
-            <th>Nombres</th>
-            <th>Apellido</th>
-            <th>Nivel de Educacion</th>
-            <th>Edad</th>
-            <th>Sexo</th>
-            <th>Operaciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let manipulador of manipuladores">
-            <td>{{ manipulador.identificacion }}</td>
-            <td>{{ manipulador.nombres }}</td>
-            <td>{{ manipulador.primerApellido }}</td>
-            <td>{{ manipulador.nivelEducativo }}</td>
-            <td>{{ manipulador.edad }}</td>
-            <td>{{ manipulador.sexo }}</td>
-            <td><button class="btn-azul">Modificar</button>
-              <button class="btn-eliminar">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br /><br /><br /><br />
+<div class="container encabezado">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="titulo">GESTIÓN DE MANIPULADORES</h1>
+      <div *ngIf="!manipuladores.length">
+        <h3>¡Lo sentimos, no tienes manipuladores registrados! <i class="fas fa-sad-tear"></i></h3>
+        <div class="col-md-6"><button style="height: 45px;" class="btn btn-secondary condicion notabla"
+          (click)="openModalManipulador()"><i class="fas fa-plus"></i> Nuevo Manipulador</button></div>
+      </div>
+      <div *ngIf="manipuladores.length" class="sincondicion">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ejp : diego" #input>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <button style="height: 35px;" class="btn btn-secondary notabla" (click)="openModalManipulador()">
+              <i class="fas fa-plus"></i> Nuevo Manipulador</button>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
-  <br /><br /><br />
+
+  <div class="container">
+
+
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="identificacion">
+        <th mat-header-cell *matHeaderCellDef> identificacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.identificacion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Nombres">
+        <th mat-header-cell *matHeaderCellDef> Nombres </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Apellidos">
+        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.primerApellido }} - {{ element.segundoApellido}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Edad">
+        <th mat-header-cell *matHeaderCellDef> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Sexo">
+        <th mat-header-cell *matHeaderCellDef> Genero </th>
+        <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-secondary"><mat-icon>edit</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
+
+

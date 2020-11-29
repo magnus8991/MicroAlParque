@@ -25,8 +25,8 @@ export class ManipuladorService {
       );
   }
 
-  Consultar(): Observable<PeticionConsulta<ManipuladorDeAlimento>> {
-    return this.http.get<PeticionConsulta<ManipuladorDeAlimento>>(this.baseUrl + 'api/Manipulador')
+  Consultar(restauranteId :string): Observable<PeticionConsulta<ManipuladorDeAlimento>> {
+    return this.http.get<PeticionConsulta<ManipuladorDeAlimento>>(this.baseUrl + 'api/Manipulador/'+restauranteId)
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<PeticionConsulta<ManipuladorDeAlimento>>('Consulta ManipuladorDeAlimento', null))

@@ -22,20 +22,15 @@ namespace MicroAlParque.Controllers
             _servicioManipulador = new ServicioManipuladorDeAlimento(contexto);
         }
          // GET: api/Lote
-        [HttpGet]
-        public ActionResult<PeticionConsulta<ManipuladorViewModel>> Consultar()
+        [HttpGet("{restauranteId}")]
+        public ActionResult<PeticionConsulta<ManipuladorViewModel>> Consultar(string restauranteId)
         {
-            var response = _servicioManipulador.ConsultarTodos();
+            var response = _servicioManipulador.ConsultarTodos(restauranteId);
             return Ok(response);
         }
 
         // GET: api/Lote/5
-        [HttpGet("{IdRestaurante}")]
-        public ActionResult<Peticion<ManipuladorViewModel>> Buscar(string Identificacion)
-        {
-            var response = _servicioManipulador.BuscarPorIdentificacion(Identificacion);
-            return Ok(response);
-        }
+        
         
         // POST: api/Lote
         [HttpPost]

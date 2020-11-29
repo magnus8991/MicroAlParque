@@ -20,6 +20,16 @@ import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encu
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule , MatFormFieldControl} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -36,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ActualizacionRestauranteComponent,
     AlertModalComponent,
     NosotrosComponent
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule ,
+    MatStepperModule,
+    MatInputModule
   ],
   entryComponents:[RegistroRestauranteComponent,GestionManipuladorComponent],
   providers: [NgbNav],

@@ -42,7 +42,8 @@
         <td>{{ restaurante.sede }}</td>
         <td>{{ restaurante.telefono }}</td>
         <td>{{ restaurante.propietario.identificacion }}</td>
-        <td><button class="btn btn-secondary" (click)="Modificar(restaurante.nit)"><mat-icon>edit</mat-icon></i></button>
+        <td>
+          <button class="btn btn-secondary" (click)="Modificar(restaurante.nit)"><mat-icon>edit</mat-icon></button>
           <button class="btn btn-secondary"><mat-icon>domain</mat-icon></button>
         </td>
         <td><button class="btn btn-secondary"><i class="fas fa-search"></i> Consultar</button></td>
