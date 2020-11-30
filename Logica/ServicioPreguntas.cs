@@ -16,43 +16,36 @@ namespace Logica
             _contexto = contexto;
         }
 
-        public Peticion<Pregunta> Guardar(Pregunta pregunta)
+        public string Guardar(Pregunta pregunta)
         {
-            Peticion<Pregunta> respuesta = new Peticion<Pregunta>(pregunta);
             try
             {
-                respuesta = BuscarPorIdPregunta(pregunta.PreguntaId);
-                respuesta = (respuesta.Error) ?
-                    new Peticion<Pregunta>(pregunta, "Datos guardados correctamente", false) :
-                    new Peticion<Pregunta>(null, "La lista que intentar guardar ya se encuentra registrada", true);
-                if (!respuesta.Error)
-                {
-                    _contexto.Preguntas.Add(respuesta.Elemento);
+                    _contexto.Preguntas.Add(pregunta);
                     _contexto.SaveChanges();
-                }
+                    return "Datos guardados correctamente";
             }
             catch (Exception E)
             {
-                respuesta = new Peticion<Pregunta>(null, "Error de la aplicación: " + E.Message, true);
+                return "Error de la aplicación: " + E.Message;
             }
-            return respuesta;
         }
-        public Peticion<Pregunta> BuscarPorIdPregunta(int IdPregunta)
+        public PeticionConsulta<Pregunta> ConsultarPorPertenencia(string PerteneceA)
         {
-            Peticion<Pregunta> respuesta = new Peticion<Pregunta>(new Pregunta());
+            PeticionConsulta<Pregunta> respuesta = new PeticionConsulta<Pregunta>();
             try
             {
-                respuesta.Elemento = _contexto.Preguntas.Find(IdPregunta);
-                respuesta = (respuesta.Elemento == null) ?
-                    new Peticion<Pregunta>(null, "La pregunta con ID {IdPregunta} no se encuentra registrada", true) :
-                    new Peticion<Pregunta>(respuesta.Elemento, "Pregunta encontrada", false);
+                respuesta.Elementos = _contexto.Preguntas.Where(p => p.PerteneceA == PerteneceA).ToList();
+                respuesta = (respuesta.Elementos.Count == 0) ?
+                    new PeticionConsulta<Pregunta>(new List<Pregunta>(), "No se han encontradopreguntas registradas", true) :
+                    new PeticionConsulta<Pregunta>(respuesta.Elementos.ToList(), "Consulta realizada con éxito", false);
             }
-            catch (Exception E)
+            catch (Exception e)
             {
-                respuesta = new Peticion<Pregunta>(null, "Error de la aplicación: " + E.Message, true);
+                respuesta = new PeticionConsulta<Pregunta>(new List<Pregunta>(), "Error: " + e.Message, true);
             }
             return respuesta;
         }
+
         public PeticionConsulta<Pregunta> ConsultarTodos()
         {
             PeticionConsulta<Pregunta> respuesta = new PeticionConsulta<Pregunta>();

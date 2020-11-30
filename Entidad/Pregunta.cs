@@ -11,6 +11,11 @@ namespace Entidad
         public int PreguntaId { get; set; }
         [StringLength(190)]
         public string Enunciado { get; set; }
-        public Pregunta() { }
+        [StringLength(16)]
+        public string PerteneceA { get; set; }
+        public Pregunta(string enunciado, string perteneceA) {
+            Enunciado = enunciado;
+            PerteneceA = perteneceA;
+        }
     }
 }

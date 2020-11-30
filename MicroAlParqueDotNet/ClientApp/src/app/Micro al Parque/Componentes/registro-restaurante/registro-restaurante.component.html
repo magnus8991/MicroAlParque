@@ -99,6 +99,18 @@
 
               </div>
             </div>
+            <div class="button">
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <button type="reset" class="btn btn-secondary notabla" style="height: 40px;"><i class="fas fa-broom"></i> Limpiar
+                  Formulario</button>
+              </div>
+              <div class="col-md-5">
+                <button class="btn btn-secondary notabla" style="height: 40px;" (click)="onClose()"><i class="fas fa-backward"></i>
+                  Volver</button>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
           </form>
 
         </ng-template>
@@ -147,8 +159,16 @@
             </div>
 
             <div class="row col-md-12">
-              <button class="btn btn-secondary btnsede notabla" (click)="AgregarSede()"><i class="fas fa-plus"></i>
-                Agregar Sede</button>
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <button class="btn btn-secondary btnsede notabla" (click)="AgregarSede()"><i class="fas fa-plus"></i>
+                  Agregar Sede</button>
+              </div>
+              <div class="col-md-4">
+                <button type="reset" class="btn btn-secondary notabla"><i class="fas fa-broom"></i> Limpiar
+                  Formulario</button>
+              </div>
+              <div class="col-md-2"></div>
             </div>
             <table class="table table-hover table-sm table-bordered">
               <thead>
@@ -183,19 +203,17 @@
               </tbody>
             </table>
 
-            <div class="button">
-              <div class="col-md-4">
+            <div class="row col-md-12 button">
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
                 <button class="btn btn-secondary notabla" (click)="Registrar()"><i class="fas fa-save"></i> Registrar
                   Restaurante</button>
               </div>
-              <div class="col-md-4">
-                <button type="reset" class="btn btn-secondary notabla"><i class="fas fa-broom"></i> Limpiar
-                  Formulario</button>
-              </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <button class="btn btn-secondary notabla" (click)="onClose()"><i class="fas fa-backward"></i>
-                  Retroceder</button>
+                  Volver</button>
               </div>
+              <div class="col-md-1"></div>
             </div>
           </form>
         </ng-template>
