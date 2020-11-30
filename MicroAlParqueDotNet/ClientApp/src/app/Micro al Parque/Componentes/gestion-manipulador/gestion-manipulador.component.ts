@@ -15,10 +15,9 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './gestion-manipulador.component.html',
   styleUrls: ['./gestion-manipulador.component.css']
 })
-export class GestionManipuladorComponent implements OnInit,AfterViewInit {
+export class GestionManipuladorComponent implements OnInit {
 
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Sexo','Acciones'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   manipuladores : ManipuladorDeAlimento []= [] ;
   restauranteId = 1;
   dataSource;
@@ -34,10 +33,6 @@ export class GestionManipuladorComponent implements OnInit,AfterViewInit {
     this.Consultar();
   }
 
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
   Consultar() {
     this.servicioManipulador.Consultar(this.restauranteId).subscribe(result => {
       if(result.error)

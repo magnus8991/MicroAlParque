@@ -17,6 +17,7 @@ export class RegistroManipuladorComponent implements OnInit {
   primerGrupoFormulario: FormGroup;
   manipulador: ManipuladorDeAlimento;
   error =  new MiEstadoDeError();
+  submitted = false;
 
   segundoGrupoFormulario: FormGroup;
   tercerGrupoFormulario: FormGroup;
@@ -64,10 +65,15 @@ export class RegistroManipuladorComponent implements OnInit {
       nivelEducativo: ["", [Validators.required]],
     });
     this.segundoGrupoFormulario = this.formBuilder.group({
-      firstCtrl: ["", Validators.required],
+      pregunta1: [, Validators.required],
+      pregunta2: [, Validators.required],
+      pregunta3: [, Validators.required],
+      pregunta4: [, Validators.required],
+      pregunta5: [, Validators.required],
+      pregunta6: [, Validators.required]
     });
     this.tercerGrupoFormulario = this.formBuilder.group({
-      secondCtrl: ["", Validators.required],
+      pregunta2: ["", Validators.required],
     });
   }
 
@@ -98,4 +104,25 @@ export class RegistroManipuladorComponent implements OnInit {
   get nivelEducativo() {
     return this.primerGrupoFormulario.get("nivelEducativo");
   }
+
+
+  get pregunta1() {
+    return this.segundoGrupoFormulario.get("pregunta1");
+  }
+  get pregunta2() {
+    return this.segundoGrupoFormulario.get("pregunta2");
+  }
+  get pregunta3() {
+    return this.segundoGrupoFormulario.get("pregunta3");
+  }
+  get pregunta4() {
+    return this.segundoGrupoFormulario.get("pregunta4");
+  }
+  get pregunta5() {
+    return this.segundoGrupoFormulario.get("pregunta5");
+  }
+  get pregunta6() {
+    return this.segundoGrupoFormulario.get("pregunta6");
+  }
+
 }
