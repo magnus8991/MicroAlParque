@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { MiEstadoDeError } from "../../Modelos/EstadoDeError";
 import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
+import { Peticion } from "../../Modelos/peticion";
+import { Respuesta } from "../../Modelos/respuesta";
 import { ManipuladorService } from "../../Servicios/manipulador.service";
 import { Mensajes } from "../../Servicios/mensajes";
+import { RespuestaService } from "../../Servicios/respuesta.service";
 
 
 @Component({
@@ -18,14 +21,17 @@ export class RegistroManipuladorComponent implements OnInit {
   manipulador: ManipuladorDeAlimento;
   error =  new MiEstadoDeError();
   submitted = false;
-
   segundoGrupoFormulario: FormGroup;
   tercerGrupoFormulario: FormGroup;
+  cuartoGrupoFormulario: FormGroup;
   isEditable = true;
+  probae : string;
+  respuestas : Respuesta[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
+    private servicioRespuesta : RespuestaService,
     private servicioManipulador: ManipuladorService,
     private mensajes: Mensajes
   ) {}
@@ -33,15 +39,45 @@ export class RegistroManipuladorComponent implements OnInit {
   ngOnInit(): void {
     this.EstablecerValidacionesFormulario();
     this.manipulador = new ManipuladorDeAlimento();
+    this.crearRespuestas();
   }
 
-  Registrar() {
+  crearRespuestas()
+  {
+    let idPregunta = 1;
+    for (let index = 1; index <= 16; index++) {
+      let respuesta : Respuesta = new Respuesta();
+      respuesta.contenidoRespuesta = "";
+      respuesta.preguntaId = idPregunta;
+      idPregunta++;
+      this.respuestas.push(respuesta);
+    }
+  }
+
+  RegistrarManipulador() {
     this.manipulador.sedeId = this.sedeId;
     this.servicioManipulador.Guardar(this.manipulador).subscribe((r) => {
       if (!r.error) {
         this.manipulador = r.elemento;
+        this.registrarListaRespuesta();
         this.mensajes.Mostrar("¡Operación exitosa!", r.mensaje);
       } else this.mensajes.Mostrar("¡Oh no!", r.mensaje);
+    });
+  }
+
+  registrarListaRespuesta ()
+  {
+    this.respuestas.forEach(respuesta => {
+      respuesta.identificacion = this.manipulador.identificacion;
+      this.RegistrarRespuesta(respuesta);
+    });
+  }
+
+  RegistrarRespuesta(respuesta : Respuesta) {
+    this.servicioRespuesta.Guardar(respuesta).subscribe((r) => {
+      if (r.error) {
+        this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
+      }
     });
   }
 
@@ -73,7 +109,18 @@ export class RegistroManipuladorComponent implements OnInit {
       pregunta6: [, Validators.required]
     });
     this.tercerGrupoFormulario = this.formBuilder.group({
-      pregunta2: ["", Validators.required],
+      pregunta7: ["", Validators.required],
+      pregunta8: ["", Validators.required],
+      pregunta9: ["", Validators.required],
+      pregunta10: ["", Validators.required],
+      pregunta11: ["", Validators.required],
+      pregunta12: ["", Validators.required]
+    });
+    this.cuartoGrupoFormulario = this.formBuilder.group({
+      pregunta13: ["", Validators.required],
+      pregunta14: ["", Validators.required],
+      pregunta15: ["", Validators.required],
+      pregunta16: ["", Validators.required]
     });
   }
 
@@ -123,6 +170,38 @@ export class RegistroManipuladorComponent implements OnInit {
   }
   get pregunta6() {
     return this.segundoGrupoFormulario.get("pregunta6");
+  }
+
+  get pregunta7() {
+    return this.tercerGrupoFormulario.get("pregunta7");
+  }
+  get pregunta8() {
+    return this.tercerGrupoFormulario.get("pregunta8");
+  }
+  get pregunta9() {
+    return this.tercerGrupoFormulario.get("pregunta9");
+  }
+  get pregunta10() {
+    return this.tercerGrupoFormulario.get("pregunta10");
+  }
+  get pregunta11() {
+    return this.tercerGrupoFormulario.get("pregunta11");
+  }
+  get pregunta12() {
+    return this.tercerGrupoFormulario.get("pregunta12");
+  }
+
+  get pregunta13() {
+    return this.tercerGrupoFormulario.get("pregunta13");
+  }
+  get pregunta14() {
+    return this.tercerGrupoFormulario.get("pregunta14");
+  }
+  get pregunta15() {
+    return this.tercerGrupoFormulario.get("pregunta15");
+  }
+  get pregunta16() {
+    return this.tercerGrupoFormulario.get("pregunta16");
   }
 
 }

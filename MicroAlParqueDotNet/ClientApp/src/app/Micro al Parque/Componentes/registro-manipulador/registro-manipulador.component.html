@@ -152,76 +152,183 @@
       <form [formGroup]="segundoGrupoFormulario">
         <ng-template matStepLabel>Conocimientos</ng-template>
 
-        <p>¿Conoce las normas de higiene para manipulación de alimentos?</p>
-          <mat-radio-group aria-label="Select an option" formControlName="pregunta1" name="pregunta1" [ngClass]="{ 'is-invalid': submitted }">
-            <mat-radio-button value="Si">Si</mat-radio-button>
-            <mat-radio-button value="No">No</mat-radio-button>
-          </mat-radio-group>
+        <div class="row">
+          <div class="col-md-6">
+            <p>¿Conoce las normas de higiene para manipulación de alimentos?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta1" [(ngModel)]="respuestas[0].contenidoRespuesta" name="pregunta1" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
 
-        <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
-          <mat-radio-group aria-label="Select an option" formControlName="pregunta2" name="pregunta2" [ngClass]="{ 'is-invalid': submitted }">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>¿De qué trata la  resolución 2674 del 2013?</mat-label>
+                <textarea matInput placeholder="resolución 2674 del 2013" formControlName="pregunta3" [(ngModel)]="respuestas[2].contenidoRespuesta"></textarea>
+              </mat-form-field>
+              <div
+                *ngIf="pregunta3.invalid && (pregunta3.dirty || pregunta3.touched)" class="alert alert-danger">
+                <div *ngIf="pregunta3.errors.required">
+                  Error valor requerido
+                </div>
+              </div>
+            </div>
+
+            <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta2" [(ngModel)]="respuestas[1].contenidoRespuesta" name="pregunta2" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+          <div class="col-md-6">
+
+            <p>¿Sabe qué es un alimento inocuo?</p>
+          <mat-radio-group aria-label="Select an option" formControlName="pregunta5" [(ngModel)]="respuestas[4].contenidoRespuesta" name="pregunta5" [ngClass]="{ 'is-invalid': submitted }">
             <mat-radio-button value="Si">Si</mat-radio-button>
             <mat-radio-button value="No">No</mat-radio-button>
           </mat-radio-group>
 
           <div class="form-group">
             <mat-form-field class="example-full-width">
-              <mat-label>¿De qué trata la  resolución 2674 del 2013?</mat-label>
-              <textarea matInput placeholder="resolución 2674 del 2013" formControlName="pregunta3"></textarea>
+              <mat-label>¿Qué tipo de contaminación de los alimentos conoce??</mat-label>
+              <textarea matInput placeholder="resolución 2674 del 2013" formControlName="pregunta4" [(ngModel)]="respuestas[3].contenidoRespuesta"></textarea>
             </mat-form-field>
+
             <div
-              *ngIf="pregunta3.invalid && (pregunta3.dirty || pregunta3.touched)" class="alert alert-danger">
-              <div *ngIf="pregunta3.errors.required">
+              *ngIf="pregunta4.invalid && (pregunta4.dirty || pregunta4.touched)" class="alert alert-danger">
+              <div *ngIf="pregunta4.errors.required">
                 Error valor requerido
               </div>
             </div>
           </div>
 
-          <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
-          <mat-radio-group aria-label="Select an option" formControlName="pregunta1" name="pregunta4" [ngClass]="{ 'is-invalid': submitted }">
-            <mat-radio-button value="Si">Si</mat-radio-button>
-            <mat-radio-button value="No">No</mat-radio-button>
-          </mat-radio-group>
+              <div>
+                <p>¿En caso afrimativo, la explicación ¿Fue correcta?</p>
+                <mat-radio-group aria-label="Select an option" formControlName="pregunta6" [(ngModel)]="respuestas[5].contenidoRespuesta" name="pregunta6" [ngClass]="{ 'is-invalid': submitted }">
+                  <mat-radio-button value="Si">Si</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+          </div>
+        </div>
 
-          <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
-          <mat-radio-group aria-label="Select an option" formControlName="pregunta1" name="pregunta5" [ngClass]="{ 'is-invalid': submitted }">
-            <mat-radio-button value="Si">Si</mat-radio-button>
-            <mat-radio-button value="No">No</mat-radio-button>
-          </mat-radio-group>
-
-          <p>¿Ha recibido  capacitación sobre buenas prácticas de manufactura?</p>
-          <mat-radio-group aria-label="Select an option" formControlName="pregunta1" name="pregunta6" [ngClass]="{ 'is-invalid': submitted }">
-            <mat-radio-button value="Si">Si</mat-radio-button>
-            <mat-radio-button value="No">No</mat-radio-button>
-          </mat-radio-group>
-
-        <div>
+        <div class="row">
+          <div class="col-md-10">
+            <br><br>
+          </div>
           <button mat-button matStepperNext [disabled]="segundoGrupoFormulario.invalid"><mat-icon>next_plan</mat-icon>Siguiente</button>
         </div>
       </form>
     </mat-step>
 
     <mat-step [stepControl]="tercerGrupoFormulario" [editable]="isEditable">
+      <ng-template matStepLabel>Actitudes</ng-template>
       <form [formGroup]="tercerGrupoFormulario">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="pregunta2" placeholder="Ex. 1 Main St, New York, NY" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p>¿Considera necesaria una capacitación sobre normas de higiene y manipulación de alimentos para mejorar sus procesos y su negocio?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta7" [(ngModel)]="respuestas[6].contenidoRespuesta" name="pregunta7" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>¿Ha renovado el último año su certificado médico?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta8" [(ngModel)]="respuestas[7].contenidoRespuesta" name="pregunta8" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>¿Se ha realizado los exámenes para manipuladores de alimentos (KOH de uñas, Frotis de garganta y coprológico?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta9" [(ngModel)]="respuestas[8].contenidoRespuesta" name="pregunta9" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <div class="form-group">
+              <label>Edad del manipulador:</label>
+              <input type="text" name="pregunta10" formControlName="pregunta10" [(ngModel)]="respuestas[9].contenidoRespuesta" placeholder ="aqui el nombre del servicio" class="form-control">
+              <div
+                *ngIf="pregunta10.invalid && (pregunta10.dirty || pregunta10.touched)" class="alert alert-danger">
+                <div *ngIf="pregunta10.errors.required">
+                  Error es un valor requerido
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <p>¿Considera que manipular alimentos con las uñas largas y pintadas puede ser inapropiado?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta11" [(ngModel)]="respuestas[10].contenidoRespuesta" name="pregunta11" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>¿Considera que el uso de prendas puede afectar negativamente el proceso de manipulación de alimentos?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta12" [(ngModel)]="respuestas[11].contenidoRespuesta" name="pregunta12" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-10">
+            <br><br>
+          </div>
+          <button mat-button matStepperNext [disabled]="tercerGrupoFormulario.invalid"><mat-icon>next_plan</mat-icon>Siguiente</button>
         </div>
       </form>
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
+      <ng-template matStepLabel>Practicas</ng-template>
+      <form [formGroup]="cuartoGrupoFormulario">
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <p>¿Utiliza bata,  tapa bocas y malla para cubrir el cabello mientras manipula alimentos?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta13" [(ngModel)]="respuestas[12].contenidoRespuesta" name="pregunta13" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>¿Manipula alimentos y dinero al mismo tiempo?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta14" [(ngModel)]="respuestas[13].contenidoRespuesta"  name="pregunta14" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+          <div class="col-md-6">
+
+            <p>¿Con qué frecuencia se lava las manos para manipular alimentos?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta15" [(ngModel)]="respuestas[14].contenidoRespuesta" name="pregunta15" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>Al momento de preparar alimentos ¿retira sus prendas?</p>
+            <mat-radio-group aria-label="Select an option" formControlName="pregunta16" [(ngModel)]="respuestas[15].contenidoRespuesta" name="pregunta16" [ngClass]="{ 'is-invalid': submitted }">
+              <mat-radio-button value="Si">Si</mat-radio-button>
+              <mat-radio-button value="No">No</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-10">
+            <br><br>
+          </div>
+          <button mat-button matStepperNext [disabled]="cuartoGrupoFormulario.invalid" (click)="RegistrarManipulador()"><mat-icon>save</mat-icon>Registrar Manipulador</button>
+        </div>
+      </form>
     </mat-step>
   </mat-horizontal-stepper>
 </div>
