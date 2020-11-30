@@ -76,9 +76,4 @@ export class GestionRestauranteComponent implements OnInit {
      var restaurante = this.peticion.elementos.find(r => r.nit == nit);
      modelo.componentInstance.restaurante = restaurante;
   }
-
-  GestionarSedes(i: number) {
-    const modelo = this.modalService.open(GestionSedeComponent, { size: 'xl' });
-    modelo.componentInstance.IdRestaurante = this.restaurantes[i].nit;
-  }
 }

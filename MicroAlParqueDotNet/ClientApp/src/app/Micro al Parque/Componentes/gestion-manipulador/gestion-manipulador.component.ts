@@ -6,8 +6,8 @@ import { ManipuladorService } from '../../Servicios/manipulador.service';
 import { Mensajes } from '../../Servicios/mensajes';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,25 +19,29 @@ export class GestionManipuladorComponent implements OnInit {
 
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Sexo','Acciones'];
   manipuladores : ManipuladorDeAlimento []= [] ;
-  restauranteId = 1;
+  sedeId: number;
+  restauranteId: string;
   dataSource;
   constructor(
-    private modalService: NgbModal,
-    private servicioManipulador: ManipuladorService,
-    private mensaje : Mensajes
+    private modalService: NgbModal, private servicioManipulador: ManipuladorService,
+    private mensaje : Mensajes, private  route: ActivatedRoute
     ) {
 
     }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.sedeId = parseInt(params.get('sedeId'));
+      this.restauranteId = params.get('restauranteId');
+    });
     this.Consultar();
   }
 
   Consultar() {
-    this.servicioManipulador.Consultar(this.restauranteId).subscribe(result => {
+    this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
       if(result.error)
       {
-        this.mensaje.Mostrar("Oh no ha sucedido un error al consultar Los manipuladores",result.mensaje);
+        this.mensaje.Mostrar("¡Oh no!",result.mensaje);
       }
       else{
         this.manipuladores = result.elementos;
@@ -57,7 +61,7 @@ export class GestionManipuladorComponent implements OnInit {
   openModalManipulador()
   {
     const modalRegistro = this.modalService.open(RegistroManipuladorComponent, { size: 'xl' });
-    modalRegistro.componentInstance.restauranteId = this.restauranteId;
+    modalRegistro.componentInstance.sedeId = this.sedeId;
 
   }
 }
