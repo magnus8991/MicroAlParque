@@ -21,49 +21,46 @@ export class RegistroManipuladorComponent implements OnInit {
   @Input() sedeId: number;
   primerGrupoFormulario: FormGroup;
   manipulador: ManipuladorDeAlimento;
-  error =  new MiEstadoDeError();
+  error = new MiEstadoDeError();
   submitted = false;
   segundoGrupoFormulario: FormGroup;
   tercerGrupoFormulario: FormGroup;
   cuartoGrupoFormulario: FormGroup;
   isEditable = true;
-  respuestas : Respuesta[] = [];
-  preguntas : Pregunta[] = [];
+  respuestas: Respuesta[] = [];
+  preguntas: Pregunta[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private servicioRespuesta : RespuestaService,
-    private servicioPregunta : ServicioPregunta,
+    private servicioRespuesta: RespuestaService,
+    private servicioPregunta: ServicioPregunta,
     private servicioManipulador: ManipuladorService,
     private mensajes: Mensajes
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.EstablecerValidacionesFormulario();
+    this.InicializarPreguntasYRespuestas();
     this.manipulador = new ManipuladorDeAlimento();
-    this.consultarPreguntas();
-    this.crearRespuestas();
   }
 
-  crearRespuestas()
-  {
+  crearRespuestas() {
     for (let index = 0; index <= 15; index++) {
-      let respuesta : Respuesta = new Respuesta();
+      let respuesta: Respuesta = new Respuesta();
       respuesta.contenidoRespuesta = "";
       respuesta.preguntaId = this.preguntas[index].preguntaId;
       this.respuestas.push(respuesta);
     }
   }
 
-  consultarPreguntas ()
-  {
+  InicializarPreguntasYRespuestas() {
     this.servicioPregunta.Consultar("Manipuladores").subscribe(p => {
-      if(!p.error)
-      {
+      if (!p.error) {
         this.preguntas = p.elementos;
+        this.crearRespuestas();
       }
-      else this.mensajes.Mostrar("Oh no",p.mensaje);
+      else this.mensajes.Mostrar("Oh no", p.mensaje);
     });
   }
   RegistrarManipulador() {
@@ -78,15 +75,14 @@ export class RegistroManipuladorComponent implements OnInit {
     });
   }
 
-  registrarListaRespuesta ()
-  {
+  registrarListaRespuesta() {
     this.respuestas.forEach(respuesta => {
       respuesta.identificacion = this.manipulador.identificacion;
       this.RegistrarRespuesta(respuesta);
     });
   }
 
-  RegistrarRespuesta(respuesta : Respuesta) {
+  RegistrarRespuesta(respuesta: Respuesta) {
     this.servicioRespuesta.Guardar(respuesta).subscribe((r) => {
       if (r.error) {
         this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
@@ -95,7 +91,7 @@ export class RegistroManipuladorComponent implements OnInit {
   }
 
   cerrar() {
-    if (this.manipulador != null && this.respuestas !=null) this.activeModal.close(this.manipulador);
+    if (this.manipulador != null && this.respuestas != null) this.activeModal.close(this.manipulador);
     else this.activeModal.close(null);
   }
 
