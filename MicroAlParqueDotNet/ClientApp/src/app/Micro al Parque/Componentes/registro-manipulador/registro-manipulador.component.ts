@@ -4,9 +4,11 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { MiEstadoDeError } from "../../Modelos/EstadoDeError";
 import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
 import { Peticion } from "../../Modelos/peticion";
+import { Pregunta } from "../../Modelos/pregunta";
 import { Respuesta } from "../../Modelos/respuesta";
 import { ManipuladorService } from "../../Servicios/manipulador.service";
 import { Mensajes } from "../../Servicios/mensajes";
+import { ServicioPregunta } from "../../Servicios/pregunta.service";
 import { RespuestaService } from "../../Servicios/respuesta.service";
 
 
@@ -25,13 +27,14 @@ export class RegistroManipuladorComponent implements OnInit {
   tercerGrupoFormulario: FormGroup;
   cuartoGrupoFormulario: FormGroup;
   isEditable = true;
-  probae : string;
   respuestas : Respuesta[] = [];
+  preguntas : Pregunta[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private servicioRespuesta : RespuestaService,
+    private servicioPregunta : ServicioPregunta,
     private servicioManipulador: ManipuladorService,
     private mensajes: Mensajes
   ) {}
@@ -39,21 +42,30 @@ export class RegistroManipuladorComponent implements OnInit {
   ngOnInit(): void {
     this.EstablecerValidacionesFormulario();
     this.manipulador = new ManipuladorDeAlimento();
+    this.consultarPreguntas();
     this.crearRespuestas();
   }
 
   crearRespuestas()
   {
-    let idPregunta = 1;
-    for (let index = 1; index <= 16; index++) {
+    for (let index = 0; index <= 15; index++) {
       let respuesta : Respuesta = new Respuesta();
       respuesta.contenidoRespuesta = "";
-      respuesta.preguntaId = idPregunta;
-      idPregunta++;
+      respuesta.preguntaId = this.preguntas[index].preguntaId;
       this.respuestas.push(respuesta);
     }
   }
 
+  consultarPreguntas ()
+  {
+    this.servicioPregunta.Consultar("Manipuladores").subscribe(p => {
+      if(!p.error)
+      {
+        this.preguntas = p.elementos;
+      }
+      else this.mensajes.Mostrar("Oh no",p.mensaje);
+    });
+  }
   RegistrarManipulador() {
     this.manipulador.sedeId = this.sedeId;
     this.servicioManipulador.Guardar(this.manipulador).subscribe((r) => {
@@ -61,6 +73,7 @@ export class RegistroManipuladorComponent implements OnInit {
         this.manipulador = r.elemento;
         this.registrarListaRespuesta();
         this.mensajes.Mostrar("¡Operación exitosa!", r.mensaje);
+        this.cerrar();
       } else this.mensajes.Mostrar("¡Oh no!", r.mensaje);
     });
   }
@@ -79,6 +92,11 @@ export class RegistroManipuladorComponent implements OnInit {
         this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
       }
     });
+  }
+
+  cerrar() {
+    if (this.manipulador != null && this.respuestas !=null) this.activeModal.close(this.manipulador);
+    else this.activeModal.close(null);
   }
 
   EstablecerValidacionesFormulario() {

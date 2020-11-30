@@ -37,6 +37,10 @@ export class GestionManipuladorComponent implements OnInit {
     this.Consultar();
   }
 
+  mostrar(indice : string)
+  {
+    this.mensaje.Mostrar("salio bine",indice);
+  }
   Consultar() {
     this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
       if(result.error)
@@ -62,6 +66,12 @@ export class GestionManipuladorComponent implements OnInit {
   {
     const modalRegistro = this.modalService.open(RegistroManipuladorComponent, { size: 'xl' });
     modalRegistro.componentInstance.sedeId = this.sedeId;
+    modalRegistro.result.then(m => {
+      if(m != null)
+      {
+        this.Consultar();
+      }
+    });
 
   }
 }
