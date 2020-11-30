@@ -38,9 +38,9 @@ namespace Datos
                 .WithMany()
                 .HasForeignKey(r => r.Identificacion);
             modelBuilder.Entity<ManipuladorDeAlimento>()
-                .HasOne<Restaurante>()
+                .HasOne<Sede>()
                 .WithMany()
-                .HasForeignKey(ma => ma.RestauranteId);
+                .HasForeignKey(ma => ma.SedeId);
             modelBuilder.Entity<Usuario>()
                 .HasKey(u => u.NombreUsuario);
             modelBuilder.Entity<Propietario>()

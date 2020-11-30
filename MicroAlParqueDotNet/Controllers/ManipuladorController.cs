@@ -22,10 +22,10 @@ namespace MicroAlParque.Controllers
             _servicioManipulador = new ServicioManipuladorDeAlimento(contexto);
         }
          // GET: api/Lote
-        [HttpGet("{restauranteId}")]
-        public ActionResult<PeticionConsulta<ManipuladorViewModel>> Consultar(string restauranteId)
+        [HttpGet("{sedeId}")]
+        public ActionResult<PeticionConsulta<ManipuladorViewModel>> Consultar(int sedeId)
         {
-            var response = _servicioManipulador.ConsultarTodos(restauranteId);
+            var response = _servicioManipulador.ConsultarTodos(sedeId);
             return Ok(response);
         }
 
@@ -60,7 +60,7 @@ namespace MicroAlParque.Controllers
             Manipulador.EstadoCivil = manipuladorInput.EstadoCivil;
             Manipulador.PaisDeProcedencia = manipuladorInput.PaisDeProcedencia;
             Manipulador.NivelEducativo = manipuladorInput.NivelEducativo;
-            Manipulador.RestauranteId = manipuladorInput.RestauranteId;
+            Manipulador.SedeId = manipuladorInput.SedeId;
             return Manipulador;
         }
         /*// PUT: api/Lote/5

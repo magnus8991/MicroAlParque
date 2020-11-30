@@ -13,7 +13,7 @@ import { Mensajes } from "../../Servicios/mensajes";
   styleUrls: ["./registro-manipulador.component.css"],
 })
 export class RegistroManipuladorComponent implements OnInit {
-  @Input() restauranteId: string;
+  @Input() sedeId: number;
   primerGrupoFormulario: FormGroup;
   manipulador: ManipuladorDeAlimento;
   error =  new MiEstadoDeError();
@@ -35,7 +35,7 @@ export class RegistroManipuladorComponent implements OnInit {
   }
 
   Registrar() {
-    this.manipulador.restauranteId = this.restauranteId;
+    this.manipulador.sedeId = this.sedeId;
     this.servicioManipulador.Guardar(this.manipulador).subscribe((r) => {
       if (!r.error) {
         this.manipulador = r.elemento;

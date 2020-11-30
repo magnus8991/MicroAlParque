@@ -53,12 +53,12 @@ namespace Logica
             }
             return respuesta;
         }
-        public PeticionConsulta<ManipuladorDeAlimento> ConsultarTodos(string restauranteId)
+        public PeticionConsulta<ManipuladorDeAlimento> ConsultarTodos(int sedeId)
         {
             PeticionConsulta<ManipuladorDeAlimento> respuesta = new PeticionConsulta<ManipuladorDeAlimento>();
             try
             {
-                respuesta.Elementos = _contexto.Manipuladores.Where(m => m.RestauranteId == restauranteId).ToList();
+                respuesta.Elementos = _contexto.Manipuladores.Where(m => m.SedeId == sedeId).ToList();
                 respuesta = (respuesta.Elementos.Count == 0) ?
                     new PeticionConsulta<ManipuladorDeAlimento>(new List<ManipuladorDeAlimento>(), "No se han encontrado manipuladores registrados", true) :
                     new PeticionConsulta<ManipuladorDeAlimento>(respuesta.Elementos.ToList(), "Consulta realizada con éxito", false);

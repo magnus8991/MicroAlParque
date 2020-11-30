@@ -20,7 +20,7 @@ export class GestionManipuladorComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Sexo','Acciones'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   manipuladores : ManipuladorDeAlimento []= [] ;
-  restauranteId = "qwer124";
+  restauranteId = 1;
   dataSource;
   constructor(
     private modalService: NgbModal,

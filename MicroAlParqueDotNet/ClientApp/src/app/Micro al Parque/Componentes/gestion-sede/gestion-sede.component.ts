@@ -95,4 +95,6 @@ export class GestionSedeComponent implements OnInit {
     var Sede = this.peticion.elementos.find(s => s.sedeId == id);
     modelo.componentInstance.Sede = Sede;
   }
+
+  
 }

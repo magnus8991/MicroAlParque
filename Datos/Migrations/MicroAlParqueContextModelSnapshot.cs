@@ -65,8 +65,8 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<string>("RestauranteId")
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<int>("SedeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SegundoApellido")
                         .HasColumnType("nvarchar(15)")
@@ -78,7 +78,7 @@ namespace Datos.Migrations
 
                     b.HasKey("Identificacion");
 
-                    b.HasIndex("RestauranteId");
+                    b.HasIndex("SedeId");
 
                     b.ToTable("Manipuladores");
                 });
@@ -293,9 +293,11 @@ namespace Datos.Migrations
 
             modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
                 {
-                    b.HasOne("Entidad.Restaurante", null)
+                    b.HasOne("Entidad.Sede", null)
                         .WithMany()
-                        .HasForeignKey("RestauranteId");
+                        .HasForeignKey("SedeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entidad.Respuesta", b =>

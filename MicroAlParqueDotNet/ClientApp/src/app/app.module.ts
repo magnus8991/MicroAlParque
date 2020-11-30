@@ -53,7 +53,9 @@ import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-se
     AlertModalComponent,
     NosotrosComponent,
     RegistroSedeComponent, FiltroRestaurantePipe,
-    FiltroSedePipe, ActualizacionSedeComponent
+    FiltroSedePipe, ActualizacionSedeComponent,
+    GestionSedeComponent
+
 
   ],
   imports: [

@@ -17,7 +17,7 @@ namespace MicroAlParque.Models
         public string EstadoCivil { get; set; }
         public string PaisDeProcedencia { get; set; }
         public string NivelEducativo { get; set; }
-        public string RestauranteId { get; set; }
+        public int SedeId { get; set; }
 
         public ManipuladorInputModel() { }
     }
@@ -37,7 +37,7 @@ namespace MicroAlParque.Models
             EstadoCivil = manipulador.EstadoCivil;
             PaisDeProcedencia = manipulador.PaisDeProcedencia;
             NivelEducativo = manipulador.NivelEducativo;
-            RestauranteId = manipulador.RestauranteId;
+            SedeId = manipulador.SedeId;
         }
     }
 }
