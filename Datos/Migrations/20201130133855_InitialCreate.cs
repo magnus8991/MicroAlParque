@@ -12,7 +12,8 @@ namespace Datos.Migrations
                 {
                     PreguntaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Enunciado = table.Column<string>(maxLength: 190, nullable: true)
+                    Enunciado = table.Column<string>(maxLength: 190, nullable: true),
+                    PerteneceA = table.Column<string>(maxLength: 16, nullable: true)
                 },
                 constraints: table =>
                 {

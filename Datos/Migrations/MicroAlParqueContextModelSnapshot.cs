@@ -94,6 +94,10 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(190)")
                         .HasMaxLength(190);
 
+                    b.Property<string>("PerteneceA")
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
+
                     b.HasKey("PreguntaId");
 
                     b.ToTable("Preguntas");

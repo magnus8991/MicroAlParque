@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(MicroAlParqueContext))]
-    [Migration("20201130014837_InitialCreate")]
+    [Migration("20201130133855_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,6 +95,10 @@ namespace Datos.Migrations
                     b.Property<string>("Enunciado")
                         .HasColumnType("nvarchar(190)")
                         .HasMaxLength(190);
+
+                    b.Property<string>("PerteneceA")
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
 
                     b.HasKey("PreguntaId");
 
