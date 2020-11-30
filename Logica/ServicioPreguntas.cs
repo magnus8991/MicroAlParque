@@ -16,42 +16,18 @@ namespace Logica
             _contexto = contexto;
         }
 
-        public Peticion<Pregunta> Guardar(Pregunta pregunta)
+        public string Guardar(Pregunta pregunta)
         {
-            Peticion<Pregunta> respuesta = new Peticion<Pregunta>(pregunta);
             try
             {
-                respuesta = BuscarPorIdPregunta(pregunta.PreguntaId);
-                respuesta = (respuesta.Error) ?
-                    new Peticion<Pregunta>(pregunta, "Datos guardados correctamente", false) :
-                    new Peticion<Pregunta>(null, "La lista que intentar guardar ya se encuentra registrada", true);
-                if (!respuesta.Error)
-                {
-                    _contexto.Preguntas.Add(respuesta.Elemento);
+                    _contexto.Preguntas.Add(pregunta);
                     _contexto.SaveChanges();
-                }
+                    return "Datos guardados correctamente";
             }
             catch (Exception E)
             {
-                respuesta = new Peticion<Pregunta>(null, "Error de la aplicación: " + E.Message, true);
+                return "Error de la aplicación: " + E.Message;
             }
-            return respuesta;
-        }
-        public Peticion<Pregunta> BuscarPorIdPregunta(int IdPregunta)
-        {
-            Peticion<Pregunta> respuesta = new Peticion<Pregunta>(new Pregunta());
-            try
-            {
-                respuesta.Elemento = _contexto.Preguntas.Find(IdPregunta);
-                respuesta = (respuesta.Elemento == null) ?
-                    new Peticion<Pregunta>(null, "La pregunta con ID {IdPregunta} no se encuentra registrada", true) :
-                    new Peticion<Pregunta>(respuesta.Elemento, "Pregunta encontrada", false);
-            }
-            catch (Exception E)
-            {
-                respuesta = new Peticion<Pregunta>(null, "Error de la aplicación: " + E.Message, true);
-            }
-            return respuesta;
         }
         public PeticionConsulta<Pregunta> ConsultarTodos()
         {

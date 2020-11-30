@@ -6,16 +6,10 @@ using System.Threading.Tasks;
 
 namespace MicroAlParque.Models
 {
-    public class PreguntaInputModel
-    {
-        public string Enunciado { get; set; }
-
-        public PreguntaInputModel() { }
-    }
-
-    public class PreguntaViewModel : PreguntaInputModel
+    public class PreguntaViewModel
     {
         public int PreguntaId { get; set; }
+        public string Enunciado { get; set; }
         public PreguntaViewModel() { }
         public PreguntaViewModel(Pregunta pregunta)
         {
