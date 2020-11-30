@@ -3,20 +3,24 @@
     <div class="col-md-12">
       <h1 class="titulo">GESTIÓN DE SEDES</h1>
       <div *ngIf="!peticion.elementos.length" class="row">
-        <div class="col-md-6"><h3 class="hnotabla">¡Lo sentimos, no tienes sedes registradas! <i class="fas fa-sad-tear"></i></h3></div>
+          <h3 class="hnotabla">¡Lo sentimos, no tienes sedes registradas! <i class="fas fa-sad-tear"></i></h3>
         <div class="col-md-6"><button style="height: 45px;" class="btn btn-secondary notabla"
-          (click)="RegistrarSede()"><i class="fas fa-plus"></i> Nueva Sede</button></div>
+            (click)="RegistrarSede()"><i class="fas fa-plus"></i> Nueva Sede</button></div>
+        <div class="col-md-6"><button style="height: 45px;" class="btn btn-secondary condicion notabla"
+            [routerLink]="['/gestionRestaurante']"><i class="fas fa-backward"></i> Volver</button></div>
       </div>
       <div *ngIf="peticion.elementos.length" class="sincondicion">
-      <div class="col-md-6">
-        <label>Nombre de la Sede o ID del Restaurante:</label>
-        <input [(ngModel)]="filtroSede" type="text" class="form-control"
-        (ngModelChange)="ModificarListaProvisional()" placeholder="Digite aquí su busqueda">
-      </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+          <label>Nombre de la Sede o ID del Restaurante:</label>
+          <input [(ngModel)]="filtroSede" type="text" class="form-control" (ngModelChange)="ModificarListaProvisional()"
+            placeholder="Digite aquí su busqueda">
+        </div>
+        <div class="col-md-4">
           <div><button style="height: 55px;" class="btn btn-secondary notabla" (click)="Registrar()">
               <i class="fas fa-plus"></i> Nueva Sede</button></div>
         </div>
+        <div class="col-md-4"><button style="height: 55px;" class="btn btn-secondary condicion notabla"
+          [routerLink]="['/gestionRestaurante']"><i class="fas fa-backward"></i> Volver</button></div>
       </div>
     </div>
   </div>
@@ -41,8 +45,13 @@
         <td>{{ Sede.restauranteId }}</td>
         <td>{{ Sede.direccion }}</td>
         <td>{{ Sede.telefono }}</td>
-        <td><button class="btn btn-secondary left" (click)="Modificar(Sede.sedeId)"><mat-icon>edit</mat-icon></button>
-          <button class="btn btn-secondary" [routerLink]='["/gestionManipulador"]' ><mat-icon>people</mat-icon><mat-icon>search</mat-icon></button>
+        <td><button class="btn btn-secondary left" (click)="Modificar(Sede.sedeId)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="btn btn-secondary" [routerLink]='["/gestionManipulador", Sede.restauranteId, Sede.sedeId]'>
+            <mat-icon>people</mat-icon>
+            <mat-icon>search</mat-icon>
+          </button>
         </td>
       </tr>
     </tbody>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encuesta-manipulador.component.css']
 })
 export class EncuestaManipuladorComponent implements OnInit {
-
+z
   constructor() { }
 
   ngOnInit(): void {

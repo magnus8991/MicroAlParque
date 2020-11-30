@@ -6,6 +6,7 @@ import { Mensajes } from '../../Servicios/mensajes';
 import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
 import { ActualizacionSedeComponent } from '../actualizacion-sede/actualizacion-sede.component';
 import { ServicioSede } from '../../Servicios/sede.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gestion-sede',
@@ -16,14 +17,17 @@ export class GestionSedeComponent implements OnInit {
   filtroSede: string;
   peticion: PeticionConsulta<Sede>;
   Sedes: Sede[];
-  @Input() IdRestaurante;
+  IdRestaurante;
 
   constructor(private modalService: NgbModal, private servicioSede: ServicioSede,
-    private mensajes: Mensajes) { }
+    private mensajes: Mensajes, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
     this.Sedes = [];
+    this.route.paramMap.subscribe(params => {
+      this.IdRestaurante = params.get('restauranteId');
+    });
     this.Consultar();
   }
 
@@ -95,6 +99,4 @@ export class GestionSedeComponent implements OnInit {
     var Sede = this.peticion.elementos.find(s => s.sedeId == id);
     modelo.componentInstance.Sede = Sede;
   }
-
-  
 }

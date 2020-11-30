@@ -5,11 +5,14 @@ import { RegistroRestauranteComponent } from './Micro al Parque/Componentes/regi
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
+import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede/gestion-sede.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'gestionRestaurante', component: GestionRestauranteComponent},
-  {path: 'gestionManipulador', component: GestionManipuladorComponent},
+  {path: 'gestionSede/:restauranteId', component: GestionSedeComponent},
+  {path: 'gestionManipulador/:restauranteId/:sedeId', component: GestionManipuladorComponent},
   {path: 'nosotros', component: NosotrosComponent}
 ];
 
