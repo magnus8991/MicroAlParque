@@ -37,17 +37,12 @@ export class GestionManipuladorComponent implements OnInit {
     this.Consultar();
   }
 
-  mostrar(indice : string)
-  {
+  mostrar(indice : string) {
     this.mensaje.Mostrar("salio bine",indice);
   }
   Consultar() {
     this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
-      if(result.error)
-      {
-        this.mensaje.Mostrar("¡Oh no!",result.mensaje);
-      }
-      else{
+      if(!result.error) {
         this.manipuladores = result.elementos;
         this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
       }
