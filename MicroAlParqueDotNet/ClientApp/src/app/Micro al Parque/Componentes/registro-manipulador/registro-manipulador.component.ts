@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { MiEstadoDeError } from "../../Modelos/EstadoDeError";
 import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
-import { Peticion } from "../../Modelos/peticion";
 import { Pregunta } from "../../Modelos/pregunta";
 import { Respuesta } from "../../Modelos/respuesta";
 import { ManipuladorService } from "../../Servicios/manipulador.service";

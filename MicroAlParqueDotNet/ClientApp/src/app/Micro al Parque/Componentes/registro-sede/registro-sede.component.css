@@ -21,9 +21,8 @@
 
 .btn-secondary {
   width: 100%; background: #0a7aa7;
-  font-weight: bold; height: 50px;
+  font-weight: bold; height: 40px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 1.5%;
 }
 
 .btn-secondary:hover {
