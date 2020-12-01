@@ -6,32 +6,48 @@ import { Mensajes } from '../../Servicios/mensajes';
 import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
 import { ActualizacionRestauranteComponent } from '../actualizacion-restaurante/act-restaurante.component';
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import { GestionSedeComponent } from '../gestion-sede/gestion-sede.component';
 
 @Component({
   selector: 'app-gestion-restaurante',
   templateUrl: './gestion-restaurante.component.html',
-  styleUrls: ['./gestion-restaurante.component.css']
+  styleUrls: ['./gestion-restaurante.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class GestionRestauranteComponent implements OnInit {
+
   filtroRestaurante: string;
   peticion: PeticionConsulta<Restaurante>;
-  restaurantes : Restaurante[];
+  restaurantes : Restaurante[] = [];
+  dataSource;
+
+  columnsToDisplay = ['Nit', 'NombreRestaurante', 'identificacion','NombrePropietario'];
+  expandedElement: Restaurante | null;
 
   constructor(private modalService: NgbModal, private servicioRestaurante: ServicioRestaurante,
   private mensajes: Mensajes) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
-    this.restaurantes = [];
     this.Consultar();
   }
-
+  ObtenerNombreCompleto(restaurante : Restaurante)
+  {
+    return restaurante.propietario.nombres + " " + restaurante.propietario.primerApellido + " " + restaurante.propietario.segundoApellido;
+  }
   Consultar() {
     this.servicioRestaurante.Consultar().subscribe(result => {
       if (result !=null) {
         this.peticion = result;
         this.AsignarValoresTabla(this.peticion.elementos);
+        this.dataSource = this.restaurantes;
       }
       else this.mensajes.Mostrar("¡Oh, no!",result.mensaje);
     });

@@ -47,4 +47,61 @@
       </tr>
     </tbody>
   </table>
+
+  <table mat-table
+      [dataSource]="dataSource" multiTemplateDataRows
+      class="mat-elevation-z8">
+
+      <ng-container matColumnDef="Nit">
+        <th mat-header-cell *matHeaderCellDef> Nit </th>
+        <td mat-cell *matCellDef="let element"> {{element.nit}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="NombreRestaurante">
+        <th mat-header-cell *matHeaderCellDef> Nombre Restaurante </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="identificacion">
+        <th mat-header-cell *matHeaderCellDef> Nombre Propietario </th>
+        <td mat-cell *matCellDef="let element"> {{element.propietario.identificacion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="NombrePropietario">
+        <th mat-header-cell *matHeaderCellDef> Nombre Propietario </th>
+        <td mat-cell *matCellDef="let element"> {{ObtenerNombreCompleto(element)}} </td>
+      </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <mat-list class="example-label" >
+          <mat-list-item class="example-button-row">
+            <mat-icon matListIcon>domain</mat-icon>
+            <h3 matLine>Mi titulo de prueba</h3>
+            <p matLine>prueba</p>
+            <div>
+              <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element" >
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
 </div>

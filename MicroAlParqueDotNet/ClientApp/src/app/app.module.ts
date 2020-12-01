@@ -31,6 +31,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 import { FiltroRestaurantePipe } from './Micro al Parque/pipe/filtro-restaurante.pipe';
 import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede/gestion-sede.component';
@@ -55,7 +57,7 @@ import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-se
     NosotrosComponent,
     RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent,
-    GestionSedeComponent
+    GestionSedeComponent,
 
 
   ],
@@ -78,7 +80,8 @@ import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-se
     MatListModule ,
     MatStepperModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ],
   entryComponents:[GestionRestauranteComponent,GestionSedeComponent],
   providers: [NgbNav],
