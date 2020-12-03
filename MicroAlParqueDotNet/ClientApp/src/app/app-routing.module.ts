@@ -5,15 +5,19 @@ import { RegistroRestauranteComponent } from './Micro al Parque/Componentes/regi
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
-import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
 import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede/gestion-sede.component';
+import { InicioDeSesionComponent } from './Micro al Parque/Componentes/inicio-de-sesion/inicio-de-sesion.component';
+import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-registro/usuario-registro.component';
+import { AuthGuard } from './Micro al Parque/Servicios/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: InicioComponent},
-  {path: 'gestionRestaurante', component: GestionRestauranteComponent},
-  {path: 'gestionSede/:restauranteId', component: GestionSedeComponent},
-  {path: 'gestionManipulador/:restauranteId/:sedeId', component: GestionManipuladorComponent},
-  {path: 'nosotros', component: NosotrosComponent}
+  { path: '', component: InicioComponent },
+  { path: 'gestionRestaurante', component: GestionRestauranteComponent, canActivate: [AuthGuard] },
+  { path: 'gestionSede/:restauranteId', component: GestionSedeComponent, canActivate: [AuthGuard] },
+  { path: 'gestionManipulador/:restauranteId/:sedeId', component: GestionManipuladorComponent, canActivate: [AuthGuard] },
+  { path: 'nosotros', component: NosotrosComponent },
+  { path: 'login', component: InicioDeSesionComponent },
+  { path: 'usuarioRegistro', component: UsuarioRegistroComponent }
 ];
 
 @NgModule({

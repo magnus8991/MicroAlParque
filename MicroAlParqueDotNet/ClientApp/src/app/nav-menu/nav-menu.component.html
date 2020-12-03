@@ -8,9 +8,11 @@
     <header> </header>
     <li><a [routerLink]='["/"]'><i class="fas fa-home"></i> Inicio</a></li>
     <li><a [routerLink]='["/nosotros"]'><i class="fas fa-users"></i> ¿Quiénes somos?</a></li>
-    <li><a [routerLink]='["/gestionRestaurante"]'><i class="fas fa-utensils"></i>Restaurantes</a></li>
-    <li><a [routerLink]='["/"]'><i class="fas fa-clipboard-list"></i> Encuestas</a></li>
-    <li><a [routerLink]='["/"]'><i class="fas fa-search"></i> Resultados</a></li>
+    <li *ngIf="currentUser"><a [routerLink]='["/gestionRestaurante"]'><i class="fas fa-utensils"></i>Restaurantes</a></li>
+    <li *ngIf="currentUser"><a [routerLink]='["/"]'><i class="fas fa-clipboard-list"></i> Encuestas</a></li>
+    <li *ngIf="currentUser"><a [routerLink]='["/"]'><i class="fas fa-search"></i> Resultados</a></li>
+    <li *ngIf="!currentUser"><a [routerLink]='["/login"]'><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a></li>
+    <li *ngIf="currentUser" (click)="cerrarSesion()"><a><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
   </ul>
 </div>
 <section>

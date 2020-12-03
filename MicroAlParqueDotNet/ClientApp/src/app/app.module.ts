@@ -37,51 +37,29 @@ import { GestionSedeComponent } from './Micro al Parque/Componentes/gestion-sede
 import { FiltroSedePipe } from './Micro al Parque/pipe/filtro-sede.pipe';
 import { ActualizacionSedeComponent } from './Micro al Parque/Componentes/actualizacion-sede/actualizacion-sede.component';
 import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-sede/registro-sede.component';
+import { JwtInterceptor } from './Micro al Parque/Servicios/jwt.interceptor';
+import { InicioDeSesionComponent } from './Micro al Parque/Componentes/inicio-de-sesion/inicio-de-sesion.component';
+import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-registro/usuario-registro.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent,
-    InicioComponent,
-    EncabezadoComponent,
-    FooterComponent,
-    RegistroRestauranteComponent,
-    RegistroManipuladorComponent,
-    GestionRestauranteComponent,
-    GestionManipuladorComponent,
-    EncuestaManipuladorComponent,
-    ActualizacionRestauranteComponent,
-    AlertModalComponent,
-    NosotrosComponent,
-    RegistroSedeComponent, FiltroRestaurantePipe,
-    FiltroSedePipe, ActualizacionSedeComponent,
-    GestionSedeComponent
+    AppComponent, NavMenuComponent, InicioComponent, EncabezadoComponent, FooterComponent,
+    RegistroRestauranteComponent, RegistroManipuladorComponent, GestionRestauranteComponent,
+    GestionManipuladorComponent, EncuestaManipuladorComponent, ActualizacionRestauranteComponent,
+    AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
+    FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
+    InicioDeSesionComponent, UsuarioRegistroComponent
 
 
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule ,
-    MatStepperModule,
-    MatInputModule,
-    MatRadioModule
+    BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, ReactiveFormsModule,
+    NgbModule, BrowserAnimationsModule, MatIconModule, MatTableModule, MatPaginatorModule,
+    MatSortModule, MatFormFieldModule, MatToolbarModule, MatButtonModule, MatSidenavModule,
+    MatListModule , MatStepperModule, MatInputModule, MatRadioModule
   ],
-  entryComponents:[GestionRestauranteComponent,GestionSedeComponent],
-  providers: [NgbNav],
+  entryComponents:[GestionRestauranteComponent,GestionSedeComponent,AlertModalComponent],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,10 +45,9 @@
         <td>{{ Sede.restauranteId }}</td>
         <td>{{ Sede.direccion }}</td>
         <td>{{ Sede.telefono }}</td>
-        <td><button class="btn btn-secondary left" (click)="Modificar(Sede.sedeId)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button class="btn btn-secondary" [routerLink]='["/gestionManipulador", Sede.restauranteId, Sede.sedeId]'>
+        <td><button class="left" (click)="Modificar(Sede.sedeId)" mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+          <button mat-flat-button color="primary"
+          [routerLink]='["/gestionManipulador", Sede.restauranteId, Sede.sedeId]'>
             <mat-icon>people</mat-icon>
             <mat-icon>search</mat-icon>
           </button>

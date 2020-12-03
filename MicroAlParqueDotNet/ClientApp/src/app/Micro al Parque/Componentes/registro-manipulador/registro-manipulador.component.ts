@@ -29,13 +29,9 @@ export class RegistroManipuladorComponent implements OnInit {
   respuestas: Respuesta[] = [];
   preguntas: Pregunta[] = [];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    public activeModal: NgbActiveModal,
-    private servicioRespuesta: RespuestaService,
-    private servicioPregunta: ServicioPregunta,
-    private servicioManipulador: ManipuladorService,
-    private mensajes: Mensajes
+  constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal,
+    private servicioRespuesta: RespuestaService, private servicioPregunta: ServicioPregunta,
+    private servicioManipulador: ManipuladorService, private mensajes: Mensajes
   ) { }
 
   ngOnInit(): void {
@@ -96,22 +92,15 @@ export class RegistroManipuladorComponent implements OnInit {
 
   EstablecerValidacionesFormulario() {
     this.primerGrupoFormulario = this.formBuilder.group({
-      identificacion: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(7),
-          Validators.maxLength(11),
-        ],
-      ],
-      nombres: ["", [Validators.required]],
-      primerApellido: ["", [Validators.required, Validators.maxLength(30)]],
-      segundoApellido: ["", [Validators.required, Validators.maxLength(30)]],
-      sexo: ["", [Validators.required]],
-      edad: [, [Validators.required]],
-      paisDeProcedencia: ["", [Validators.required]],
-      estadoCivil: ["", [Validators.required]],
-      nivelEducativo: ["", [Validators.required]],
+      identificacion: ["", [Validators.required, Validators.pattern('^[0,9]+$'), Validators.minLength(7), Validators.maxLength(11)]],
+      nombres: ["", [Validators.required, Validators.maxLength(30)]],
+      primerApellido: ["", [Validators.required, Validators.maxLength(15)]],
+      segundoApellido: ["", [Validators.required, Validators.maxLength(15)]],
+      sexo: ["", Validators.required],
+      edad: [, Validators.required],
+      paisDeProcedencia: ["", [Validators.required], Validators.maxLength(15)],
+      estadoCivil: ["", Validators.required],
+      nivelEducativo: ["", Validators.required],
     });
     this.segundoGrupoFormulario = this.formBuilder.group({
       pregunta1: [, Validators.required],

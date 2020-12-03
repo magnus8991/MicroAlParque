@@ -41,8 +41,8 @@
         <td>{{ restaurante.propietario.identificacion }}</td>
         <td>{{ restaurante.propietario.nombres }}</td>
         <td>{{ restaurante.propietario.primerApellido }} {{ restaurante.propietario.segundoApellido }}</td>
-        <td><button class="btn btn-secondary left" (click)="Modificar(restaurante.nit)"><mat-icon>edit</mat-icon> Editar</button>
-          <button class="btn btn-secondary" [routerLink]="['/gestionSede', restaurante.nit]"><mat-icon>domain</mat-icon> Sedes</button>
+        <td><button mat-flat-button color="primary" class="left" (click)="Modificar(restaurante.nit)"><mat-icon>edit</mat-icon> Editar</button>
+          <button mat-flat-button color="primary" [routerLink]="['/gestionSede', restaurante.nit]"><mat-icon>domain</mat-icon> Sedes</button>
         </td>
       </tr>
     </tbody>

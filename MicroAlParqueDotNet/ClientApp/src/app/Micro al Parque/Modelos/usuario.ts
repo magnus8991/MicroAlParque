@@ -5,4 +5,5 @@ export class Usuario extends Persona {
   contraseña: string;
   email: string;
   rol: string;
+  token: string;
 }
