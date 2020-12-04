@@ -59,7 +59,7 @@ import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-
     MatListModule , MatStepperModule, MatInputModule, MatRadioModule
   ],
   entryComponents:[GestionRestauranteComponent,GestionSedeComponent,AlertModalComponent],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},NgbNav],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

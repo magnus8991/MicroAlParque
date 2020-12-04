@@ -21,7 +21,6 @@ export class RegistroRestauranteComponent implements OnInit {
   propietario: Propietario
   formularioRegistro: FormGroup;
   formularioRegistroPropietario: FormGroup;
-  active = true;
 
   constructor
     (
@@ -136,4 +135,5 @@ export class RegistroRestauranteComponent implements OnInit {
 
   get NIT() { return this.formularioRegistro.get('NIT'); }
   get nombre() { return this.formularioRegistro.get('nombre'); }
+
 }
