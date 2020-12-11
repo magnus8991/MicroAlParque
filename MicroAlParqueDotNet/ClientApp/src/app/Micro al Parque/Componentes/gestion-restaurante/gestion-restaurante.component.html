@@ -88,4 +88,34 @@
     </div>
     <div class="col-md-2"></div>
   </div>
+<<<<<<< HEAD
+=======
+  <br><br>
+  <table class="table table-hover table-sm table-bordered" *ngIf='restaurantes && restaurantes.length'>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>NIT</th>
+        <th>Nombre</th>
+        <th>ID del propietario</th>
+        <th>Nombre del propietario</th>
+        <th>Apellidos del propietario</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurante of restaurantes | filtroRestaurante: filtroRestaurante; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ restaurante.nit }}</td>
+        <td>{{ restaurante.nombre }}</td>
+        <td>{{ restaurante.propietario.identificacion }}</td>
+        <td>{{ restaurante.propietario.nombres }}</td>
+        <td>{{ restaurante.propietario.primerApellido }} {{ restaurante.propietario.segundoApellido }}</td>
+        <td><button mat-flat-button color="primary" class="left" (click)="Modificar(restaurante.nit)"><mat-icon>edit</mat-icon> Editar</button>
+          <button mat-flat-button color="primary" [routerLink]="['/gestionSede', restaurante.nit]"><mat-icon>domain</mat-icon> Sedes</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+>>>>>>> 89bbca9cc25261874ca329cbc25219cec7e7d4a8
 </div>

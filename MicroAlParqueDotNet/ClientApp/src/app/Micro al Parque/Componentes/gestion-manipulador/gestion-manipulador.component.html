@@ -16,7 +16,8 @@
         <div class="col-md-7">
           <mat-form-field>
             <mat-label>Filtrar</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ejp : diego" #input>
+            <input matInput (keyup)="applyFilter($event)"
+            placeholder="Ejemplo: 1234567890 / carlos / perez / 30 / Masculino" #input>
           </mat-form-field>
         </div>
         <div class="col-md-5">
@@ -52,12 +53,15 @@
         <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="Acciones" style="width: 100px;">
-        <th mat-header-cell *matHeaderCellDef class="mat-column-widt" >Acciones</th>
-        <td mat-cell *matCellDef="let element" >
-          <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>edit</mat-icon>
-          </button>
+      <ng-container matColumnDef="Sexo">
+        <th mat-header-cell *matHeaderCellDef> Genero </th>
+        <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Acciones">
+        <th class="ultimo" mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td class="ultimo" mat-cell *matCellDef="let element">
+          <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
         </td>
       </ng-container>
 

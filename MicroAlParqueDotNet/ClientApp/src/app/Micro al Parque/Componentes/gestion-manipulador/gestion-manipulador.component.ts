@@ -4,8 +4,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ManipuladorDeAlimento } from '../../Modelos/manipulador-de-alimento';
 import { ManipuladorService } from '../../Servicios/manipulador.service';
 import { Mensajes } from '../../Servicios/mensajes';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 
@@ -36,10 +34,7 @@ export class GestionManipuladorComponent implements OnInit {
     });
     this.Consultar();
   }
-
-  mostrar(indice : string) {
-    this.mensaje.Mostrar("salio bine",indice);
-  }
+  
   Consultar() {
     this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
       if(!result.error) {

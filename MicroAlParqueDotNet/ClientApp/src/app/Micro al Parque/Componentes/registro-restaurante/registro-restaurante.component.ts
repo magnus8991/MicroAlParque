@@ -135,4 +135,5 @@ export class RegistroRestauranteComponent implements OnInit {
 
   get NIT() { return this.formularioRegistro.get('NIT'); }
   get nombre() { return this.formularioRegistro.get('nombre'); }
+
 }

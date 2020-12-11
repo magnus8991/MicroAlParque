@@ -1,0 +1,36 @@
+.container {
+    padding-top: 5%; padding-bottom: 5%;
+    width: 100%;
+    background: #FFFF;
+  }
+
+.tituloContainer {
+    color: rgb(109, 102, 102);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 200%;
+    text-align: center;
+}
+
+.cuerpo {
+    box-shadow: 0px 0px 10px 0px black;
+  }
+
+  button {width: 100%;}
+
+  .botones { margin-top: 3%;}
+
+  .btn-secondary {
+    background: #0a7aa7; 
+    font-weight: bold; height: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .btn-secondary:hover {
+    background: #269dcc;
+  }
+  
+  .btn-secondary:active {
+    background: #58b5da !important;
+    color: #000000 !important;
+  }

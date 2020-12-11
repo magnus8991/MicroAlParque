@@ -47,7 +47,10 @@ export class ActualizacionRestauranteComponent implements OnInit {
     );
   }
 
-  onClose() { this.activeModal.dismiss(); }
+  onClose() {
+    if (this.peticion != null) this.activeModal.close(this.peticion.elemento);
+    else this.activeModal.close(null);
+  }
 
   get nombre () {return this.formularioActualizacion.get('nombre');}
 }

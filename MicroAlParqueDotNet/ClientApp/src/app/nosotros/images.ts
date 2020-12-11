@@ -1,6 +1,4 @@
-import { OnInit } from "@angular/core";
-
-export class Imagenes implements OnInit {
+export class Imagenes {
     imagenesPrograma = [
         {src: 'assets/Imagenes Carousel/Imagenes del programa/micro1.jpeg'},
         {src: 'assets/Imagenes Carousel/Imagenes del programa/micro2.jpg'},
@@ -13,6 +11,4 @@ export class Imagenes implements OnInit {
     ];
 
     constructor() { }
-
-    ngOnInit() { }
 }

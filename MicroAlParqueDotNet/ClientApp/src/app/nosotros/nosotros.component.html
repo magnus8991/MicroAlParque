@@ -3,7 +3,7 @@
         <p>Programa de Microbiología - UPC</p>
     </div>
 
-    <ngb-carousel *ngIf="imagenes.imagenesPrograma" [interval]="2500" [showNavigationArrows]="showNavigationArrows"
+    <ngb-carousel *ngIf="imagenes.imagenesPrograma" [interval]="1500" [showNavigationArrows]="showNavigationArrows"
         [ngClass]="direction" (slide)="sliderOn($event)">
         <ng-template ngbSlide *ngFor="let image of imagenes.imagenesPrograma">
             <div class="picsum-img-wrapper">
@@ -53,7 +53,7 @@
         <p>Proyecto - Micro al Parque</p>
     </div>
 
-    <ngb-carousel *ngIf="imagenes.imagenesProyecto" [interval]="2500" [showNavigationArrows]="showNavigationArrows"
+    <ngb-carousel *ngIf="imagenes.imagenesProyecto" [interval]="1500" [showNavigationArrows]="showNavigationArrows"
         [ngClass]="direction" (slide)="sliderOn($event)">
         <ng-template ngbSlide *ngFor="let image of imagenes.imagenesProyecto">
             <div class="picsum-img-wrapper">

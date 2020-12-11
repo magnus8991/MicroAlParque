@@ -2,7 +2,8 @@ import { Persona } from "./persona";
 
 export class Usuario extends Persona {
   nombreUsuario: string;
-  contraseña: string;
+  contrasena: string;
   email: string;
   rol: string;
+  token: string;
 }
