@@ -3,12 +3,13 @@
     <div class="col-md-12">
       <h1 class="titulo">GESTIÓN DE MANIPULADORES</h1>
       <div *ngIf="!manipuladores.length">
-        <h3>¡Lo sentimos, no tienes manipuladores registrados! <i class="fas fa-sad-tear"></i></h3>
         <div class="row" style="margin-left: 3%; margin-right: 3%;">
+          <div class="col-md-6">
+            <h3 style="margin-top: 3%;">¡Lo sentimos, no tienes manipuladores registrados! <i class="fas fa-sad-tear"></i></h3>
+          </div>
           <div class="col-md-6"><button style="height: 40px;" class="btn btn-secondary condicion notabla"
-              (click)="openModalManipulador()"><i class="fas fa-plus"></i> Nuevo Manipulador</button></div>
-          <div class="col-md-6"><button style="height: 40px;" class="btn btn-secondary condicion notabla"
-              [routerLink]="['/gestionSede', restauranteId]"><i class="fas fa-backward"></i> Volver</button></div>
+              (click)="openModalManipulador()"><i class="fas fa-plus"></i> Nuevo Manipulador</button>
+            </div>
         </div>
       </div>
       <div *ngIf="manipuladores.length" class="sincondicion">

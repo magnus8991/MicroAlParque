@@ -8,6 +8,8 @@ import { ActualizacionRestauranteComponent } from '../actualizacion-restaurante/
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { GestionSedeComponent } from '../gestion-sede/gestion-sede.component';
+import { Sede } from '../../Modelos/sede';
+import { ServicioSede } from '../../Servicios/sede.service';
 
 @Component({
   selector: 'app-gestion-restaurante',
@@ -27,12 +29,15 @@ export class GestionRestauranteComponent implements OnInit {
   peticion: PeticionConsulta<Restaurante>;
   restaurantes : Restaurante[] = [];
   dataSource;
+  sedes: Sede[] = [];
+  IdRestaurante;
 
-  columnsToDisplay = ['Nit', 'NombreRestaurante', 'identificacion','NombrePropietario'];
+
+  columnsToDisplay = ['Nit', 'NombreRestaurante', 'acciones'];
   expandedElement: Restaurante | null;
 
   constructor(private modalService: NgbModal, private servicioRestaurante: ServicioRestaurante,
-  private mensajes: Mensajes) { }
+  private mensajes: Mensajes,private servicioSede: ServicioSede) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
@@ -91,5 +96,15 @@ export class GestionRestauranteComponent implements OnInit {
     const modelo = this.modalService.open(ActualizacionRestauranteComponent, {backdrop: 'static', keyboard: false});
      var restaurante = this.peticion.elementos.find(r => r.nit == nit);
      modelo.componentInstance.restaurante = restaurante;
+  }
+
+  consultarSede(idRestaurante : string) {
+    this.servicioSede.Consultar(idRestaurante).subscribe(result => {
+      if (result != null) {
+        this.sedes = [];
+        this.sedes = result.elementos;
+      }
+      else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
+    });
   }
 }
