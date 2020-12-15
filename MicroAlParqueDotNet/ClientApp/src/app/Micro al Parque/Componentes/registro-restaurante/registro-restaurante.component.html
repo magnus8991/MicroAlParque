@@ -102,12 +102,12 @@
             <div class="button">
               <div class="col-md-1"></div>
               <div class="col-md-5">
-                <button type="reset" class="btn btn-secondary notabla"><i class="fas fa-broom"></i> Limpiar
-                  Formulario</button>
+                <button type="reset" class="notabla" mat-button (click)="onClose()">
+                  <i class="fas fa-backward"></i> Volver</button>
               </div>
               <div class="col-md-5">
-                <button class="btn btn-secondary notabla" (click)="onClose()"><i class="fas fa-backward"></i>
-                  Volver</button>
+                <button type="reset" class="notabla" mat-button><i class="fas fa-broom"></i> 
+                  Limpiar Formulario</button>
               </div>
               <div class="col-md-1"></div>
             </div>
@@ -158,17 +158,23 @@
               </div>
             </div>
 
-            <div class="row col-md-12">
-              <div class="col-md-1"></div>
-              <div class="col-md-5">
-                <button class="btn btn-secondary btnsede notabla" (click)="AgregarSede()"><i class="fas fa-plus"></i>
+            <div class="row col-md-12 button">
+              <div class="col-md-3">
+                <button type="reset" class="notabla" mat-button (click)="onClose()">
+                  <i class="fas fa-backward"></i> Volver</button>
+              </div>
+              <div class="col-md-3">
+                <button type="reset" class="notabla" mat-button><i class="fas fa-broom"></i> 
+                  Limpiar Formulario</button>
+              </div>
+              <div class="col-md-3">
+                <button class="notabla" mat-button (click)="AgregarSede()"><i class="fas fa-plus"></i>
                   Agregar Sede</button>
               </div>
-              <div class="col-md-5">
-                <button type="reset" class="btn btn-secondary btnsede notabla"><i class="fas fa-broom"></i> Limpiar
-                  Formulario</button>
+              <div class="col-md-3">
+                <button class="notabla" mat-button (click)="Registrar()"><i class="fas fa-save"></i>
+                  Registrar Restaurante</button>
               </div>
-              <div class="col-md-1"></div>
             </div>
             <table class="table table-hover table-sm table-bordered">
               <thead>
@@ -203,18 +209,6 @@
               </tbody>
             </table>
 
-            <div class="row col-md-12 button">
-              <div class="col-md-1"></div>
-              <div class="col-md-5">
-                <button class="btn btn-secondary notabla" (click)="Registrar()"><i class="fas fa-save"></i> Registrar
-                  Restaurante</button>
-              </div>
-              <div class="col-md-5">
-                <button class="btn btn-secondary notabla" (click)="onClose()"><i class="fas fa-backward"></i>
-                  Volver</button>
-              </div>
-              <div class="col-md-1"></div>
-            </div>
           </form>
         </ng-template>
       </li>

@@ -83,10 +83,7 @@ export class RegistroManipuladorComponent implements OnInit {
     });
   }
 
-  cerrar() {
-    if (this.manipulador != null && this.respuestas != null) this.activeModal.close(this.manipulador);
-    else this.activeModal.close(null);
-  }
+  cerrar() { this.activeModal.close(null); }
 
   EstablecerValidacionesFormulario() {
     this.primerGrupoFormulario = this.formBuilder.group({

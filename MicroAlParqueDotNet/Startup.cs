@@ -12,6 +12,7 @@ using MicroAlParque.Config;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MicroAlParque.Hubs;
 
 namespace MicroAlParque
 {
@@ -83,6 +84,9 @@ namespace MicroAlParque
             });
             //Fin OpenApi Swagger
 
+            //SignalR
+            services.AddSignalR();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -128,6 +132,7 @@ namespace MicroAlParque
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<SignalHub>("/signalHub");
             });
             
             //start swagger

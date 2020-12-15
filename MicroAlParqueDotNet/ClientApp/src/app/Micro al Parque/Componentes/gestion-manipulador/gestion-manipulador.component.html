@@ -4,27 +4,35 @@
       <h1 class="titulo">GESTIÓN DE MANIPULADORES</h1>
       <div *ngIf="!manipuladores.length">
         <div class="row" style="margin-left: 3%; margin-right: 3%;">
-          <div class="col-md-6">
-            <h3 style="margin-top: 3%;">¡Lo sentimos, no tienes manipuladores registrados! <i class="fas fa-sad-tear"></i></h3>
+          <div class="col-md-12">
+            <h3 style="margin-top: 3%;">¡Lo sentimos, no tienes manipuladores registrados! <i
+                class="fas fa-sad-tear"></i></h3>
           </div>
-          <div class="col-md-6"><button style="height: 40px;" class="btn btn-secondary condicion notabla"
-              (click)="openModalManipulador()"><i class="fas fa-plus"></i> Nuevo Manipulador</button>
-            </div>
+          <div class="col-md-6">
+            <button class="notabla" mat-button (click)="openModalManipulador()">
+            <mat-icon>person_add</mat-icon> Nuevo Manipulador</button>
+          </div>
+          <div class="col-md-6">
+            <button class="notabla condicion" mat-button [routerLink]="['/gestionSede', restauranteId]">
+              <i class="fas fa-backward"></i> Volver</button>
+          </div>
         </div>
       </div>
       <div *ngIf="manipuladores.length" class="sincondicion">
-        <div class="col-md-7">
+        <div class="col-md-4">
           <mat-form-field>
             <mat-label>Filtrar</mat-label>
             <input matInput (keyup)="applyFilter($event)"
-            placeholder="Ejemplo: 1234567890 / carlos / perez / 30 / Masculino" #input>
+              placeholder="Ejemplo: 1234567890 / carlos / perez / 30 / Masculino" #input>
           </mat-form-field>
         </div>
-        <div class="col-md-5">
-          <div>
-            <button style="height: 40px;" class="btn btn-secondary notabla" (click)="openModalManipulador()">
-              <i class="fas fa-plus"></i> Nuevo Manipulador</button>
-          </div>
+        <div class="col-md-4">
+          <button class="notabla" mat-button (click)="openModalManipulador()">
+          <mat-icon>person_add</mat-icon> Nuevo Manipulador</button>
+        </div>
+        <div class="col-md-4">
+          <button class="notabla condicion" mat-button [routerLink]="['/gestionSede', restauranteId]">
+            <i class="fas fa-backward"></i> Volver</button>
         </div>
       </div>
     </div>
@@ -61,7 +69,9 @@
       <ng-container matColumnDef="Acciones">
         <th class="ultimo" mat-header-cell *matHeaderCellDef> Acciones </th>
         <td class="ultimo" mat-cell *matCellDef="let element">
-          <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
         </td>
       </ng-container>
 
@@ -73,7 +83,4 @@
       </tr>
     </table>
   </div>
-  <div class="col-md-4"><button style="height: 40px;" class="btn btn-secondary condicion notabla"
-    [routerLink]="['/gestionSede', restauranteId]"><i class="fas fa-backward"></i> Volver</button>
-</div>
 </div>

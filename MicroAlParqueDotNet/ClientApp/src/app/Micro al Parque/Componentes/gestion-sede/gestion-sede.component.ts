@@ -8,6 +8,7 @@ import { ActualizacionSedeComponent } from '../actualizacion-sede/actualizacion-
 import { ServicioSede } from '../../Servicios/sede.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { SignalRServiceSede } from '../../Servicios/signal-r.service';
 
 @Component({
   selector: 'app-gestion-sede',
@@ -24,7 +25,8 @@ export class GestionSedeComponent implements OnInit {
   expandedElement: Sede | null;
 
   constructor(private modalService: NgbModal, private servicioSede: ServicioSede,
-    private mensajes: Mensajes, private route: ActivatedRoute) { }
+    private mensajes: Mensajes, private route: ActivatedRoute,
+    private signalRService: SignalRServiceSede) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
@@ -32,6 +34,7 @@ export class GestionSedeComponent implements OnInit {
       this.IdRestaurante = params.get('restauranteId');
     });
     this.Consultar();
+    this.abrirConexionSignalR();
   }
 
   Consultar() {
@@ -58,7 +61,6 @@ export class GestionSedeComponent implements OnInit {
           if (contador > 0) this.mensajes.Mostrar("¡Cuidado!", "La Sede " + sede.nombre + " ya está agregada");
           else {
             this.GuardarSede(sede);
-            this.peticion.elementos.push(s);
           }
         }
       }
@@ -83,5 +85,16 @@ export class GestionSedeComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
+  abrirConexionSignalR() {
+    this.signalRService.SedeReceived.subscribe((sede: Sede) => {
+      this.peticion.elementos.push(sede);
+    });
+    this.signalRService.SedeModified.subscribe((sede: Sede) => {
+      var index = this.peticion.elementos.findIndex(s => s.sedeId == sede.sedeId);
+      this.peticion.elementos.splice(index,1);
+      this.peticion.elementos.push(sede);
+    });
   }
 }

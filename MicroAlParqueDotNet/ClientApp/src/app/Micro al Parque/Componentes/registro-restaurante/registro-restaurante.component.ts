@@ -50,7 +50,7 @@ export class RegistroRestauranteComponent implements OnInit {
             this.peticion = peticion;
             this.mensajes.Mostrar("¡Operación Exitosa!", peticion.mensaje);
             this.RegistrarSedes();
-            this.activeModal.close(this.peticion.elemento);
+            this.onClose();
           }
         });
       }
@@ -122,10 +122,7 @@ export class RegistroRestauranteComponent implements OnInit {
 
   EliminarSede(indice: number) { this.peticionSede.elementos.splice(indice, 1); }
 
-  onClose() {
-    if (this.peticion != null) this.activeModal.close(this.peticion.elemento);
-    else this.activeModal.close(null);
-  }
+  onClose() {this.activeModal.close();}
 
   get identificacion() { return this.formularioRegistroPropietario.get('identificacion'); }
   get nombres() { return this.formularioRegistroPropietario.get('nombres'); }
