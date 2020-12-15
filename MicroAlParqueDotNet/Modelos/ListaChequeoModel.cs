@@ -10,7 +10,6 @@ namespace MicroAlParque.Models
     {
         public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
         public string RestauranteId { get; set; }
-
         public ListaChequeoInputModel() {
             RespuestaChequeos = new List<RespuestaChequeo>();
         }
@@ -19,13 +18,14 @@ namespace MicroAlParque.Models
     public class ListaChequeoViewModel : ListaChequeoInputModel
     {
         public int ListaChequeoId { get; set; }
-
+        public float PorcentajeCumplimiento {  get; set;  }
         public ListaChequeoViewModel() { }
         public ListaChequeoViewModel(ListaChequeo listaChequeo)
         {
             ListaChequeoId = listaChequeo.ListaChequeoId;
             RestauranteId = listaChequeo.RestauranteId;
             RespuestaChequeos = listaChequeo.RespuestaChequeos;
+            PorcentajeCumplimiento = listaChequeo.PorcentajeCumplimiento;
         }
     }
 }

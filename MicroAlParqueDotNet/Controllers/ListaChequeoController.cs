@@ -58,6 +58,7 @@ namespace MicroAlParque.Controllers
             var ListaChequeo = new ListaChequeo();
             ListaChequeo.RestauranteId = listaChequeoInput.RestauranteId;
             ListaChequeo.RespuestaChequeos = listaChequeoInput.RespuestaChequeos;
+            ListaChequeo.Fecha = DateTime.Now;
             return ListaChequeo;
         }
         /*// PUT: api/Lote/5

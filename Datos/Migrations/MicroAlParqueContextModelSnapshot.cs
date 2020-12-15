@@ -26,6 +26,9 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("RestauranteId")
                         .HasColumnType("nvarchar(15)");
 

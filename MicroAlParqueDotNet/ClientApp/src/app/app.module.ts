@@ -42,6 +42,7 @@ import { RegistroSedeComponent } from './Micro al Parque/Componentes/registro-se
 import { JwtInterceptor } from './Micro al Parque/Servicios/jwt.interceptor';
 import { InicioDeSesionComponent } from './Micro al Parque/Componentes/inicio-de-sesion/inicio-de-sesion.component';
 import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-registro/usuario-registro.component';
+import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encuesta-restaurante/encuesta-restaurante.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-
     GestionManipuladorComponent, EncuestaManipuladorComponent, ActualizacionRestauranteComponent,
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
-    InicioDeSesionComponent, UsuarioRegistroComponent
+    InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent
 
 
   ],

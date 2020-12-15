@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Datos.Migrations
 {
@@ -82,6 +83,7 @@ namespace Datos.Migrations
                 {
                     ListaChequeoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     RestauranteId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
