@@ -4,8 +4,8 @@
   </div>
 
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
       <div class="col-md-12">
         <h1 class="titulo">GESTIÓN DE RESTAURANTES</h1>
         <div *ngIf="!peticion.elementos.length" class="row">
@@ -15,24 +15,23 @@
               <i class="fas fa-sad-tear"></i>
             </h3>
           </div>
-          <div class="col-md-6">
-            <button style="height: 45px" class="btn btn-secondary notabla" (click)="RegistrarRestaurante()">
-              <i class="fas fa-plus"></i> Nuevo Restaurante
-            </button>
+          <div class="col-md-6 button">
+            <button class="notabla" mat-button (click)="RegistrarRestaurante()">
+              <mat-icon>add_business</mat-icon> Nuevo Restaurante</button>
           </div>
         </div>
         <div *ngIf="peticion.elementos.length" class="sincondicion">
           <div class="col-md-6">
-            <label>Filtrar por ID, Nombre o ID del propietario:</label>
-            <input [(ngModel)]="filtroRestaurante" type="text" class="form-control"
-              (ngModelChange)="ModificarListaProvisional()" placeholder="Digite aquí su busqueda" />
+            <mat-form-field class="filtro">
+              <mat-label>Filtrar</mat-label>
+              <input matInput (keyup)="applyFilter($event)"
+              placeholder="Ejemplo: 1234567890345 / Cataratas" #input>
+            </mat-form-field>
           </div>
-          <div class="col-md-6">
-            <div>
-              <button style="height: 55px" class="btn btn-secondary notabla" (click)="RegistrarRestaurante()">
-                <i class="fas fa-plus"></i> Nuevo Restaurante
+          <div class="col-md-6 button">
+            <button class="notabla" mat-button (click)="RegistrarRestaurante()">
+              <mat-icon>add_business</mat-icon> Nuevo Restaurante
               </button>
-            </div>
           </div>
         </div>
       </div>
@@ -51,12 +50,18 @@
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-flat-button color="primary" class="left" (click)="Modificar(element.nit)" >
-              <mat-icon>edit</mat-icon> Editar
-            </button>
-            <button mat-flat-button color="primary" [routerLink]="['/gestionSede', element.nit]">
-              <mat-icon>domain</mat-icon> Sedes
-            </button>
+            <div class="row">
+              <div class="col-md-6">
+                <button mat-flat-button color="primary" class="left tabla" (click)="Modificar(element.nit)" >
+                  <mat-icon>edit</mat-icon> Editar
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button mat-flat-button color="primary" class="tabla" [routerLink]="['/gestionSede', element.nit]">
+                  <mat-icon>domain</mat-icon> Sedes
+                </button>
+              </div>
+            </div>
           </td>
         </ng-container>
 
@@ -68,10 +73,10 @@
               ">
               <mat-list class="example-label">
                 <mat-list-item class="example-button-row">
-                  <mat-icon matListIcon color="primary">account_box</mat-icon>
+                  <mat-icon class="prop" matListIcon color="primary">account_box</mat-icon>
                   <h1 matLine>Informacion del propietario</h1>
-                  <h3 matLine> - Nombres : {{ObtenerNombreCompleto(element) }}</h3>
-                  <h3 matLine> - Identificacion : {{element.propietario.identificacion }}</h3>
+                  <h6 matLine> - Nombres : {{ObtenerNombreCompleto(element) }}</h6>
+                  <h6 matLine> - Identificacion : {{element.propietario.identificacion }}</h6>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -81,11 +86,10 @@
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let element; columns: columnsToDisplay" class="example-element-row"
           [class.example-expanded-row]="expandedElement === element" (click)="
-            expandedElement = expandedElement === element ? null : element
-          " (click)="consultarSede(element.nit)"></tr>
+            expandedElement = expandedElement === element ? null : element"></tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
       </table>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
   </div>
 </div>

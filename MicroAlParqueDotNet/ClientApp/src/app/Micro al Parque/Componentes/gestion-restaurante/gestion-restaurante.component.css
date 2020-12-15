@@ -13,18 +13,20 @@ fa-sad-tear {color:rgb(121, 113, 113);}
 
 .container {padding-top: 5%; padding-bottom: 5%;}
 
-.notabla {width: 100%;}
+.notabla {width: 100%; font-size: 170%; margin-top: 2.5%;}
 
 .hnotabla {margin-top: 4%;}
 
 .sincondicion {display: flex;}
 
-.btn-secondary {
-  background: #0a7aa7;
+.button {
+  color: #8d8b8b;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0.5%;
 }
+
+.filtro, .tabla {width: 100%;}
 
 .Advertencia {
   margin-bottom: 17%;
@@ -78,5 +80,5 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-button-row {
   display: table-cell;
-  width: 490px;
+  width: 100%;
 }

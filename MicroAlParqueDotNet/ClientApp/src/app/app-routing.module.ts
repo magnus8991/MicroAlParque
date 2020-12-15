@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'gestionSede/:restauranteId', component: GestionSedeComponent, canActivate: [AuthGuard] },
   { path: 'gestionManipulador/:restauranteId/:sedeId', component: GestionManipuladorComponent, canActivate: [AuthGuard] },
   { path: 'nosotros', component: NosotrosComponent },
-  { path: 'login', component: InicioDeSesionComponent },
+  { path: 'login/:cerrarSesion', component: InicioDeSesionComponent },
   { path: 'usuarioRegistro', component: UsuarioRegistroComponent }
 ];
 

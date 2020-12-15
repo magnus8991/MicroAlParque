@@ -10,6 +10,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { GestionSedeComponent } from '../gestion-sede/gestion-sede.component';
 import { Sede } from '../../Modelos/sede';
 import { ServicioSede } from '../../Servicios/sede.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-gestion-restaurante',
@@ -27,10 +28,7 @@ export class GestionRestauranteComponent implements OnInit {
 
   filtroRestaurante: string;
   peticion: PeticionConsulta<Restaurante>;
-  restaurantes : Restaurante[] = [];
   dataSource;
-  sedes: Sede[] = [];
-  IdRestaurante;
 
 
   columnsToDisplay = ['Nit', 'NombreRestaurante', 'acciones'];
@@ -51,33 +49,10 @@ export class GestionRestauranteComponent implements OnInit {
     this.servicioRestaurante.Consultar().subscribe(result => {
       if (result !=null) {
         this.peticion = result;
-        this.AsignarValoresTabla(this.peticion.elementos);
-        this.dataSource = this.restaurantes;
+        this.dataSource = new MatTableDataSource<Restaurante>(this.peticion.elementos);
       }
       else this.mensajes.Mostrar("¡Oh, no!",result.mensaje);
     });
-  }
-
-  AsignarValoresTabla(listaRestaurantes: Restaurante[]) {
-    this.restaurantes = [];
-    listaRestaurantes.forEach(restaurante => {
-      this.restaurantes.push(restaurante);
-    });
-  }
-
-  ModificarListaProvisional() {
-    if (this.filtroRestaurante == undefined || this.filtroRestaurante == null)
-      this.AsignarValoresTabla(this.peticion.elementos);
-    else {
-      var listaFiltrada = this.FiltrarLista();
-      this.AsignarValoresTabla(listaFiltrada);
-    }
-  }
-
-  FiltrarLista(): Restaurante[] {
-    var listaRestaurantes = this.peticion.elementos.filter(r => r.nit.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1
-    || r.nombre.toLowerCase().indexOf(this.filtroRestaurante.toLowerCase()) !== -1);
-      return listaRestaurantes;
   }
 
   RegistrarRestaurante() {
@@ -86,7 +61,6 @@ export class GestionRestauranteComponent implements OnInit {
         var restaurante: Restaurante = r;
         if (restaurante.nit != undefined) {
           this.peticion.elementos.push(r);
-          this.AsignarValoresTabla(this.peticion.elementos);
         }
       }
     });
@@ -98,13 +72,8 @@ export class GestionRestauranteComponent implements OnInit {
      modelo.componentInstance.restaurante = restaurante;
   }
 
-  consultarSede(idRestaurante : string) {
-    this.servicioSede.Consultar(idRestaurante).subscribe(result => {
-      if (result != null) {
-        this.sedes = [];
-        this.sedes = result.elementos;
-      }
-      else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
-    });
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

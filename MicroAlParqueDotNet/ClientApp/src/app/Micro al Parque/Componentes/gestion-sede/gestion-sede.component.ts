@@ -7,6 +7,7 @@ import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
 import { ActualizacionSedeComponent } from '../actualizacion-sede/actualizacion-sede.component';
 import { ServicioSede } from '../../Servicios/sede.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-gestion-sede',
@@ -16,15 +17,17 @@ import { ActivatedRoute } from '@angular/router';
 export class GestionSedeComponent implements OnInit {
   filtroSede: string;
   peticion: PeticionConsulta<Sede>;
-  Sedes: Sede[];
+  dataSource;
   IdRestaurante;
+
+  columnsToDisplay = ['IdDeLaSede', 'Nombre', 'NitDelRestaurante','Direccion','Telefono','acciones'];
+  expandedElement: Sede | null;
 
   constructor(private modalService: NgbModal, private servicioSede: ServicioSede,
     private mensajes: Mensajes, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
-    this.Sedes = [];
     this.route.paramMap.subscribe(params => {
       this.IdRestaurante = params.get('restauranteId');
     });
@@ -35,35 +38,13 @@ export class GestionSedeComponent implements OnInit {
     this.servicioSede.Consultar(this.IdRestaurante).subscribe(result => {
       if (result != null) {
         this.peticion = result;
-        this.AsignarValoresTabla(this.peticion.elementos);
+        this.dataSource = new MatTableDataSource<Sede>(this.peticion.elementos);
       }
       else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
     });
   }
 
-  AsignarValoresTabla(listaSedes: Sede[]) {
-    this.Sedes = [];
-    listaSedes.forEach(Sede => {
-      this.Sedes.push(Sede);
-    });
-  }
-
-  ModificarListaProvisional() {
-    if (this.filtroSede == undefined || this.filtroSede == null)
-      this.AsignarValoresTabla(this.peticion.elementos);
-    else {
-      var listaFiltrada = this.FiltrarLista();
-      this.AsignarValoresTabla(listaFiltrada);
-    }
-  }
-
-  FiltrarLista(): Sede[] {
-    var listaSedes = this.peticion.elementos.filter(r => r.sedeId.toString().indexOf(this.filtroSede) !== -1
-      || r.nombre.toLowerCase().indexOf(this.filtroSede.toLowerCase()) !== -1);
-    return listaSedes;
-  }
-
-  Registrar() {
+  RegistrarSede() {
     const modelo = this.modalService.open(RegistroSedeComponent, { size: 'xl', backdrop: 'static', keyboard: false });
     modelo.componentInstance.NIT = this.IdRestaurante;
     modelo.result.then(s => {
@@ -78,7 +59,6 @@ export class GestionSedeComponent implements OnInit {
           else {
             this.GuardarSede(sede);
             this.peticion.elementos.push(s);
-            this.AsignarValoresTabla(this.peticion.elementos);
           }
         }
       }
@@ -98,5 +78,10 @@ export class GestionSedeComponent implements OnInit {
     const modelo = this.modalService.open(ActualizacionSedeComponent, { size: 'xl' });
     var Sede = this.peticion.elementos.find(s => s.sedeId == id);
     modelo.componentInstance.Sede = Sede;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

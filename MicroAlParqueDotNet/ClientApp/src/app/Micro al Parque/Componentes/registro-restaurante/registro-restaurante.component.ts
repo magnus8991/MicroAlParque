@@ -21,6 +21,7 @@ export class RegistroRestauranteComponent implements OnInit {
   propietario: Propietario
   formularioRegistro: FormGroup;
   formularioRegistroPropietario: FormGroup;
+  active;
 
   constructor
     (

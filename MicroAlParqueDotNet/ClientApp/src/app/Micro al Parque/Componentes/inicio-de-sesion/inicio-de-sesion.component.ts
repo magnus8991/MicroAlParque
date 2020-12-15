@@ -24,6 +24,9 @@ export class InicioDeSesionComponent implements OnInit {
     if (this.servicioAutenticacion.currentUserValue) {
       this.router.navigate(['/']);
     }
+    this.route.paramMap.subscribe(params => {
+      if (params.get('cerrarSesion') == 'true') this.cerrarSesion();
+    });
   }
 
   ngOnInit() {
@@ -50,6 +53,11 @@ export class InicioDeSesionComponent implements OnInit {
           this.mensajes.Mostrar('Acceso Denegado', error.error);
           this.loading = false;
         });
+  }
+
+  cerrarSesion() {
+    this.servicioAutenticacion.cerrarSesion();
+    this.router.navigate(['/']);
   }
 
   get formulario() { return this.formularioInicioDeSesion.controls; }

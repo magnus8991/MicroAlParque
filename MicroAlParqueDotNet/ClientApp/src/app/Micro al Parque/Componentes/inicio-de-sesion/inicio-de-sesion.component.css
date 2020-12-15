@@ -1,6 +1,6 @@
 .container {
     padding-top: 5%; padding-bottom: 5%;
-    width: 100%;
+    width: 50%;
     background: #FFFF;
   }
 
@@ -16,21 +16,10 @@
     box-shadow: 0px 0px 10px 0px black;
   }
 
-  button {width: 100%;}
+  button {
+    width: 100%; font-weight: 600; height: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%; color: rgb(131, 126, 126);
+  }
 
   .botones { margin-top: 3%;}
-
-  .btn-secondary {
-    background: #0a7aa7; 
-    font-weight: bold; height: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  .btn-secondary:hover {
-    background: #269dcc;
-  }
-  
-  .btn-secondary:active {
-    background: #58b5da !important;
-    color: #000000 !important;
-  }

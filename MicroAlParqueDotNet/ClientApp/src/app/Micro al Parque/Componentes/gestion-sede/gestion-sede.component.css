@@ -21,24 +21,17 @@ fa-sad-tear {color:rgb(121, 113, 113);}
 
 .sincondicion {display: flex;}
 
-.btn-secondary {
-  background: #0a7aa7;
+button {
+  color: #8d8b8b; font-size: 120%;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 2.6%;
+  padding: 0.5%; margin-bottom: 1%;
 }
 
 .Advertencia {
   margin-bottom: 17%;
 }
 
-.btn-secondary:hover {
-  background: #269dcc;
-}
-
-.btn-secondary:active {
-  background: #58b5da !important;
-  color: #000000 !important;
-}
-
 .left { margin-right: 10%; }
+
+.filtro, table {width: 100%;}

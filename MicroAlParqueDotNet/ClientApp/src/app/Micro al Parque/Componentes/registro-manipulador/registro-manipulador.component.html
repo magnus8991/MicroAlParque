@@ -1,9 +1,5 @@
 <div class="modal-header header">
   <h1 class="modal-title">Registrar Manipulador de Alimentos</h1>
-  <button type="button" class="ico" (click)="activeModal.dismiss('Cross
-    click')">
-    <i class="fas fa-window-close"></i>
-  </button>
 </div>
 <div class="modal-body">
   <mat-horizontal-stepper linear #stepper>
@@ -15,12 +11,10 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Identificacion:</label>
-              <input type="text" name="identificacion"
-                formControlName="identificacion"
+              <input type="text" name="identificacion" formControlName="identificacion"
                 [(ngModel)]="manipulador.identificacion" placeholder="Digite
                 aquí la identificacion" class="form-control">
-              <div
-                *ngIf="identificacion.invalid && (identificacion.dirty ||
+              <div *ngIf="identificacion.invalid && (identificacion.dirty ||
                 identificacion.touched)" class="alert alert-danger">
                 <div *ngIf="identificacion.errors.required">
                   La identificación es un valor requerido
@@ -42,14 +36,11 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Sexo:</label>
-              <select name="sexo" formControlName="sexo" class="form-control"
-                [(ngModel)]="manipulador.sexo">
+              <select name="sexo" formControlName="sexo" class="form-control" [(ngModel)]="manipulador.sexo">
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
               </select>
-              <div
-                *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)"
-                class="alert alert-danger">
+              <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="alert alert-danger">
                 <div *ngIf="sexo.errors.required">
                   El sexo es un valor requerido
                 </div>
@@ -60,12 +51,9 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Edad:</label>
-              <input type="number" name="edad" formControlName="edad"
-                [(ngModel)]="manipulador.edad" placeholder="aqui el nombre del
+              <input type="number" name="edad" formControlName="edad" [(ngModel)]="manipulador.edad" placeholder="aqui el nombre del
                 servicio" class="form-control">
-              <div
-                *ngIf="edad.invalid && (edad.dirty || edad.touched)"
-                class="alert alert-danger">
+              <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
                 <div *ngIf="edad.errors.required">
                   La edad es un valor requerido
                 </div>
@@ -78,12 +66,9 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Nombres:</label>
-              <input type="text" name="nombres" formControlName="nombres"
-                [(ngModel)]="manipulador.nombres" placeholder="Digite aquí el
+              <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="manipulador.nombres" placeholder="Digite aquí el
                 nombre del manipulador" class="form-control">
-              <div
-                *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)"
-                class="alert alert-danger">
+              <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="alert alert-danger">
                 <div *ngIf="nombres.errors.required">
                   El nombre es un valor requerido
                 </div>
@@ -94,12 +79,10 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Primer Apellido:</label>
-              <input type="text" name="primerApellido"
-                formControlName="primerApellido"
-                [(ngModel)]="manipulador.primerApellido" placeholder="Digite aquí el primer apellido" 
+              <input type="text" name="primerApellido" formControlName="primerApellido"
+                [(ngModel)]="manipulador.primerApellido" placeholder="Digite aquí el primer apellido"
                 class="form-control">
-              <div
-                *ngIf="primerApellido.invalid && (primerApellido.dirty ||
+              <div *ngIf="primerApellido.invalid && (primerApellido.dirty ||
                 primerApellido.touched)" class="alert alert-danger">
                 <div *ngIf="primerApellido.errors.required">
                   El primer Apellido es un valor requerido
@@ -114,12 +97,10 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Segundo Apellido:</label>
-              <input type="text" name="segundoApellido"
-                formControlName="segundoApellido"
-                [(ngModel)]="manipulador.segundoApellido"
-                placeholder="Digite aquí el segundo apellido" class="form-control">
-              <div
-                *ngIf="segundoApellido.invalid && (segundoApellido.dirty ||
+              <input type="text" name="segundoApellido" formControlName="segundoApellido"
+                [(ngModel)]="manipulador.segundoApellido" placeholder="Digite aquí el segundo apellido"
+                class="form-control">
+              <div *ngIf="segundoApellido.invalid && (segundoApellido.dirty ||
                 segundoApellido.touched)" class="alert alert-danger">
                 <div *ngIf="segundoApellido.errors.required">
                   El segundo apellido es un valor requerido
@@ -137,11 +118,9 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Pais de procedencia:</label>
-              <input type="text" name="paisDeProcedencia"
-                formControlName="paisDeProcedencia" class="form-control"
+              <input type="text" name="paisDeProcedencia" formControlName="paisDeProcedencia" class="form-control"
                 [(ngModel)]="manipulador.paisDeProcedencia">
-              <div
-                *ngIf="paisDeProcedencia.invalid && (paisDeProcedencia.dirty
+              <div *ngIf="paisDeProcedencia.invalid && (paisDeProcedencia.dirty
                 || paisDeProcedencia.touched)" class="alert alert-danger">
                 <div *ngIf="nombre.errors.required">
                   El pais es un valor requerido
@@ -153,17 +132,15 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Estado Civil:</label>
-              <select type="text" name="estadoCivil"
-                formControlName="estadoCivil"
-                [(ngModel)]="manipulador.estadoCivil" placeholder="Digite
+              <select type="text" name="estadoCivil" formControlName="estadoCivil" [(ngModel)]="manipulador.estadoCivil"
+                placeholder="Digite
                 aquí el estado civil" class="form-control">
                 <option value="Soltero">Soltero</option>
                 <option value="Casado">Casado</option>
                 <option value="Divorciado">Divorciado</option>
                 <option value="Viudo">Viudo</option>
               </select>
-              <div
-                *ngIf="estadoCivil.invalid && (estadoCivil.dirty ||
+              <div *ngIf="estadoCivil.invalid && (estadoCivil.dirty ||
                 estadoCivil.touched)" class="alert alert-danger">
                 <div *ngIf="estadoCivil.errors.required">
                   El estado civil es un valor requerido
@@ -175,8 +152,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label>Nivel Educativo:</label>
-              <select name="nivelEducativo" formControlName="nivelEducativo"
-                [(ngModel)]="manipulador.nivelEducativo"
+              <select name="nivelEducativo" formControlName="nivelEducativo" [(ngModel)]="manipulador.nivelEducativo"
                 class="form-control">
                 <option value="Preescolar">Preescolar</option>
                 <option value="Básica">Educación Básica</option>
@@ -184,8 +160,7 @@
                 <option value="Pregrado">Pregrado</option>
                 <option value="Posgrado">Posgrado</option>
               </select>
-              <div
-                *ngIf="nivelEducativo.invalid && (nivelEducativo.dirty ||
+              <div *ngIf="nivelEducativo.invalid && (nivelEducativo.dirty ||
                 nivelEducativo.touched)" class="alert alert-danger">
                 <div *ngIf="nivelEducativo.errors.required">
                   El nivel educativo es un valor requerido
@@ -196,22 +171,24 @@
         </div>
 
         <div>
-          <button mat-button matStepperNext
-            [disabled]="primerGrupoFormulario.invalid"><mat-icon>next_plan</mat-icon>Siguiente</button>
+          <button mat-button matStepperNext [disabled]="primerGrupoFormulario.invalid">
+            <mat-icon>next_plan</mat-icon>Siguiente
+          </button>
+          <button type="button" class="ico" (click)="activeModal.close(null)">
+            <i class="fas fa-window-close"></i> Cancelar
+          </button>
         </div>
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="segundoGrupoFormulario"
-      [editable]="isEditable">
+    <mat-step [stepControl]="segundoGrupoFormulario" [editable]="isEditable">
       <form [formGroup]="segundoGrupoFormulario">
         <ng-template matStepLabel>Conocimientos</ng-template>
 
         <div class="row">
           <div class="col-md-6">
             <p>{{preguntas[0].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[0].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[0].contenidoRespuesta"
               formControlName="pregunta1" name="pregunta1" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -221,12 +198,10 @@
             <div class="form-group">
               <mat-form-field class="example-full-width">
                 <mat-label>{{preguntas[2].enunciado}}</mat-label>
-                <textarea matInput placeholder="resolución 2674 del 2013"
-                  [(ngModel)]="respuestas[2].contenidoRespuesta"
+                <textarea matInput placeholder="resolución 2674 del 2013" [(ngModel)]="respuestas[2].contenidoRespuesta"
                   formControlName="pregunta3"></textarea>
               </mat-form-field>
-              <div
-                *ngIf="pregunta3.invalid && (pregunta3.dirty ||
+              <div *ngIf="pregunta3.invalid && (pregunta3.dirty ||
                 pregunta3.touched)" class="alert alert-danger">
                 <div *ngIf="pregunta3.errors.required">
                   Error valor requerido
@@ -235,8 +210,7 @@
             </div>
 
             <p>{{preguntas[1].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[1].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[1].contenidoRespuesta"
               formControlName="pregunta2" name="pregunta2" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -247,8 +221,7 @@
           <div class="col-md-6">
 
             <p>{{preguntas[4].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[4].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[4].contenidoRespuesta"
               formControlName="pregunta5" name="pregunta5" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -258,13 +231,11 @@
             <div class="form-group">
               <mat-form-field class="example-full-width">
                 <mat-label>{{preguntas[3].enunciado}}</mat-label>
-                <textarea matInput placeholder="resolución 2674 del 2013"
-                  [(ngModel)]="respuestas[3].contenidoRespuesta"
+                <textarea matInput placeholder="resolución 2674 del 2013" [(ngModel)]="respuestas[3].contenidoRespuesta"
                   formControlName="pregunta4"></textarea>
               </mat-form-field>
 
-              <div
-                *ngIf="pregunta4.invalid && (pregunta4.dirty ||
+              <div *ngIf="pregunta4.invalid && (pregunta4.dirty ||
                 pregunta4.touched)" class="alert alert-danger">
                 <div *ngIf="pregunta4.errors.required">
                   Error valor requerido
@@ -274,8 +245,7 @@
 
             <div>
               <p>{{preguntas[5].enunciado}}</p>
-              <mat-radio-group aria-label="Select an option"
-                [(ngModel)]="respuestas[5].contenidoRespuesta"
+              <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[5].contenidoRespuesta"
                 formControlName="pregunta6" name="pregunta6" [ngClass]="{
                 'is-invalid': submitted }">
                 <mat-radio-button value="Si">Si</mat-radio-button>
@@ -289,8 +259,9 @@
           <div class="col-md-10">
             <br><br>
           </div>
-          <button mat-button matStepperNext
-            [disabled]="segundoGrupoFormulario.invalid"><mat-icon>next_plan</mat-icon>Siguiente</button>
+          <button mat-button matStepperNext [disabled]="segundoGrupoFormulario.invalid">
+            <mat-icon>next_plan</mat-icon>Siguiente
+          </button>
         </div>
       </form>
     </mat-step>
@@ -302,8 +273,7 @@
         <div class="row">
           <div class="col-md-6">
             <p>{{preguntas[6].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[6].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[6].contenidoRespuesta"
               formControlName="pregunta7" name="pregunta7" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -311,8 +281,7 @@
             </mat-radio-group>
 
             <p>{{preguntas[7].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[7].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[7].contenidoRespuesta"
               formControlName="pregunta8" name="pregunta8" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -320,8 +289,7 @@
             </mat-radio-group>
 
             <p>{{preguntas[8].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[8].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[8].contenidoRespuesta"
               formControlName="pregunta9" name="pregunta9" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -330,12 +298,10 @@
 
             <div class="form-group">
               <label>{{preguntas[9].enunciado}}</label>
-              <input type="text" name="pregunta10"
-                [(ngModel)]="respuestas[9].contenidoRespuesta"
+              <input type="text" name="pregunta10" [(ngModel)]="respuestas[9].contenidoRespuesta"
                 formControlName="pregunta10" placeholder="aqui el nombre del
                 servicio" class="form-control">
-              <div
-                *ngIf="pregunta10.invalid && (pregunta10.dirty ||
+              <div *ngIf="pregunta10.invalid && (pregunta10.dirty ||
                 pregunta10.touched)" class="alert alert-danger">
                 <div *ngIf="pregunta10.errors.required">
                   Error es un valor requerido
@@ -347,8 +313,7 @@
           <div class="col-md-6">
 
             <p>{{preguntas[10].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[10].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[10].contenidoRespuesta"
               formControlName="pregunta11" name="pregunta11" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -356,8 +321,7 @@
             </mat-radio-group>
 
             <p>{{preguntas[11].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[11].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[11].contenidoRespuesta"
               formControlName="pregunta12" name="pregunta12" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -372,8 +336,9 @@
           <div class="col-md-10">
             <br><br>
           </div>
-          <button mat-button matStepperNext
-            [disabled]="tercerGrupoFormulario.invalid"><mat-icon>next_plan</mat-icon>Siguiente</button>
+          <button mat-button matStepperNext [disabled]="tercerGrupoFormulario.invalid">
+            <mat-icon>next_plan</mat-icon>Siguiente
+          </button>
         </div>
       </form>
     </mat-step>
@@ -386,8 +351,7 @@
           <div class="col-md-6">
 
             <p>{{preguntas[12].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[12].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[12].contenidoRespuesta"
               formControlName="pregunta13" name="pregunta13" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -395,8 +359,7 @@
             </mat-radio-group>
 
             <p>{{preguntas[13].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[13].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[13].contenidoRespuesta"
               formControlName="pregunta14" name="pregunta14" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -407,8 +370,7 @@
           <div class="col-md-6">
 
             <p>{{preguntas[14].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[14].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[14].contenidoRespuesta"
               formControlName="pregunta15" name="pregunta15" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -416,8 +378,7 @@
             </mat-radio-group>
 
             <p>{{preguntas[15].enunciado}}</p>
-            <mat-radio-group aria-label="Select an option"
-              [(ngModel)]="respuestas[15].contenidoRespuesta"
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[15].contenidoRespuesta"
               formControlName="pregunta16" name="pregunta16" [ngClass]="{
               'is-invalid': submitted }">
               <mat-radio-button value="Si">Si</mat-radio-button>
@@ -432,10 +393,10 @@
           <div class="col-md-10">
             <br><br>
           </div>
-          <button mat-button matStepperNext
-            [disabled]="cuartoGrupoFormulario.invalid"
-            (click)="RegistrarManipulador()"><mat-icon>save</mat-icon>Registrar
-            Manipulador</button>
+          <button mat-button matStepperNext [disabled]="cuartoGrupoFormulario.invalid" (click)="RegistrarManipulador()">
+            <mat-icon>save</mat-icon>Registrar
+            Manipulador
+          </button>
         </div>
       </form>
     </mat-step>

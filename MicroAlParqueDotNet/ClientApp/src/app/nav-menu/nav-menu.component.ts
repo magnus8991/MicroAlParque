@@ -14,9 +14,4 @@ export class NavMenuComponent {
   constructor(private router: Router, private servicioAutenticacion: ServicioAutenticacion) {
     this.servicioAutenticacion.currentUser.subscribe(x => this.currentUser = x);
   }
-
-  cerrarSesion() {
-    this.servicioAutenticacion.cerrarSesion();
-    this.router.navigate(['/']);
-  }
 }
