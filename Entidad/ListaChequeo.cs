@@ -12,7 +12,7 @@ namespace Entidad
         public int ListaChequeoId { get; set; }
         public DateTime Fecha { get; set; }
         public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
-        public string SedeId { get; set; }
+        public int SedeId { get; set; }
         public ListaChequeo() {
             RespuestaChequeos = new List<RespuestaChequeo>();
         }
