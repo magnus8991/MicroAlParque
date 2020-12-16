@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { MiEstadoDeError } from "../../Modelos/EstadoDeError";
 import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
 import { Pregunta } from "../../Modelos/pregunta";
 import { Respuesta } from "../../Modelos/respuesta";
@@ -20,7 +19,6 @@ export class RegistroManipuladorComponent implements OnInit {
   @Input() sedeId: number;
   primerGrupoFormulario: FormGroup;
   manipulador: ManipuladorDeAlimento;
-  error = new MiEstadoDeError();
   submitted = false;
   segundoGrupoFormulario: FormGroup;
   tercerGrupoFormulario: FormGroup;
@@ -32,7 +30,13 @@ export class RegistroManipuladorComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal,
     private servicioRespuesta: RespuestaService, private servicioPregunta: ServicioPregunta,
     private servicioManipulador: ManipuladorService, private mensajes: Mensajes
-  ) { for (let i = 1; i <= 16; i++) { this.preguntas.push(new Pregunta()); this.respuestas.push(new Respuesta()); } }
+  )
+  {
+    for (let i = 1; i <= 16; i++)
+    {
+      this.preguntas.push(new Pregunta()); this.respuestas.push(new Respuesta());
+    }
+  }
 
   ngOnInit(): void {
     this.EstablecerValidacionesFormulario();
