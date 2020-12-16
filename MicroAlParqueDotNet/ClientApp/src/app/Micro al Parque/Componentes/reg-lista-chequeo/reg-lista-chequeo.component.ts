@@ -58,7 +58,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
     });
   }
 
-  RegistrarRespuesta(respuesta: RespuestaChequeo) {
+  RegistrarRespuesta() {
     this.listaChequeo.respuestaChequeos = this.respuestas;
     this.servicioRespuesta.Guardar(this.listaChequeo).subscribe((r) => {
       if (r.error) {
