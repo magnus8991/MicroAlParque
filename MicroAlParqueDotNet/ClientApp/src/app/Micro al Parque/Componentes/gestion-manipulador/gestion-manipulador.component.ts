@@ -18,9 +18,8 @@ export class GestionManipuladorComponent implements OnInit {
 
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Acciones'];
   manipuladores : ManipuladorDeAlimento []= [] ;
-  ManipuladorId: number;
   restauranteId: string;
-  IdSede;
+  sedeId: number;
   dataSource;
   constructor(
     private modalService: NgbModal, private servicioManipulador: ManipuladorService,
@@ -31,16 +30,16 @@ export class GestionManipuladorComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.ManipuladorId = parseInt(params.get('ManipuladorId'));
       this.restauranteId = params.get('restauranteId');
-      this.IdSede = params.get('sedeId');
+      var sedeid = params.get('sedeId');
+      this.sedeId = Number.parseInt(sedeid);
     });
     this.Consultar();
     this.abrirConexionSignalR();
   }
 
   Consultar() {
-    this.servicioManipulador.Consultar(this.IdSede).subscribe(result => {
+    this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
       if(!result.error) {
         this.manipuladores = result.elementos;
         this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
@@ -56,7 +55,7 @@ export class GestionManipuladorComponent implements OnInit {
   openModalManipulador()
   {
     this.modalService.open(RegistroManipuladorComponent, { size: 'xl' }).
-    componentInstance.sedeId = this.IdSede;
+    componentInstance.sedeId = this.sedeId;
   }
 
   abrirConexionSignalR() {
