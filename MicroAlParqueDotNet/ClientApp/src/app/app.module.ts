@@ -43,7 +43,7 @@ import { InicioDeSesionComponent } from './Micro al Parque/Componentes/inicio-de
 import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-registro/usuario-registro.component';
 import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encuesta-restaurante/encuesta-restaurante.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
-import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/registro-encuesta-chequeo/registro-encuesta-chequeo.component';
+import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/registro-encuesta-chequeo/reg-lista-chequeo.component';
 
 @NgModule({
   declarations: [
