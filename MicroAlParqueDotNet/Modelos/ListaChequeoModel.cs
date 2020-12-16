@@ -10,7 +10,7 @@ namespace MicroAlParque.Models
     {
         public IList<RespuestaChequeo> RespuestaChequeos { get; set; }
 
-        public string SedeId { get; set; }
+        public int SedeId { get; set; }
         public ListaChequeoInputModel() {
             RespuestaChequeos = new List<RespuestaChequeo>();
         }

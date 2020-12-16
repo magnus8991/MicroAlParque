@@ -69,7 +69,7 @@ namespace Logica
             }
             return respuesta;
         }
-        public PeticionConsulta<ListaChequeo> ConsultarPorSede(string nit)
+        public PeticionConsulta<ListaChequeo> ConsultarPorSede(int nit)
         {
             PeticionConsulta<ListaChequeo> respuesta = new PeticionConsulta<ListaChequeo>();
             try
