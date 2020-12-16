@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ListaChequeo } from '../../Modelos/lista-chequeo';
+import { Pregunta } from '../../Modelos/pregunta';
+import { RespuestaChequeo } from '../../Modelos/respuesta-chequeo';
+import { ListaChequeoService } from '../../Servicios/lista-chequeo.service';
+import { Mensajes } from '../../Servicios/mensajes';
+import { ServicioPregunta } from '../../Servicios/pregunta.service';
 
 @Component({
   selector: 'app-reg-lista-chequeo',
