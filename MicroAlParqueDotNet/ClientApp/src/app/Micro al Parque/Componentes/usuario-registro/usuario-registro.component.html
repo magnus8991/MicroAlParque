@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label>Identificacion:</label>
                     <input type="text" name="identificacion" formControlName="identificacion"
-                        [(ngModel)]="peticion.elemento.identificacion" placeholder="Digite aquí la identificacion"
+                        [(ngModel)]="peticion.elemento.identificacion" placeholder="Digite aquí su identificacion"
                         class="form-control">
                     <div *ngIf="identificacion.invalid && (identificacion.dirty || identificacion.touched)"
                         class="alert alert-danger">
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label>E-mail:</label>
                     <input type="text" name="email" formControlName="email" class="form-control"
-                        [(ngModel)]="peticion.elemento.email" placeholder="Digite aquí el e-mail">
+                        [(ngModel)]="peticion.elemento.email" placeholder="Digite aquí su e-mail">
                     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                         <div *ngIf="email.errors.required">
                             El e-mail es un valor requerido
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label>Nombres:</label>
                     <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="peticion.elemento.nombres"
-                        placeholder="Digite aquí el nombre" class="form-control">
+                        placeholder="Digite aquí su nombre" class="form-control">
                     <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="alert alert-danger">
                         <div *ngIf="nombres.errors.required">
                             El nombre es un valor requerido
@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label>Primer Apellido:</label>
                     <input type="text" name="primerApellido" formControlName="primerApellido"
-                        [(ngModel)]="peticion.elemento.primerApellido" placeholder="Digite aquí el primer apellido"
+                        [(ngModel)]="peticion.elemento.primerApellido" placeholder="Digite aquí su primer apellido"
                         class="form-control">
                     <div *ngIf="primerApellido.invalid && (primerApellido.dirty || primerApellido.touched)"
                         class="alert alert-danger">
@@ -85,7 +85,7 @@
                 <div class="form-group">
                     <label>Segundo Apellido:</label>
                     <input type="text" name="segundoApellido" formControlName="segundoApellido"
-                        [(ngModel)]="peticion.elemento.segundoApellido" placeholder="Digite aquí el segundo apellido"
+                        [(ngModel)]="peticion.elemento.segundoApellido" placeholder="Digite aquí su segundo apellido"
                         class="form-control">
                     <div *ngIf="segundoApellido.invalid && (segundoApellido.dirty || segundoApellido.touched)"
                         class="alert alert-danger">
@@ -105,8 +105,7 @@
                 <div class="form-group">
                     <label>sexo:</label>
                     <select type="text" name="sexo" formControlName="sexo" [(ngModel)]="peticion.elemento.sexo"
-                        placeholder="Digite
-                            aquí el estado civil" class="form-control">
+                        placeholder="Digite aquí su estado civil" class="form-control">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
@@ -123,7 +122,7 @@
                 <div class="form-group">
                     <label>Edad:</label>
                     <input type="number" name="edad" formControlName="edad" [(ngModel)]="peticion.elemento.edad"
-                        placeholder="Digite aquí el segundo apellido" class="form-control">
+                        placeholder="Digite aquí su edad" class="form-control">
                     <div *ngIf="edad.invalid &&
                             (edad.dirty ||
                             edad.touched)" class="alert alert-danger">
@@ -144,8 +143,7 @@
                 <div class="form-group">
                     <label>Rol:</label>
                     <select type="text" name="rol" formControlName="rol" [(ngModel)]="peticion.elemento.rol"
-                        placeholder="Digite
-                            aquí el estado civil" class="form-control">
+                        placeholder="Digite aquí su estado civil" class="form-control">
                         <option value="Administrador">Administrador</option>
                         <option value="Usuario Estandar">Usuario Estándar</option>
                     </select>
@@ -162,7 +160,7 @@
                 <div class="form-group">
                     <label>Nombre de usuario:</label>
                     <input type="text" name="nombreUsuario" formControlName="nombreUsuario"
-                        [(ngModel)]="peticion.elemento.nombreUsuario" placeholder="Digite aquí el segundo apellido"
+                        [(ngModel)]="peticion.elemento.nombreUsuario" placeholder="Digite aquí su nombre de usuario"
                         class="form-control">
                     <div *ngIf="nombreUsuario.invalid &&
                             (nombreUsuario.dirty ||
@@ -181,7 +179,7 @@
                 <div class="form-group">
                     <label>Contraseña:</label>
                     <input type="password" name="contrasena" formControlName="contrasena"
-                        [(ngModel)]="peticion.elemento.contrasena" placeholder="Digite aquí el segundo apellido"
+                        [(ngModel)]="peticion.elemento.contrasena" placeholder="Digite aquí su contraseña"
                         class="form-control">
                     <div *ngIf="contrasena.invalid &&
                             (contrasena.dirty ||

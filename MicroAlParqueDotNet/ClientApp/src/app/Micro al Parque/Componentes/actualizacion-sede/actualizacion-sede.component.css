@@ -19,6 +19,8 @@
 
 .card {margin: 0 auto; float: none;}
 
+.notabla {width: 100%; height: 40px; font-size: 120%; font-weight: 600; color: #817b7b;}
+
 .btn-secondary {
   width: 100%; background: #0a7aa7;
   font-weight: bold; height: 40px;
