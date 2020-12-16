@@ -20,6 +20,7 @@ export class GestionManipuladorComponent implements OnInit {
   manipuladores : ManipuladorDeAlimento []= [] ;
   ManipuladorId: number;
   restauranteId: string;
+  IdSede;
   dataSource;
   constructor(
     private modalService: NgbModal, private servicioManipulador: ManipuladorService,
@@ -32,13 +33,14 @@ export class GestionManipuladorComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.ManipuladorId = parseInt(params.get('ManipuladorId'));
       this.restauranteId = params.get('restauranteId');
+      this.IdSede = params.get('sedeId');
     });
     this.Consultar();
     this.abrirConexionSignalR();
   }
   
   Consultar() {
-    this.servicioManipulador.Consultar(this.ManipuladorId).subscribe(result => {
+    this.servicioManipulador.Consultar(this.IdSede).subscribe(result => {
       if(!result.error) {
         this.manipuladores = result.elementos;
         this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
