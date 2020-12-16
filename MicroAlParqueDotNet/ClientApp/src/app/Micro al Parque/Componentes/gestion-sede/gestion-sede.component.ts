@@ -21,7 +21,7 @@ export class GestionSedeComponent implements OnInit {
   dataSource;
   IdRestaurante;
 
-  columnsToDisplay = ['IdDeLaSede', 'Nombre', 'NitDelRestaurante','Direccion','Telefono','acciones'];
+  columnsToDisplay = ['IdDeLaSede', 'Nombre','Direccion','Telefono','acciones'];
   expandedElement: Sede | null;
 
   constructor(private modalService: NgbModal, private servicioSede: ServicioSede,
@@ -86,7 +86,7 @@ export class GestionSedeComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+
   abrirConexionSignalR() {
     this.signalRService.SedeReceived.subscribe((sede: Sede) => {
       this.peticion.elementos.push(sede);

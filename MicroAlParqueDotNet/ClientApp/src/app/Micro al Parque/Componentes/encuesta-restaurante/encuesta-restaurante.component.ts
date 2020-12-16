@@ -15,6 +15,7 @@ import { Mensajes } from '../../Servicios/mensajes';
 export class EncuestaRestauranteComponent implements OnInit {
 
   dataSource;
+  restauranteId: string;
   sedeId;
   columnsToDisplay = ['id', 'fecha', 'porcentaje','acciones'];
   peticion: PeticionConsulta<ListaChequeo> ;
@@ -25,7 +26,8 @@ export class EncuestaRestauranteComponent implements OnInit {
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
     this.route.paramMap.subscribe(params => {
-      this.sedeId = params.get('restauranteId');
+      this.restauranteId = params.get('restauranteId');
+      this.sedeId = params.get('sedeId');
     });
     this.Consultar();
 
