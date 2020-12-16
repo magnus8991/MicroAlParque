@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroEncuestaChequeoComponent } from './registro-encuesta-chequeo.component';
+import { RegistroEncuestaChequeoComponent } from './reg-lista-chequeo.component';
 
 describe('RegistroEncuestaChequeoComponent', () => {
   let component: RegistroEncuestaChequeoComponent;
