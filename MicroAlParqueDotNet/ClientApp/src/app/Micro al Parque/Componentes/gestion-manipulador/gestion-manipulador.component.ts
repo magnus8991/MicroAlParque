@@ -38,7 +38,7 @@ export class GestionManipuladorComponent implements OnInit {
     this.Consultar();
     this.abrirConexionSignalR();
   }
-  
+
   Consultar() {
     this.servicioManipulador.Consultar(this.IdSede).subscribe(result => {
       if(!result.error) {
@@ -56,7 +56,7 @@ export class GestionManipuladorComponent implements OnInit {
   openModalManipulador()
   {
     this.modalService.open(RegistroManipuladorComponent, { size: 'xl' }).
-    componentInstance.ManipuladorId = this.ManipuladorId;
+    componentInstance.sedeId = this.IdSede;
   }
 
   abrirConexionSignalR() {

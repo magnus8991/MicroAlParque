@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ListaChequeo } from '../../Modelos/lista-chequeo';
+import { Pregunta } from '../../Modelos/pregunta';
+import { RespuestaChequeo } from '../../Modelos/respuesta-chequeo';
+import { ListaChequeoService } from '../../Servicios/lista-chequeo.service';
+import { Mensajes } from '../../Servicios/mensajes';
+import { ServicioPregunta } from '../../Servicios/pregunta.service';
 
 @Component({
   selector: 'app-reg-lista-chequeo',
@@ -7,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroEncuestaChequeoComponent implements OnInit {
 
+  @Input() sedeId: number;
   primerGrupoFormulario: FormGroup;
   segundoGrupoFormulario: FormGroup;
   isEditable = true;
@@ -31,6 +40,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
 
   ngOnInit(): void {
     this.InicializarPreguntasYRespuestas();
+    this.EstablecerValidacionesFormulario();
   }
 
   crearRespuestas() {
@@ -52,6 +62,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
 
   RegistrarRespuesta() {
     this.listaChequeo.respuestaChequeos = this.respuestas;
+    this.listaChequeo.sedeId = this.sedeId;
     this.servicioRespuesta.Guardar(this.listaChequeo).subscribe((r) => {
       if (r.error) {
         this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);

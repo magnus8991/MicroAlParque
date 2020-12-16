@@ -44,9 +44,5 @@ export class EncuestaRestauranteComponent implements OnInit {
     });
   }
 
-  AbrirEncuesta()
-  {
-
-  }
 
 }

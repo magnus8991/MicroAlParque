@@ -78,7 +78,7 @@ import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/
     MatRadioModule,
     MatDividerModule
   ],
-  entryComponents:[GestionRestauranteComponent,GestionSedeComponent,AlertModalComponent],
+  entryComponents:[GestionRestauranteComponent,GestionSedeComponent,AlertModalComponent,RegistroEncuestaChequeoComponent],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},NgbNav],
   bootstrap: [AppComponent]
 })

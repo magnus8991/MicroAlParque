@@ -1,1 +1,157 @@
-<p>registro-encuesta-chequeo works!</p>
+<div class="modal-header header">
+  <h1 class="modal-title">Registrar Manipulador de Alimentos</h1>
+</div>
+<div class="modal-body">
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="primerGrupoFormulario" [editable]="isEditable">
+      <ng-template matStepLabel>Seccion 1</ng-template>
+      <form [formGroup]="primerGrupoFormulario">
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <p>{{preguntas[0].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[0].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>{{preguntas[1].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[1].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>{{preguntas[2].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[2].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+
+          </div>
+          <div class="col-md-6">
+
+            <p>{{preguntas[3].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[3].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>{{preguntas[4].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[4].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+              <div *ngIf="pregunta4.invalid && (pregunta4.dirty ||
+                pregunta4.touched)" class="alert alert-danger">
+                <div *ngIf="pregunta4.errors.required">
+                  Error valor requerido
+                </div>
+              </div>
+
+            </div>
+          </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="segundoGrupoFormulario" [editable]="isEditable">
+      <form [formGroup]="segundoGrupoFormulario">
+        <ng-template matStepLabel>Seccion 2</ng-template>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <p>{{preguntas[5].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[5].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>{{preguntas[6].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[6].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+
+          </div>
+          <div class="col-md-6">
+
+            <p>{{preguntas[7].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[7].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+            <p>{{preguntas[8].enunciado}}</p>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="respuestas[8].contenidoRespuesta"
+              formControlName="pregunta2" name="pregunta2" [ngClass]="{
+              'is-invalid': submitted }">
+              <mat-radio-button value="Cumple">Si</mat-radio-button>
+              <mat-radio-button value="No Cumple">No</mat-radio-button>
+              <mat-radio-button value="Cumple Parcialmente">Si</mat-radio-button>
+              <mat-radio-button value="No Aplica">No</mat-radio-button>
+            </mat-radio-group>
+
+              <div *ngIf="pregunta4.invalid && (pregunta4.dirty ||
+                pregunta4.touched)" class="alert alert-danger">
+                <div *ngIf="pregunta4.errors.required">
+                  Error valor requerido
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9">
+            <br><br>
+          </div>
+          <button mat-button matStepperNext [disabled]="segundoGrupoFormulario.invalid" (click)="RegistrarRespuesta()>
+            <mat-icon>save</mat-icon> Siguiente
+          </button>
+          <button mat-button type="button" (click)="activeModal.close(null)">
+            <mat-icon>cancel</mat-icon> Cancelar
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>
