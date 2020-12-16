@@ -20,7 +20,7 @@ export class EncuestaRestauranteComponent implements OnInit {
   peticion: PeticionConsulta<ListaChequeo> ;
 
   constructor(private modalService: NgbModal,
-  private mensajes: Mensajes,private servicioEncuesta: ListaChequeoService,private route) { }
+  private mensajes: Mensajes,private servicioEncuesta: ListaChequeoService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
