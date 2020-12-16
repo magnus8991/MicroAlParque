@@ -16,7 +16,6 @@ import { NgbModule, NgbNav } from '@ng-bootstrap/ng-bootstrap';
 import { ActualizacionRestauranteComponent } from './Micro al Parque/Componentes/actualizacion-restaurante/act-restaurante.component';
 import { GestionRestauranteComponent } from './Micro al Parque/Componentes/gestion-restaurante/gestion-restaurante.component';
 import { GestionManipuladorComponent } from './Micro al Parque/Componentes/gestion-manipulador/gestion-manipulador.component';
-import { EncuestaManipuladorComponent } from './Micro al Parque/Componentes/encuesta-manipulador/encuesta-manipulador.component';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,7 +47,7 @@ import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encu
   declarations: [
     AppComponent, NavMenuComponent, InicioComponent, EncabezadoComponent, FooterComponent,
     RegistroRestauranteComponent, RegistroManipuladorComponent, GestionRestauranteComponent,
-    GestionManipuladorComponent, EncuestaManipuladorComponent, ActualizacionRestauranteComponent,
+    GestionManipuladorComponent, ActualizacionRestauranteComponent,
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
     InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent

@@ -69,5 +69,21 @@ namespace Logica
             }
             return respuesta;
         }
+        public PeticionConsulta<ListaChequeo> ConsultarPorRestaurante(string nit)
+        {
+            PeticionConsulta<ListaChequeo> respuesta = new PeticionConsulta<ListaChequeo>();
+            try
+            {
+                respuesta.Elementos = _contexto.ListasDeChequeo.Where(l => l.RestauranteId == nit).Include(lc => lc.RespuestaChequeos).ToList();
+                respuesta = (respuesta.Elementos.Count == 0) ?
+                    new PeticionConsulta<ListaChequeo>(new List<ListaChequeo>(), "No se han encontrado listas de chequeo registradas", true) :
+                    new PeticionConsulta<ListaChequeo>(respuesta.Elementos.ToList(), "Consulta realizada con éxito", false);
+            }
+            catch (Exception e)
+            {
+                respuesta = new PeticionConsulta<ListaChequeo>(new List<ListaChequeo>(), "Error: " + e.Message, true);
+            }
+            return respuesta;
+        }
     }
 }

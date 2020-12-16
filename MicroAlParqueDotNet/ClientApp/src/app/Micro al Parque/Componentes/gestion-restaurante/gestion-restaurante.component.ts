@@ -7,8 +7,6 @@ import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
 import { ActualizacionRestauranteComponent } from '../actualizacion-restaurante/act-restaurante.component';
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { GestionSedeComponent } from '../gestion-sede/gestion-sede.component';
-import { Sede } from '../../Modelos/sede';
 import { ServicioSede } from '../../Servicios/sede.service';
 import { MatTableDataSource } from '@angular/material/table';
 

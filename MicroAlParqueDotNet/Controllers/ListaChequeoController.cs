@@ -31,9 +31,9 @@ namespace MicroAlParque.Controllers
 
         // GET: api/Lote/5
         [HttpGet("{IdRestaurante}")]
-        public ActionResult<Peticion<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
+        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(string IdRestaurante)
         {
-            var response = _servicioListaChequeo.BuscarPorIdListaChequeo(IdListaChequeo);
+            var response = _servicioListaChequeo.ConsultarPorRestaurante(IdRestaurante);
             return Ok(response);
         }
         
@@ -45,14 +45,6 @@ namespace MicroAlParque.Controllers
             var response = _servicioListaChequeo.Guardar(listaChequeo);
             return Ok(response);
         }
-      
-        // DELETE: api/Lote/5
-        /*[HttpDelete("{codigoP}")]
-        public ActionResult<string> Delete(string codigoP)
-        {
-            string mensaje = _LoteService.Eliminar(codigoP);
-            return Ok(mensaje);
-        }*/
         private ListaChequeo MapearListaChequeo(ListaChequeoInputModel listaChequeoInput)
         {
             var ListaChequeo = new ListaChequeo();
@@ -61,11 +53,5 @@ namespace MicroAlParque.Controllers
             ListaChequeo.Fecha = DateTime.Now;
             return ListaChequeo;
         }
-        /*// PUT: api/Lote/5
-        [HttpPut("{codigoP}")]
-        public ActionResult<string> Put(string codigoP, Lote Lote)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }
