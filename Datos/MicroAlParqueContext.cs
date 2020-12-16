@@ -18,9 +18,9 @@ namespace Datos
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ListaChequeo>()
-                .HasOne<Restaurante>()
+                .HasOne<Sede>()
                 .WithMany()
-                .HasForeignKey(l => l.RestauranteId);
+                .HasForeignKey(l => l.SedeId);
             modelBuilder.Entity<RespuestaChequeo>()
                 .HasOne<Pregunta>()
                 .WithMany()

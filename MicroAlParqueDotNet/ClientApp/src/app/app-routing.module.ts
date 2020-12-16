@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'login/:cerrarSesion', component: InicioDeSesionComponent },
   { path: 'usuarioRegistro', component: UsuarioRegistroComponent },
-  { path: 'encuesta-restaurante/:restauranteId', component: EncuestaRestauranteComponent },
+  { path: 'encuesta-restaurante/:sedeId', component: EncuestaRestauranteComponent },
   { path: 'FAQ', component: PreguntasFrecuentesComponent }
 ];
 

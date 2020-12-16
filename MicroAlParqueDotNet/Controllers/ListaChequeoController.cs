@@ -30,10 +30,10 @@ namespace MicroAlParque.Controllers
         }
 
         // GET: api/Lote/5
-        [HttpGet("{IdRestaurante}")]
-        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(string IdRestaurante)
+        [HttpGet("{IdSede}")]
+        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(string IdSede)
         {
-            var response = _servicioListaChequeo.ConsultarPorRestaurante(IdRestaurante);
+            var response = _servicioListaChequeo.ConsultarPorSede(IdSede);
             return Ok(response);
         }
         
@@ -48,7 +48,7 @@ namespace MicroAlParque.Controllers
         private ListaChequeo MapearListaChequeo(ListaChequeoInputModel listaChequeoInput)
         {
             var ListaChequeo = new ListaChequeo();
-            ListaChequeo.RestauranteId = listaChequeoInput.RestauranteId;
+            ListaChequeo.SedeId = listaChequeoInput.SedeId;
             ListaChequeo.RespuestaChequeos = listaChequeoInput.RespuestaChequeos;
             ListaChequeo.Fecha = DateTime.Now;
             return ListaChequeo;

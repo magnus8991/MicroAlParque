@@ -4,6 +4,6 @@ export class ListaChequeo {
   listaChequeoId : number;
   respuestaChequeos : RespuestaChequeo []= [];
   fecha : Date;
-  idRestaurante: number;
+  sedeId: number;
   porcentajeCumplimiento : number;
 }

@@ -15,7 +15,7 @@ import { Mensajes } from '../../Servicios/mensajes';
 export class EncuestaRestauranteComponent implements OnInit {
 
   dataSource;
-  IdRestaurante;
+  sedeId;
   columnsToDisplay = ['id', 'fecha', 'porcentaje','acciones'];
   peticion: PeticionConsulta<ListaChequeo> ;
 
@@ -25,14 +25,14 @@ export class EncuestaRestauranteComponent implements OnInit {
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
     this.route.paramMap.subscribe(params => {
-      this.IdRestaurante = params.get('restauranteId');
+      this.sedeId = params.get('restauranteId');
     });
     this.Consultar();
 
   }
 
   Consultar() {
-    this.servicioEncuesta.Consultar(this.IdRestaurante).subscribe(result => {
+    this.servicioEncuesta.Consultar(this.sedeId).subscribe(result => {
       if (result != null) {
         this.peticion = result;
         this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
