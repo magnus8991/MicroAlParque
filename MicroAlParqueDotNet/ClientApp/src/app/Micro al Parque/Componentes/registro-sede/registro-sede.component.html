@@ -22,7 +22,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Nombre de la Sede:</label>
-            <input type="text" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre" 
+            <input type="text" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre"
               placeholder="Aquí el nombre de la sede" class="form-control">
             <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
               <div *ngIf="nombre.errors.required">
@@ -71,14 +71,16 @@
 
       <div class="button">
         <div class="col-md-4">
-          <button class="btn btn-secondary" (click)="Agregar()"><i class="fas fa-plus"></i> Agregar
-            Sede</button>
+          <button class="notabla" mat-button (click)="Agregar()"><i class="fas fa-plus"></i>
+            Agregar Sede</button>
         </div>
         <div class="col-md-4">
-          <button type="reset" class="btn btn-secondary"><i class="fas fa-broom"></i> Limpiar Formulario</button>
+          <button type="reset" class="notabla" mat-button><i class="fas fa-broom"></i> Limpiar Formulario
+          </button>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-secondary" (click)="onClose()"><i class="fas fa-backward"></i> Retroceder</button>
+          <button type="reset" class="notabla" mat-button (click)="onClose()">
+            <i class="fas fa-backward"></i> Retroceder</button>
         </div>
       </div>
     </form>

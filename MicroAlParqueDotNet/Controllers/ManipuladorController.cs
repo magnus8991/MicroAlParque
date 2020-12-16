@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
+using Microsoft.AspNetCore.SignalR;
+using MicroAlParque.Hubs;
 
 namespace MicroAlParque.Controllers
 {
@@ -17,9 +19,11 @@ namespace MicroAlParque.Controllers
     public class ManipuladorController : ControllerBase
     {
         private readonly ServicioManipuladorDeAlimento _servicioManipulador;
-        public ManipuladorController(MicroAlParqueContext contexto)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public ManipuladorController(MicroAlParqueContext contexto, IHubContext<SignalHub> hubContext)
         {
             _servicioManipulador = new ServicioManipuladorDeAlimento(contexto);
+            _hubContext = hubContext;
         }
          // GET: api/Lote
         [HttpGet("{sedeId}")]
@@ -34,10 +38,12 @@ namespace MicroAlParque.Controllers
         
         // POST: api/Lote
         [HttpPost]
-        public ActionResult<Peticion<ManipuladorViewModel>> Guardar(ManipuladorInputModel manipuladorInput)
+        public async Task<ActionResult<Peticion<ManipuladorViewModel>>> Guardar(ManipuladorInputModel manipuladorInput)
         {
             ManipuladorDeAlimento manipulador = MapearManipulador(manipuladorInput);
             var response = _servicioManipulador.Guardar(manipulador);
+            if (response.Error) return BadRequest(response.Mensaje);
+            await _hubContext.Clients.All.SendAsync("ManipuladorRegistrado", response.Elemento);
             return Ok(response);
         }
       

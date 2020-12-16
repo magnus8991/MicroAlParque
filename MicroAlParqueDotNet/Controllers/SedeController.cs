@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
+using Microsoft.AspNetCore.SignalR;
+using MicroAlParque.Hubs;
 
 namespace MicroAlParque.Controllers
 {
@@ -17,9 +19,11 @@ namespace MicroAlParque.Controllers
     public class SedeController : ControllerBase
     {
         private readonly ServicioSede _servicioSede;
-        public SedeController(MicroAlParqueContext contexto)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public SedeController(MicroAlParqueContext contexto, IHubContext<SignalHub> hubContext)
         {
             _servicioSede = new ServicioSede(contexto);
+            _hubContext = hubContext;
         }
         // GET: api/Lote
         [HttpGet("{RestauranteId}")]
@@ -39,10 +43,12 @@ namespace MicroAlParque.Controllers
 
         // POST: api/Lote
         [HttpPost]
-        public ActionResult<Peticion<SedeViewModel>> Guardar(SedeInputModel SedeInput)
+        public async Task<ActionResult<Peticion<SedeViewModel>>> Guardar(SedeInputModel SedeInput)
         {
             Sede Sede = MapearSede(SedeInput);
             var response = _servicioSede.Guardar(Sede);
+            if (response.Error) return BadRequest(response.Mensaje);
+            await _hubContext.Clients.All.SendAsync("SedeRegistrada", response.Elemento);
             return Ok(response);
         }
 
@@ -65,10 +71,12 @@ namespace MicroAlParque.Controllers
         
         // PUT: api/Lote/5
         [HttpPut("{SedeId}")]
-        public ActionResult<Peticion<SedeViewModel>> Modificar(int SedeId, SedeInputModel SedeInput)
+        public async Task<ActionResult<Peticion<SedeViewModel>>> Modificar(int SedeId, SedeInputModel SedeInput)
         {
             Sede Sede = MapearSede(SedeInput);
             var response = _servicioSede.Modificar(Sede, SedeId);
+            if (response.Error) return BadRequest(response.Mensaje);
+            await _hubContext.Clients.All.SendAsync("SedeModificada", response.Elemento);
             return Ok(response);
         }
     }

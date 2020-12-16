@@ -10,6 +10,7 @@ import { InicioDeSesionComponent } from './Micro al Parque/Componentes/inicio-de
 import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-registro/usuario-registro.component';
 import { AuthGuard } from './Micro al Parque/Servicios/auth.guard';
 import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encuesta-restaurante/encuesta-restaurante.component';
+import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'login/:cerrarSesion', component: InicioDeSesionComponent },
   { path: 'usuarioRegistro', component: UsuarioRegistroComponent },
-  { path: 'encuesta-restaurante/:restauranteId', component: EncuestaRestauranteComponent }
+  { path: 'encuesta-restaurante/:restauranteId', component: EncuestaRestauranteComponent },
+  { path: 'FAQ', component: PreguntasFrecuentesComponent }
 ];
 
 @NgModule({

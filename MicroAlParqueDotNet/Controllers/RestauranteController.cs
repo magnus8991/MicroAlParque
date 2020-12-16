@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
+using Microsoft.AspNetCore.SignalR;
+using MicroAlParque.Hubs;
 
 namespace MicroAlParque.Controllers
 {
@@ -17,9 +19,11 @@ namespace MicroAlParque.Controllers
     public class RestauranteController : ControllerBase
     {
         private readonly ServicioRestaurante _servicioRestaurante;
-        public RestauranteController(MicroAlParqueContext contexto)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public RestauranteController(MicroAlParqueContext contexto, IHubContext<SignalHub> hubContext)
         {
             _servicioRestaurante = new ServicioRestaurante(contexto);
+            _hubContext = hubContext;
         }
         // GET: api/Lote
         [HttpGet]
@@ -39,18 +43,22 @@ namespace MicroAlParque.Controllers
 
         // POST: api/Lote
         [HttpPost]
-        public ActionResult<Peticion<RestauranteViewModel>> Guardar(RestauranteInputModel restauranteInput)
+        public async Task<ActionResult<Peticion<RestauranteViewModel>>> Guardar(RestauranteInputModel restauranteInput)
         {
             Restaurante restaurante = MapearRestaurante(restauranteInput);
             var response = _servicioRestaurante.Guardar(restaurante);
+            if (response.Error) return BadRequest(response.Mensaje);
+            await _hubContext.Clients.All.SendAsync("RestauranteRegistrado", response.Elemento);
             return Ok(response);
         }
 
         [HttpPut]
-        public ActionResult<Peticion<RestauranteViewModel>> Modificar(RestauranteInputModel restauranteInput)
+        public async Task<ActionResult<Peticion<RestauranteViewModel>>> Modificar(RestauranteInputModel restauranteInput)
         {
             Restaurante restaurante = MapearRestaurante(restauranteInput);
             var response = _servicioRestaurante.Modificar(restaurante);
+            if (response.Error) return BadRequest(response.Mensaje);
+            await _hubContext.Clients.All.SendAsync("RestauranteModificado", response.Elemento);
             return Ok(response);
         }
         

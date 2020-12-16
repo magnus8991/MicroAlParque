@@ -7,8 +7,8 @@ import { Peticion, PeticionConsulta } from '../../Modelos/peticion';
 import { ActualizacionRestauranteComponent } from '../actualizacion-restaurante/act-restaurante.component';
 import { ServicioRestaurante } from '../../Servicios/restaurante.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { ServicioSede } from '../../Servicios/sede.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { SignalRServiceRestaurante } from '../../Servicios/signal-r.service';
 
 @Component({
   selector: 'app-gestion-restaurante',
@@ -33,11 +33,12 @@ export class GestionRestauranteComponent implements OnInit {
   expandedElement: Restaurante | null;
 
   constructor(private modalService: NgbModal, private servicioRestaurante: ServicioRestaurante,
-  private mensajes: Mensajes,private servicioSede: ServicioSede) { }
+  private mensajes: Mensajes, private signalRService: SignalRServiceRestaurante) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
     this.Consultar();
+    this.abrirConexionSignalR();
   }
   ObtenerNombreCompleto(restaurante : Restaurante)
   {
@@ -54,14 +55,7 @@ export class GestionRestauranteComponent implements OnInit {
   }
 
   RegistrarRestaurante() {
-    this.modalService.open(RegistroRestauranteComponent, {size: 'xl', backdrop: 'static', keyboard: false}).result.then(r => {
-      if (r != null) {
-        var restaurante: Restaurante = r;
-        if (restaurante.nit != undefined) {
-          this.peticion.elementos.push(r);
-        }
-      }
-    });
+    this.modalService.open(RegistroRestauranteComponent, {size: 'xl', backdrop: 'static', keyboard: false});
   }
 
   Modificar(nit: string) {
@@ -73,5 +67,16 @@ export class GestionRestauranteComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  abrirConexionSignalR() {
+    this.signalRService.RestauranteReceived.subscribe((Restaurante: Restaurante) => {
+      this.peticion.elementos.push(Restaurante);
+    });
+    this.signalRService.RestauranteModified.subscribe((Restaurante: Restaurante) => {
+      var index = this.peticion.elementos.findIndex(s => s.nit == Restaurante.nit);
+      this.peticion.elementos.splice(index,1);
+      this.peticion.elementos.push(Restaurante);
+    });
   }
 }

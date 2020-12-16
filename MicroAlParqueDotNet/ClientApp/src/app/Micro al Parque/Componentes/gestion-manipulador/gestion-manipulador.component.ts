@@ -6,6 +6,7 @@ import { ManipuladorService } from '../../Servicios/manipulador.service';
 import { Mensajes } from '../../Servicios/mensajes';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { SignalRServiceManipulador } from '../../Servicios/signal-r.service';
 
 
 @Component({
@@ -17,26 +18,27 @@ export class GestionManipuladorComponent implements OnInit {
 
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Acciones'];
   manipuladores : ManipuladorDeAlimento []= [] ;
-  sedeId: number;
+  ManipuladorId: number;
   restauranteId: string;
   dataSource;
   constructor(
     private modalService: NgbModal, private servicioManipulador: ManipuladorService,
-    private mensaje : Mensajes, private  route: ActivatedRoute
+    private mensaje : Mensajes, private  route: ActivatedRoute, private signalRService: SignalRServiceManipulador
     ) {
 
     }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.sedeId = parseInt(params.get('sedeId'));
+      this.ManipuladorId = parseInt(params.get('ManipuladorId'));
       this.restauranteId = params.get('restauranteId');
     });
     this.Consultar();
+    this.abrirConexionSignalR();
   }
   
   Consultar() {
-    this.servicioManipulador.Consultar(this.sedeId).subscribe(result => {
+    this.servicioManipulador.Consultar(this.ManipuladorId).subscribe(result => {
       if(!result.error) {
         this.manipuladores = result.elementos;
         this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
@@ -51,14 +53,13 @@ export class GestionManipuladorComponent implements OnInit {
 
   openModalManipulador()
   {
-    const modalRegistro = this.modalService.open(RegistroManipuladorComponent, { size: 'xl' });
-    modalRegistro.componentInstance.sedeId = this.sedeId;
-    modalRegistro.result.then(m => {
-      if(m != null)
-      {
-        this.Consultar();
-      }
-    });
+    this.modalService.open(RegistroManipuladorComponent, { size: 'xl' }).
+    componentInstance.ManipuladorId = this.ManipuladorId;
+  }
 
+  abrirConexionSignalR() {
+    this.signalRService.ManipuladorReceived.subscribe((Manipulador: ManipuladorDeAlimento) => {
+      this.manipuladores.push(Manipulador);
+    });
   }
 }
