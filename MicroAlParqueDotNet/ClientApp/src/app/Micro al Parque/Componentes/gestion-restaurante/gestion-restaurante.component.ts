@@ -72,11 +72,13 @@ export class GestionRestauranteComponent implements OnInit {
   abrirConexionSignalR() {
     this.signalRService.RestauranteReceived.subscribe((Restaurante: Restaurante) => {
       this.peticion.elementos.push(Restaurante);
+      this.dataSource = new MatTableDataSource<Restaurante>(this.peticion.elementos);
     });
     this.signalRService.RestauranteModified.subscribe((Restaurante: Restaurante) => {
       var index = this.peticion.elementos.findIndex(s => s.nit == Restaurante.nit);
       this.peticion.elementos.splice(index,1);
       this.peticion.elementos.push(Restaurante);
+      this.dataSource = new MatTableDataSource<Restaurante>(this.peticion.elementos);
     });
   }
 }

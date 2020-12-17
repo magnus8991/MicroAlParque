@@ -90,11 +90,13 @@ export class GestionSedeComponent implements OnInit {
   abrirConexionSignalR() {
     this.signalRService.SedeReceived.subscribe((sede: Sede) => {
       this.peticion.elementos.push(sede);
+      this.dataSource = new MatTableDataSource<Sede>(this.peticion.elementos);
     });
     this.signalRService.SedeModified.subscribe((sede: Sede) => {
       var index = this.peticion.elementos.findIndex(s => s.sedeId == sede.sedeId);
       this.peticion.elementos.splice(index,1);
       this.peticion.elementos.push(sede);
+      this.dataSource = new MatTableDataSource<Sede>(this.peticion.elementos);
     });
   }
 }

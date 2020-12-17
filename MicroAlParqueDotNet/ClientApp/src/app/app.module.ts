@@ -54,7 +54,7 @@ import { VerChequeoComponent } from './Micro al Parque/Componentes/ver-chequeo/v
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
     InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent,
-    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent
+    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent,
 
 
   ],

@@ -21,24 +21,20 @@ namespace MicroAlParque.Controllers
         {
             _servicioListaChequeo = new ServicioListaChequeo(contexto);
         }
-         // GET: api/Lote
-        [HttpGet]
-        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Consultar()
-        {
-            var response = _servicioListaChequeo.ConsultarTodos();
-            return Ok(response);
-        }
 
         // GET: api/Lote/5
-        [HttpGet("{IdSede}")]
-        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Consultar(int IdSede)
+        [HttpGet("{Formulario}/{IdSede}")]
+        public object EjecutarConsulta(string Formulario, int Identificador) {
+            return (Formulario == "Busqueda")? Buscar(Identificador) : Consultar(Identificador);
+        }
+        private ActionResult<PeticionConsulta<ListaChequeoViewModel>> Consultar(int IdSede)
         {
             var response = _servicioListaChequeo.ConsultarPorSede(IdSede);
             return Ok(response);
         }
 
-        [HttpGet("{IdListaChequeo}")]
-        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
+        [HttpGet("{Busqueda}/{IdListaChequeo}")]
+        private ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
         {
             var response = _servicioListaChequeo.BuscarPorIdListaChequeo(IdListaChequeo);
             return Ok(response);

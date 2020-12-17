@@ -26,8 +26,8 @@ export class ListaChequeoService {
       );
   }
 
-  Consultar(RestauranteId: number): Observable<PeticionConsulta<ListaChequeo>> {
-    return this.http.get<PeticionConsulta<ListaChequeo>>(this.baseUrl + 'api/ListaChequeo/' + RestauranteId)
+  Consultar(SedeId: number): Observable<PeticionConsulta<ListaChequeo>> {
+    return this.http.get<PeticionConsulta<ListaChequeo>>(this.baseUrl + 'api/ListaChequeo/Consulta/' + SedeId)
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<PeticionConsulta<ListaChequeo>>('Consultar ListaChequeo', null))

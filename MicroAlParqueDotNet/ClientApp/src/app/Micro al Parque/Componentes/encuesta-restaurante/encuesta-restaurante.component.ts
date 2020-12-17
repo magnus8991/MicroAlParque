@@ -39,11 +39,11 @@ export class EncuestaRestauranteComponent implements OnInit {
   Consultar() {
     this.servicioEncuesta.Consultar(this.sedeId).subscribe(result => {
       if (result != null) {
-        this.peticion = result;
-        this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
-        this.dataSource = new MatTableDataSource<ListaChequeo>(this.peticion.elementos);
+        if (result.elementos.length > 0) {
+          this.peticion = result;
+          this.dataSource = new MatTableDataSource<ListaChequeo>(this.peticion.elementos);
+        }
       }
-      else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
     });
   }
 

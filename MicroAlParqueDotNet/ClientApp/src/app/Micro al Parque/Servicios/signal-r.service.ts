@@ -8,7 +8,7 @@ import { Restaurante } from '../Modelos/restaurante';
   providedIn: 'root'
 })
 export abstract class SignalRService {
-  public hubConnection: signalR.HubConnection;
+  hubConnection: signalR.HubConnection;
   RestauranteReceived = new EventEmitter<Restaurante>();
   RestauranteModified = new EventEmitter<Restaurante>();
   SedeReceived = new EventEmitter<Sede>();

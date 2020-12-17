@@ -13,7 +13,9 @@ fa-sad-tear {color:rgb(121, 113, 113);}
 
 .container {padding-top: 5%; padding-bottom: 5%;}
 
-.notabla {width: 100%; font-size: 170%; margin-top: 2.5%;}
+button {width: 100%;}
+
+.notabla {width: 100%; font-size: 150%; margin-top: 2.5%;color:rgb(121, 113, 113);}
 
 .hnotabla {margin-top: 4%;}
 

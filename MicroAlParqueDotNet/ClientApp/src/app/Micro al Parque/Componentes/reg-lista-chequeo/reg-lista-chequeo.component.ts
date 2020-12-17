@@ -64,7 +64,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
     this.listaChequeo.respuestaChequeos = this.respuestas;
     this.listaChequeo.sedeId = this.sedeId;
     this.servicioRespuesta.Guardar(this.listaChequeo).subscribe((r) => {
-      this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
+      this.mensajes.Mostrar("¡Oh no, Ha sucedido un error!", r.mensaje);
     });
   }
 

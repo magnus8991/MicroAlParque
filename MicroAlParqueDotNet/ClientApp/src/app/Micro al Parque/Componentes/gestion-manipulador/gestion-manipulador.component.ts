@@ -61,6 +61,7 @@ export class GestionManipuladorComponent implements OnInit {
   abrirConexionSignalR() {
     this.signalRService.ManipuladorReceived.subscribe((Manipulador: ManipuladorDeAlimento) => {
       this.manipuladores.push(Manipulador);
+      this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
     });
   }
 }
