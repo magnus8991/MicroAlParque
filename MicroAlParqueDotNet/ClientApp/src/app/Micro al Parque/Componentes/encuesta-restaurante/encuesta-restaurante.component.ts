@@ -6,6 +6,7 @@ import { ListaChequeo } from '../../Modelos/lista-chequeo';
 import { PeticionConsulta } from '../../Modelos/peticion';
 import { ListaChequeoService } from '../../Servicios/lista-chequeo.service';
 import { Mensajes } from '../../Servicios/mensajes';
+import { SignalRServiceListaChequeo } from '../../Servicios/signal-r.service';
 import { RegistroEncuestaChequeoComponent } from '../reg-lista-chequeo/reg-lista-chequeo.component';
 import { VerChequeoComponent } from '../ver-chequeo/ver-chequeo.component';
 
@@ -23,7 +24,8 @@ export class EncuestaRestauranteComponent implements OnInit {
   peticion: PeticionConsulta<ListaChequeo> ;
 
   constructor(private modalService: NgbModal,
-  private mensajes: Mensajes,private servicioEncuesta: ListaChequeoService,private route: ActivatedRoute) { }
+  private mensajes: Mensajes,private servicioEncuesta: ListaChequeoService,
+  private route: ActivatedRoute, private signalRService: SignalRServiceListaChequeo) { }
 
   ngOnInit(): void {
     this.peticion = new PeticionConsulta();
@@ -33,7 +35,7 @@ export class EncuestaRestauranteComponent implements OnInit {
       this.sedeId = Number.parseInt(id);
     });
     this.Consultar();
-
+    this.abrirConexionSignalR();
   }
 
   Consultar() {
@@ -52,11 +54,17 @@ export class EncuestaRestauranteComponent implements OnInit {
     this.modalService.open(RegistroEncuestaChequeoComponent, { size: 'xl' }).
     componentInstance.sedeId = this.sedeId;
   }
-  openModalLista(listaChequeoId : number)
+
+  openModalLista(ListaChequeo : ListaChequeo)
   {
     this.modalService.open(VerChequeoComponent, { size: 'xl' }).
-    componentInstance.listaChequeoId = listaChequeoId;
+    componentInstance.listaChequeo = ListaChequeo;
   }
 
-
+  abrirConexionSignalR() {
+    this.signalRService.ListaChequeoReceived.subscribe((ListaChequeo: ListaChequeo) => {
+      this.peticion.elementos.push(ListaChequeo);
+      this.dataSource  = new MatTableDataSource<ListaChequeo>(this.peticion.elementos);
+    });
+  }
 }

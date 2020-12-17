@@ -3,6 +3,7 @@ import * as signalR from "@aspnet/signalr";
 import { ManipuladorDeAlimento } from '../Modelos/manipulador-de-alimento';
 import { Sede } from '../Modelos/sede';
 import { Restaurante } from '../Modelos/restaurante';
+import { ListaChequeo } from '../Modelos/lista-chequeo';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export abstract class SignalRService {
   SedeReceived = new EventEmitter<Sede>();
   SedeModified = new EventEmitter<Sede>();
   ManipuladorReceived = new EventEmitter<ManipuladorDeAlimento>();
+  ListaChequeoReceived = new EventEmitter<ListaChequeo>();
   baseUrl: string;
 
   constructor(@Inject('BASE_URL') baseUrl: string) {
@@ -83,6 +85,17 @@ export class SignalRServiceManipulador extends SignalRService {
   registerSignalEvents() {
     this.hubConnection.on("ManipuladorRegistrado", (data: ManipuladorDeAlimento) => {
       this.ManipuladorReceived.emit(data);
+    });
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SignalRServiceListaChequeo extends SignalRService {
+  registerSignalEvents() {
+    this.hubConnection.on("ManipuladorRegistrado", (data: ListaChequeo) => {
+      this.ListaChequeoReceived.emit(data);
     });
   }
 }
