@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ListaChequeo } from '../../Modelos/lista-chequeo';
@@ -22,7 +22,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
   respuestas: RespuestaChequeo[] = [];
   preguntas: Pregunta[] = [];
   listaChequeo : ListaChequeo = new ListaChequeo();
-
+  opcionesRespuesta: string[] = ['Cumple','No Cumple', 'Cumple Parcialmente', 'No Aplica'];
   constructor
   (
     private formBuilder: FormBuilder,
@@ -64,9 +64,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
     this.listaChequeo.respuestaChequeos = this.respuestas;
     this.listaChequeo.sedeId = this.sedeId;
     this.servicioRespuesta.Guardar(this.listaChequeo).subscribe((r) => {
-      if (r.error) {
-        this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
-      }
+      this.mensajes.Mostrar("Oh no, Ha sucedido un error!", r.mensaje);
     });
   }
 
@@ -76,7 +74,7 @@ export class RegistroEncuestaChequeoComponent implements OnInit {
       pregunta2: [,Validators.required],
       pregunta3: [,Validators.required],
       pregunta4: [,Validators.required],
-      pregunta5: [,Validators.required],
+      pregunta5: [,Validators.required]
     });
     this.segundoGrupoFormulario = this.formBuilder.group({
       pregunta6: [, Validators.required],

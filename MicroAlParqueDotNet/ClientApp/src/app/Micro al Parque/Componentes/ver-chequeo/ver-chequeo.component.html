@@ -1,0 +1,78 @@
+<div class="modal-header header">
+  <h1 class="modal-title">Registrar Manipulador de Alimentos</h1>
+</div>
+<div class="modal-body">
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="primerGrupoFormulario" >
+      <ng-template matStepLabel>Seccion 1</ng-template>
+      <div class="row">
+        <div class="col-md-6">
+
+          <p>1. {{preguntas[0].enunciado}}</p>
+
+
+
+          <p>2. {{preguntas[1].enunciado}}</p>
+
+
+          <p>3. {{preguntas[2].enunciado}}</p>
+
+
+
+        </div>
+        <div class="col-md-6">
+
+          <p>4. {{preguntas[3].enunciado}}</p>
+
+
+          <p>5. {{preguntas[4].enunciado}}</p>
+
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+
+        </div>
+        <button mat-button matStepperNext>
+          <mat-icon>next_plan</mat-icon> Siguiente
+        </button>
+
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="segundoGrupoFormulario" >
+      <ng-template matStepLabel>Seccion 2</ng-template>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p>6. {{preguntas[5].enunciado}}</p>
+
+
+            <p>7. {{preguntas[6].enunciado}}</p>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <p>8. {{preguntas[7].enunciado}}</p>
+
+
+            <p>9. {{preguntas[8].enunciado}}</p>
+
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+
+          </div>
+          <button mat-button matStepperPrevious>Volver</button>
+
+        </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>
+

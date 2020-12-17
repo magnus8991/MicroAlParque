@@ -31,9 +31,16 @@ namespace MicroAlParque.Controllers
 
         // GET: api/Lote/5
         [HttpGet("{IdSede}")]
-        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(int IdSede)
+        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Consultar(int IdSede)
         {
             var response = _servicioListaChequeo.ConsultarPorSede(IdSede);
+            return Ok(response);
+        }
+
+        [HttpGet("{IdListaChequeo}")]
+        public ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
+        {
+            var response = _servicioListaChequeo.BuscarPorIdListaChequeo(IdListaChequeo);
             return Ok(response);
         }
         

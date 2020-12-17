@@ -44,6 +44,7 @@ import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-
 import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encuesta-restaurante/encuesta-restaurante.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/reg-lista-chequeo/reg-lista-chequeo.component';
+import { VerChequeoComponent } from './Micro al Parque/Componentes/ver-chequeo/ver-chequeo.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/
     GestionManipuladorComponent, ActualizacionRestauranteComponent,
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
-    InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent, PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent
+    InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent,
+    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent
 
 
   ],
@@ -78,7 +80,14 @@ import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/
     MatRadioModule,
     MatDividerModule
   ],
-  entryComponents:[GestionRestauranteComponent,GestionSedeComponent,AlertModalComponent,RegistroEncuestaChequeoComponent],
+  entryComponents:
+  [
+    GestionRestauranteComponent,
+    GestionSedeComponent,
+    AlertModalComponent,
+    RegistroEncuestaChequeoComponent,
+    VerChequeoComponent
+  ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},NgbNav],
   bootstrap: [AppComponent]
 })

@@ -6,6 +6,8 @@ import { ListaChequeo } from '../../Modelos/lista-chequeo';
 import { PeticionConsulta } from '../../Modelos/peticion';
 import { ListaChequeoService } from '../../Servicios/lista-chequeo.service';
 import { Mensajes } from '../../Servicios/mensajes';
+import { RegistroEncuestaChequeoComponent } from '../reg-lista-chequeo/reg-lista-chequeo.component';
+import { VerChequeoComponent } from '../ver-chequeo/ver-chequeo.component';
 
 @Component({
   selector: 'app-encuesta-restaurante',
@@ -16,7 +18,7 @@ export class EncuestaRestauranteComponent implements OnInit {
 
   dataSource;
   restauranteId: string;
-  sedeId;
+  sedeId: number;
   columnsToDisplay = ['id', 'fecha', 'porcentaje','acciones'];
   peticion: PeticionConsulta<ListaChequeo> ;
 
@@ -27,7 +29,8 @@ export class EncuestaRestauranteComponent implements OnInit {
     this.peticion = new PeticionConsulta();
     this.route.paramMap.subscribe(params => {
       this.restauranteId = params.get('restauranteId');
-      this.sedeId = params.get('sedeId');
+      var id = params.get('sedeId');
+      this.sedeId = Number.parseInt(id);
     });
     this.Consultar();
 
@@ -42,6 +45,17 @@ export class EncuestaRestauranteComponent implements OnInit {
       }
       else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
     });
+  }
+
+  openModaRegistrolLista()
+  {
+    this.modalService.open(RegistroEncuestaChequeoComponent, { size: 'xl' }).
+    componentInstance.sedeId = this.sedeId;
+  }
+  openModalLista(listaChequeoId : number)
+  {
+    this.modalService.open(VerChequeoComponent, { size: 'xl' }).
+    componentInstance.listaChequeoId = listaChequeoId;
   }
 
 
