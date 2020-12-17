@@ -23,20 +23,22 @@ namespace MicroAlParque.Controllers
         }
 
         // GET: api/Lote/5
-        [HttpGet("{Formulario}/{IdSede}")]
+        [HttpGet("{Formulario}/{Identificador}")]
         public object EjecutarConsulta(string Formulario, int Identificador) {
-            return (Formulario == "Busqueda")? Buscar(Identificador) : Consultar(Identificador);
+            if (Formulario == "Busqueda") return Buscar(Identificador);
+            else return Consultar(Identificador);
         }
         private ActionResult<PeticionConsulta<ListaChequeoViewModel>> Consultar(int IdSede)
         {
             var response = _servicioListaChequeo.ConsultarPorSede(IdSede);
+            if (response.Error) return BadRequest(response.Mensaje);
             return Ok(response);
         }
-
-        [HttpGet("{Busqueda}/{IdListaChequeo}")]
-        private ActionResult<PeticionConsulta<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
+        
+        private ActionResult<Peticion<ListaChequeoViewModel>> Buscar(int IdListaChequeo)
         {
             var response = _servicioListaChequeo.BuscarPorIdListaChequeo(IdListaChequeo);
+            if (response.Error) return BadRequest(response.Mensaje);
             return Ok(response);
         }
         
@@ -46,6 +48,7 @@ namespace MicroAlParque.Controllers
         {
             ListaChequeo listaChequeo = MapearListaChequeo(listaChequeoInput);
             var response = _servicioListaChequeo.Guardar(listaChequeo);
+            if (response.Error) return BadRequest(response.Mensaje);
             return Ok(response);
         }
         private ListaChequeo MapearListaChequeo(ListaChequeoInputModel listaChequeoInput)
