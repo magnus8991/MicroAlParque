@@ -45,6 +45,7 @@ import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encu
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
 import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/reg-lista-chequeo/reg-lista-chequeo.component';
 import { VerChequeoComponent } from './Micro al Parque/Componentes/ver-chequeo/ver-chequeo.component';
+import { EstadisticaComponent } from './Micro al Parque/Componentes/estadistica/estadistica.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { VerChequeoComponent } from './Micro al Parque/Componentes/ver-chequeo/v
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
     InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent,
-    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent,
+    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent, EstadisticaComponent,
 
 
   ],

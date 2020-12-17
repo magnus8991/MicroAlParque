@@ -11,6 +11,7 @@ import { UsuarioRegistroComponent } from './Micro al Parque/Componentes/usuario-
 import { AuthGuard } from './Micro al Parque/Servicios/auth.guard';
 import { EncuestaRestauranteComponent } from './Micro al Parque/Componentes/encuesta-restaurante/encuesta-restaurante.component';
 import { PreguntasFrecuentesComponent } from './preguntas-frecuentes/preguntas-frecuentes.component';
+import { EstadisticaComponent } from './Micro al Parque/Componentes/estadistica/estadistica.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'login/:cerrarSesion', component: InicioDeSesionComponent },
   { path: 'usuarioRegistro', component: UsuarioRegistroComponent },
-  { path: 'encuesta-restaurante/:restauranteId/:sedeId', component: EncuestaRestauranteComponent },
+  { path: 'encuesta-restaurante/:restauranteId/:sedeId', component: EncuestaRestauranteComponent, canActivate: [AuthGuard]  },
+  { path: 'estadistica', component: EstadisticaComponent, canActivate: [AuthGuard]  },
   { path: 'FAQ', component: PreguntasFrecuentesComponent }
 ];
 
