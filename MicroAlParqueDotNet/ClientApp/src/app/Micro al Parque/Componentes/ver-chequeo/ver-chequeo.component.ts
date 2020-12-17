@@ -13,47 +13,18 @@ import { ServicioPregunta } from '../../Servicios/pregunta.service';
 })
 export class VerChequeoComponent implements OnInit {
 
-  @Input() listaChequeoId: number;
+  @Input() listaChequeo: ListaChequeo;
   preguntas: Pregunta[] = [];
-  listasChequeo : ListaChequeo[] = [];
-  listaChequeo : ListaChequeo = new ListaChequeo();
   constructor
   (
     public activeModal: NgbActiveModal,
     private servicioRespuesta: ListaChequeoService,
     private servicioPregunta: ServicioPregunta,
     private mensajes: Mensajes
-  )
-  {
-    for (let i = 1; i <= 9; i++)
-    {
-      this.preguntas.push(new Pregunta());
-    }
-  }
+  ) {for (let i = 1; i <= 9; i++) {this.preguntas.push(new Pregunta());}}
 
   ngOnInit(): void {
     this.InicializarPreguntas();
-    this.Consultar();
-  }
-
-  Consultar() {
-    this.servicioRespuesta.Consultar(this.listaChequeoId).subscribe(result => {
-      if (result != null) {
-        this.listasChequeo = result.elementos;
-        this.listasChequeo.forEach(l => {
-          if(l.listaChequeoId = this.listaChequeoId)
-          {
-            this.listaChequeo = l;
-          }
-        });
-      }
-      else this.mensajes.Mostrar("¡Oh, no!", result.mensaje);
-    });
-  }
-
-  BuscarListaChequeo() {
-    this.Consultar();
-
   }
 
   InicializarPreguntas() {
