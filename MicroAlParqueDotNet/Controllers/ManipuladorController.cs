@@ -11,9 +11,11 @@ using MicroAlParque.Models;
 using Datos;
 using Microsoft.AspNetCore.SignalR;
 using MicroAlParque.Hubs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MicroAlParque.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ManipuladorController : ControllerBase

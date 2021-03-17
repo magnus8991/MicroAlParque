@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MicroAlParque.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ListaChequeoController : ControllerBase
