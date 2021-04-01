@@ -129,7 +129,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>NIT del Restaurante:</label>
-                  <input type="text" [(ngModel)]="peticion.elemento.nit" formControlName="NIT"
+                  <input type="text" name="NIT" [(ngModel)]="peticion.elemento.nit" formControlName="NIT"
                     placeholder="Aquí el NIT del restaurante" class="form-control">
                   <div *ngIf="NIT.invalid && (NIT.dirty || NIT.touched)" class="alert alert-danger">
                     <div *ngIf="NIT.errors.required">
@@ -144,7 +144,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nombre del Restaurante:</label>
-                  <input type="text" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre"
+                  <input type="text" name="nombre" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre"
                     placeholder="Aquí el nombre del restaurante" class="form-control">
                   <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
                     <div *ngIf="nombre.errors.required">
@@ -168,11 +168,11 @@
                   Limpiar Formulario</button>
               </div>
               <div class="col-md-3">
-                <button class="notabla" mat-button (click)="AgregarSede()"><i class="fas fa-plus"></i>
+                <button class="notabla" name="addSede" mat-button (click)="AgregarSede()"><i class="fas fa-plus"></i>
                   Agregar Sede</button>
               </div>
               <div class="col-md-3">
-                <button class="notabla" mat-button (click)="Registrar()"><i class="fas fa-save"></i>
+                <button name="registrar" class="notabla" mat-button (click)="Registrar()"><i class="fas fa-save"></i>
                   Registrar Restaurante</button>
               </div>
             </div>
