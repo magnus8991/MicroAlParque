@@ -16,7 +16,7 @@
             </h3>
           </div>
           <div class="col-md-6 button">
-            <button class="notabla" mat-button (click)="RegistrarRestaurante()">
+            <button class="notabla addRestaurante" mat-button (click)="RegistrarRestaurante()">
               <mat-icon>add_business</mat-icon> Nuevo Restaurante</button>
           </div>
         </div>
@@ -29,7 +29,7 @@
             </mat-form-field>
           </div>
           <div class="col-md-6 button">
-            <button class="notabla" mat-button (click)="RegistrarRestaurante()">
+            <button class="notabla addRestaurante" mat-button (click)="RegistrarRestaurante()">
               <mat-icon>add_business</mat-icon> Nuevo Restaurante
               </button>
           </div>
@@ -57,7 +57,7 @@
                 </button>
               </div>
               <div class="col-md-5">
-                <button mat-flat-button color="primary" class="tabla" [routerLink]="['/gestionSede', element.nit]">
+                <button name="btnSedes" mat-flat-button color="primary" class="tabla" [routerLink]="['/gestionSede', element.nit]">
                   <mat-icon>domain</mat-icon> Sedes
                 </button>
               </div>

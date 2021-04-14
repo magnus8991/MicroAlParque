@@ -21,6 +21,10 @@ namespace Datos
                 .HasOne<Sede>()
                 .WithMany()
                 .HasForeignKey(l => l.SedeId);
+            modelBuilder.Entity<Respuesta>()
+                .HasOne<Pregunta>()
+                .WithMany()
+                .HasForeignKey(r => r.PreguntaId);
             modelBuilder.Entity<RespuestaChequeo>()
                 .HasOne<Pregunta>()
                 .WithMany()
@@ -29,10 +33,6 @@ namespace Datos
                 .HasOne<Restaurante>()
                 .WithMany()
                 .HasForeignKey(s => s.RestauranteId);
-            modelBuilder.Entity<Respuesta>()
-                .HasOne<Pregunta>()
-                .WithMany()
-                .HasForeignKey(r => r.PreguntaId);
             modelBuilder.Entity<Respuesta>()
                 .HasOne<ManipuladorDeAlimento>()
                 .WithMany()

@@ -15,7 +15,6 @@ import { SignalRServiceManipulador } from '../../Servicios/signal-r.service';
   styleUrls: ['./gestion-manipulador.component.css']
 })
 export class GestionManipuladorComponent implements OnInit {
-
   displayedColumns: string[] = ['identificacion','Nombres', 'Apellidos', 'Edad', 'Acciones'];
   manipuladores : ManipuladorDeAlimento []= [] ;
   restauranteId: string;

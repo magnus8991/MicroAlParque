@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(MicroAlParqueContext))]
-    [Migration("20201216170502_initialCreate")]
-    partial class initialCreate
+    [Migration("20210317182624_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

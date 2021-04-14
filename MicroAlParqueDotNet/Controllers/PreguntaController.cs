@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using MicroAlParque.Models;
 using Datos;
 using Entidad;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MicroAlParque.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PreguntaController : ControllerBase
