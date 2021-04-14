@@ -27,7 +27,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Nombre de la Sede:</label>
-            <input type="text" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre"
+            <input type="text" name="nombreSede" [(ngModel)]="peticion.elemento.nombre" formControlName="nombre"
               placeholder="Aquí el nombre de la sede" class="form-control">
             <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
               <div *ngIf="nombre.errors.required">
@@ -42,7 +42,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Direccion de la Sede:</label>
-            <input type="text" [(ngModel)]="peticion.elemento.direccion" formControlName="direccion"
+            <input type="text" name="direccion" [(ngModel)]="peticion.elemento.direccion" formControlName="direccion"
               placeholder="Aquí la direccion de la sede" class="form-control">
             <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="alert alert-danger">
               <div *ngIf="direccion.errors.required">
@@ -57,7 +57,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Teléfono de la sede:</label>
-            <input type="text" [(ngModel)]="peticion.elemento.telefono" formControlName="telefono"
+            <input type="text" name="telefono" [(ngModel)]="peticion.elemento.telefono" formControlName="telefono"
               placeholder="Aquí la telefono de la sede" class="form-control">
             <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="alert alert-danger">
               <div *ngIf="telefono.errors.required">
@@ -76,7 +76,7 @@
 
       <div class="button">
         <div class="col-md-4">
-          <button class="notabla" mat-button (click)="Actualizar()"><i class="fas fa-plus"></i>
+          <button class="notabla" name="modificar" mat-button (click)="Actualizar()"><i class="fas fa-plus"></i>
             Actualizar Sede</button>
         </div>
         <div class="col-md-4">

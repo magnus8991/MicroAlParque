@@ -28,8 +28,8 @@
               <div *ngIf="nombre.errors.required">
                 El nombre es un valor requerido
               </div>
-              <div *ngIf="nombre.errors.maxlength">
-                El nombre de la sede debe tener máximo 30 caracteres
+              <div *ngIf="nombre.errors.minlength || nombre.errors.maxlength">
+                El nombre de la sede debe tener entre 3 y 20 caracteres
               </div>
             </div>
           </div>
@@ -43,8 +43,8 @@
               <div *ngIf="direccion.errors.required">
                 La direccion de la sede es requerida
               </div>
-              <div *ngIf="direccion.errors.maxlength">
-                La direccion de la sede debe tener máximo 40 caracteres
+              <div *ngIf="direccion.errors.minlength || direccion.errors.maxlength">
+                La direccion de la sede debe tener entre 5 y 30 caracteres
               </div>
             </div>
           </div>
@@ -58,8 +58,8 @@
               <div *ngIf="telefono.errors.required">
                 El telefono de la sede es requerida
               </div>
-              <div *ngIf="telefono.errors.maxlength">
-                El telefono digitado no es válido
+              <div *ngIf="telefono.errors.minlength || telefono.errors.maxlength">
+                El telefono digitado debe tener entre 7 y 10 dígitos
               </div>
               <div *ngIf="telefono.errors.pattern">
                 Solo debe ingresar números

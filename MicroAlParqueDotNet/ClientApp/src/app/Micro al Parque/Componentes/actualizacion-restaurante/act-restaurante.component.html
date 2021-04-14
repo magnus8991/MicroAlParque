@@ -18,7 +18,7 @@
     <form [formGroup]="formularioActualizacion" onsubmit="return false">
       <div class="form-group">
         <label>Nombre del Restaurante:</label>
-        <input type="text" formControlName="nombre" [(ngModel)]="peticion.elemento.nombre"
+        <input type="text" name="nombre" formControlName="nombre" [(ngModel)]="peticion.elemento.nombre"
           placeholder="aqui el nombre del servicio" class="form-control">
         <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
           <div *ngIf="nombre.errors.required">
@@ -27,12 +27,15 @@
           <div *ngIf="nombre.errors.minlength">
             el nombre del restaurante debe tener mas de 7 caracteres
           </div>
+          <div *ngIf="nombre.errors.maxlength">
+            el nombre del restaurante debe tener como máximo 35 caracteres
+          </div>
         </div>
       </div>
 
       <div class="row button">
         <div class="col-md-6">
-          <button class="notabla" mat-button (click)="Actualizar()"><i class="fas fa-sync-alt"></i>
+          <button name="editarRestaurante" class="notabla" mat-button (click)="Actualizar()"><i class="fas fa-sync-alt"></i>
             Actualizar</button>
         </div>
         <div class="col-md-6">

@@ -76,7 +76,7 @@ export class RegistroRestauranteComponent implements OnInit {
     this.formularioRegistro = this.formBuilder.group(
       {
         NIT: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
-        nombre: ['', [Validators.required, Validators.maxLength(35)]]
+        nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
       }
     );
   }
@@ -84,12 +84,12 @@ export class RegistroRestauranteComponent implements OnInit {
   EstablecerValidacionesFormularioPropietario() {
     this.formularioRegistroPropietario = this.formBuilder.group(
       {
-        identificacion: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(11)]],
-        nombres: ['', [Validators.required]],
-        primerApellido: ['', [Validators.required, Validators.maxLength(30)]],
-        segundoApellido: ['', [Validators.required, Validators.maxLength(30)]],
+        identificacion: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
+        nombres: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+        primerApellido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
+        segundoApellido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
         sexo: ['', [Validators.required]],
-        edad: [, [Validators.required]]
+        edad: [, [Validators.required, Validators.min(18), Validators.max(120)]]
       }
     );
   }
