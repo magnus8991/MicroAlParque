@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidad", "Entidad\Entidad.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroAlParque", "MicroAlParqueDotNet\MicroAlParque.csproj", "{667521CF-861D-4B57-984C-D0CEBA4CDD82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestMicroAlParque", "NUnitTestMicroAlParque\NUnitTestMicroAlParque.csproj", "{8ABA2CF9-463A-46D4-9CBD-5243B34897D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestMicroAlParque", "NUnitTestMicroAlParque\NUnitTestMicroAlParque.csproj", "{8ABA2CF9-463A-46D4-9CBD-5243B34897D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

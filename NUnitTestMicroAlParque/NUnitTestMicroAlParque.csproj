@@ -14,4 +14,10 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj" />
+    <ProjectReference Include="..\Logica\Logica.csproj" />
+    <ProjectReference Include="..\MicroAlParqueDotNet\MicroAlParque.csproj" />
+  </ItemGroup>
+
 </Project>

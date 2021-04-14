@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Entidad;
 using Logica;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
 using Microsoft.AspNetCore.SignalR;
@@ -49,7 +45,15 @@ namespace MicroAlParque.Controllers
         {
             Restaurante restaurante = MapearRestaurante(restauranteInput);
             var response = _servicioRestaurante.Guardar(restaurante);
-            if (response.Error) return BadRequest(response.Mensaje);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Guardar Restaurante", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
+            }
             await _hubContext.Clients.All.SendAsync("RestauranteRegistrado", response.Elemento);
             return Ok(response);
         }
