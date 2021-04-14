@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
-import { Paises } from "../../Modelos/Paises";
 import { Pregunta } from "../../Modelos/pregunta";
 import { Respuesta } from "../../Modelos/respuesta";
 import { ManipuladorService } from "../../Servicios/manipulador.service";
@@ -27,19 +26,19 @@ export class RegistroManipuladorComponent implements OnInit {
   isEditable = true;
   respuestas: Respuesta[] = [];
   preguntas: Pregunta[] = [];
-  paises: Paises;
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal,
     private servicioRespuesta: RespuestaService, private servicioPregunta: ServicioPregunta,
     private servicioManipulador: ManipuladorService, private mensajes: Mensajes
-  ) {
-    for (let i = 1; i <= 16; i++) {
+  )
+  {
+    for (let i = 1; i <= 16; i++)
+    {
       this.preguntas.push(new Pregunta()); this.respuestas.push(new Respuesta());
     }
   }
 
   ngOnInit(): void {
-    this.paises = new Paises();
     this.EstablecerValidacionesFormulario();
     this.InicializarPreguntasYRespuestas();
     this.manipulador = new ManipuladorDeAlimento();
@@ -92,13 +91,13 @@ export class RegistroManipuladorComponent implements OnInit {
 
   EstablecerValidacionesFormulario() {
     this.primerGrupoFormulario = this.formBuilder.group({
-      identificacion: ["", [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
-      nombres: ["", [Validators.required, , Validators.minLength(5), Validators.maxLength(30)]],
-      primerApellido: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
-      segundoApellido: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
+      identificacion: ["", [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(7), Validators.maxLength(11)]],
+      nombres: ["", [Validators.required, Validators.maxLength(30)]],
+      primerApellido: ["", [Validators.required, Validators.maxLength(15)]],
+      segundoApellido: ["", [Validators.required, Validators.maxLength(15)]],
       sexo: ["", Validators.required],
-      edad: [0, Validators.required, Validators.min(18), Validators.max(120)],
-      paisDeProcedencia: ["", [Validators.required]],
+      edad: [0, Validators.required],
+      paisDeProcedencia: ["", [Validators.required, Validators.maxLength(15)]],
       estadoCivil: ["", Validators.required],
       nivelEducativo: ["", Validators.required],
     });
