@@ -24,11 +24,8 @@
           <div *ngIf="nombre.errors.required">
             el nombre es un valor requerido
           </div>
-          <div *ngIf="nombre.errors.minlength">
-            el nombre del restaurante debe tener mas de 7 caracteres
-          </div>
-          <div *ngIf="nombre.errors.maxlength">
-            el nombre del restaurante debe tener como máximo 35 caracteres
+          <div *ngIf="nombre.errors.minlength || nombre.errors.maxlength">
+            El nombre del restaurante debe tener entre 3 y 20 caracteres
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import { ManipuladorDeAlimento } from "../../Modelos/manipulador-de-alimento";
 import { Listados } from "../../Modelos/Listados";
 import { Pregunta } from "../../Modelos/pregunta";
 import { Respuesta } from "../../Modelos/respuesta";
-import { FilteredOptions, Filtros } from "../../pipe/filtros-autocopletar";
 import { ManipuladorService } from "../../Servicios/manipulador.service";
 import { Mensajes } from "../../Servicios/mensajes";
 import { ServicioPregunta } from "../../Servicios/pregunta.service";
@@ -29,8 +28,6 @@ export class RegistroManipuladorComponent implements OnInit {
   respuestas: Respuesta[] = [];
   preguntas: Pregunta[] = [];
   listados: Listados = new Listados();
-  filtros: Filtros = new Filtros();
-  filteredOptions: FilteredOptions = new FilteredOptions();
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal,
     private servicioRespuesta: RespuestaService, private servicioPregunta: ServicioPregunta,
@@ -45,14 +42,6 @@ export class RegistroManipuladorComponent implements OnInit {
     this.EstablecerValidacionesFormulario();
     this.InicializarPreguntasYRespuestas();
     this.manipulador = new ManipuladorDeAlimento();
-    this.filteredOptions.filteredPais = this.filtros.filterOptions(this.primerGrupoFormulario.get('paisDeProcedencia'),
-      this.listados.paises);
-    this.filteredOptions.filteredSexo = this.filtros.filterOptions(this.primerGrupoFormulario.get('sexo'),
-      this.listados.sexos);
-    this.filteredOptions.filteredEstadoCivil = this.filtros.filterOptions(this.primerGrupoFormulario.get('estadoCivil'),
-      this.listados.estadosCiviles);
-    this.filteredOptions.filteredNivelAcademico = this.filtros.filterOptions(this.primerGrupoFormulario.get('nivelEducativo'),
-      this.listados.nivelesAcademicos);
   }
 
   crearRespuestas() {
@@ -115,8 +104,8 @@ export class RegistroManipuladorComponent implements OnInit {
     this.segundoGrupoFormulario = this.formBuilder.group({
       pregunta1: [, Validators.required],
       pregunta2: [, Validators.required],
-      pregunta3: [, Validators.required],
-      pregunta4: [, Validators.required],
+      pregunta3: [, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+      pregunta4: [, [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       pregunta5: [, Validators.required],
       pregunta6: [, Validators.required]
     });
@@ -124,7 +113,7 @@ export class RegistroManipuladorComponent implements OnInit {
       pregunta7: ["", Validators.required],
       pregunta8: ["", Validators.required],
       pregunta9: ["", Validators.required],
-      pregunta10: ["", Validators.required],
+      pregunta10: ["", [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       pregunta11: ["", Validators.required],
       pregunta12: ["", Validators.required]
     });

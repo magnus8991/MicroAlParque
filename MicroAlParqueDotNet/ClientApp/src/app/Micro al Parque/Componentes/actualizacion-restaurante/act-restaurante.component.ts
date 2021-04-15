@@ -44,7 +44,7 @@ export class ActualizacionRestauranteComponent implements OnInit {
   EstablecerValidacionesFormulario() {
     this.formularioActualizacion = this.formBuilder.group(
       {
-        nombre: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(35)]]
+        nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
       }
     );
   }

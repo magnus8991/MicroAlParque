@@ -45,9 +45,10 @@ export class ActualizacionSedeComponent implements OnInit {
   EstablecerValidacionesFormulario() {
     this.formularioActualizacion = this.formBuilder.group(
       {
-        nombre: ['', [Validators.required, Validators.maxLength(35)]],
-        direccion: ['', [Validators.required, Validators.maxLength(40)]],
-        telefono: [0, [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]]
+        nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+        direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+        telefono: [0, [Validators.required, Validators.minLength(7), Validators.maxLength(10), 
+          Validators.pattern('^[0-9]+$')]]
       }
     );
   }
