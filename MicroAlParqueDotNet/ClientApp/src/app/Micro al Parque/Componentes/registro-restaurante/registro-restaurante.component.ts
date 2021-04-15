@@ -84,7 +84,7 @@ export class RegistroRestauranteComponent implements OnInit {
   EstablecerValidacionesFormularioPropietario() {
     this.formularioRegistroPropietario = this.formBuilder.group(
       {
-        identificacion: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
+        identificacion: ['', [, Validators.pattern('^[0-9]+$'), Validators.required, Validators.minLength(7), Validators.maxLength(10)]],
         nombres: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
         primerApellido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
         segundoApellido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],

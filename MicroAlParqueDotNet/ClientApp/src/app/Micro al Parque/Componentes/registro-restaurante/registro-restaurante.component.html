@@ -27,6 +27,9 @@
                     <div *ngIf="identificacion.errors.maxlength">
                       El numero de identificación debe tener menos de 10 caracteres
                     </div>
+                    <div *ngIf="identificacion.errors.pattern">
+                      Solo debe escribir números
+                    </div>
                   </div>
                 </div>
 

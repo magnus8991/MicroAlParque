@@ -8,165 +8,164 @@
       <form [formGroup]="primerGrupoFormulario">
 
         <div class="col-md-12 row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Identificacion:</label>
-              <input type="text" name="identificacion" formControlName="identificacion"
-                [(ngModel)]="manipulador.identificacion" placeholder="Digite aquí la identificacion" class="form-control">
-              <div *ngIf="identificacion.invalid && (identificacion.dirty ||
+          <div class="form-group col-md-4">
+            <label>Identificacion:</label>
+            <input type="text" name="identificacion" matInput formControlName="identificacion"
+              [(ngModel)]="manipulador.identificacion" placeholder="Digite aquí la identificacion" class="form-control">
+            <div *ngIf="identificacion.invalid && (identificacion.dirty ||
                 identificacion.touched)" class="alert alert-danger">
-                <div *ngIf="identificacion.errors.required">
-                  La identificación es un valor requerido
-                </div>
-                <div *ngIf="identificacion.errors.minlength">
-                  El numero de identificación debe tener por lo menos 7 caracteres
-                </div>
-                <div *ngIf="identificacion.errors.maxlength">
-                  El numero de identificación debe tener un máximo 11 caracteres
-                </div>
-                <div *ngIf="identificacion.errors.pattern">
-                  Solo debe escribir números
-                </div>
+              <div *ngIf="identificacion.errors.required">
+                La identificación es un valor requerido
+              </div>
+              <div *ngIf="identificacion.errors.minlength">
+                El numero de identificación debe tener por lo menos 7 caracteres
+              </div>
+              <div *ngIf="identificacion.errors.maxlength">
+                El numero de identificación debe tener un máximo 10 caracteres
+              </div>
+              <div *ngIf="identificacion.errors.pattern">
+                Solo debe escribir números
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Sexo:</label>
-              <select name="sexo" formControlName="sexo" class="form-control" [(ngModel)]="manipulador.sexo">
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-              </select>
-              <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="alert alert-danger">
-                <div *ngIf="sexo.errors.required">
-                  El sexo es un valor requerido
-                </div>
+          <div class="form-group col-md-4">
+            <label>Sexo:</label>
+            <mat-label></mat-label>
+            <input type="text" class="form-control" placeholder="Escoja el sexo" matInput formControlName="sexo"
+              [(ngModel)]="manipulador.sexo" [matAutocomplete]="autoSexo">
+            <mat-autocomplete autoActiveFirstOption #autoSexo="matAutocomplete">
+              <mat-option *ngFor="let sexo of filteredOptions.filteredSexo | async" [value]="sexo">
+                {{sexo}}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="alert alert-danger">
+              <div *ngIf="sexo.errors.required">
+                El sexo es un valor requerido
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Edad:</label>
-              <input type="number" name="edad" formControlName="edad" [(ngModel)]="manipulador.edad"
+          <div class="form-group col-md-4">
+            <label>Edad:</label>
+            <input type="number" name="edad" matInput formControlName="edad" [(ngModel)]="manipulador.edad"
               placeholder="aqui la edad del manipulador" class="form-control">
-              <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
-                <div *ngIf="edad.errors.required">
-                  La edad es un valor requerido
-                </div>
+            <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
+              <div *ngIf="edad.errors.required">
+                La edad es un valor requerido
+              </div>
+              <div *ngIf="edad.errors.min || edad.errors.max">
+                La edad debe estar entre 18 y 120 años
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-12 row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Nombres:</label>
-              <input type="text" name="nombres" formControlName="nombres" [(ngModel)]="manipulador.nombres"
+          <div class="form-group col-md-4">
+            <label>Nombres:</label>
+            <input type="text" name="nombres" matInput formControlName="nombres" [(ngModel)]="manipulador.nombres"
               placeholder="Digite aquí el nombre del manipulador" class="form-control">
-              <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="alert alert-danger">
-                <div *ngIf="nombres.errors.required">
-                  El nombre es un valor requerido
-                </div>
-                <div *ngIf="nombres.errors.maxlength">
-                  El nombre no debe tener más de 30 caracteres
-                </div>
+            <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="alert alert-danger">
+              <div *ngIf="nombres.errors.required">
+                El nombre es un valor requerido
+              </div>
+              <div *ngIf="nombres.errors.minlength || nombres.errors.maxlength">
+                El nombre debe tener entre 5 y 30 caracteres
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Primer Apellido:</label>
-              <input type="text" name="primerApellido" formControlName="primerApellido"
-                [(ngModel)]="manipulador.primerApellido" placeholder="Digite aquí el primer apellido"
-                class="form-control">
-              <div *ngIf="primerApellido.invalid && (primerApellido.dirty ||
+          <div class="form-group col-md-4">
+            <label>Primer Apellido:</label>
+            <input type="text" name="primerApellido" matInput formControlName="primerApellido"
+              [(ngModel)]="manipulador.primerApellido" placeholder="Digite aquí el primer apellido"
+              class="form-control">
+            <div *ngIf="primerApellido.invalid && (primerApellido.dirty ||
                 primerApellido.touched)" class="alert alert-danger">
-                <div *ngIf="primerApellido.errors.required">
-                  El primer Apellido es un valor requerido
-                </div>
-                <div *ngIf="primerApellido.errors.maxlength">
-                  El primer Apellido no debe tener más de 15 caracteres
-                </div>
+              <div *ngIf="primerApellido.errors.required">
+                El primer Apellido es un valor requerido
+              </div>
+              <div *ngIf="primerApellido.errors.minlength || primerApellido.errors.maxlength">
+                El primer Apellido debe tener entre 5 y 15 caracteres
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Segundo Apellido:</label>
-              <input type="text" name="segundoApellido" formControlName="segundoApellido"
-                [(ngModel)]="manipulador.segundoApellido" placeholder="Digite aquí el segundo apellido"
-                class="form-control">
-              <div *ngIf="segundoApellido.invalid && (segundoApellido.dirty ||
+          <div class="form-group col-md-4">
+            <label>Segundo Apellido:</label>
+            <input type="text" name="segundoApellido" matInput formControlName="segundoApellido"
+              [(ngModel)]="manipulador.segundoApellido" placeholder="Digite aquí el segundo apellido"
+              class="form-control">
+            <div *ngIf="segundoApellido.invalid && (segundoApellido.dirty ||
                 segundoApellido.touched)" class="alert alert-danger">
-                <div *ngIf="segundoApellido.errors.required">
-                  El segundo apellido es un valor requerido
-                </div>
-                <div *ngIf="segundoApellido.errors.maxlength">
-                  El segundo apellido no debe debe tener más de 15 caracteres
-                </div>
+              <div *ngIf="segundoApellido.errors.required">
+                El segundo apellido es un valor requerido
+              </div>
+              <div *ngIf="segundoApellido.errors.minlength || segundoApellido.errors.maxlength">
+                El segundo apellido debe tener entre 5 y 15 caracteres
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-12 row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Pais de procedencia:</label>
-              <input type="text" name="paisDeProcedencia" formControlName="paisDeProcedencia" class="form-control"
-                [(ngModel)]="manipulador.paisDeProcedencia" placeholder="Digite aquí el país de procedencia">
-              <div *ngIf="paisDeProcedencia.invalid && (paisDeProcedencia.dirty
-                || paisDeProcedencia.touched)" class="alert alert-danger">
-                <div *ngIf="paisDeProcedencia.errors.required">
-                  El pais es un valor requerido
-                </div>
-                <div *ngIf="paisDeProcedencia.errors.maxlength">
-                  El país de procedencia no debe debe tener más de 15 caracteres
-                </div>
+          <div class="form-group col-md-4">
+            <label>Pais de procedencia:</label>
+            <mat-label></mat-label>
+            <input type="text" class="form-control" placeholder="Escoja el pais" matInput
+              formControlName="paisDeProcedencia" [(ngModel)]="manipulador.paisDeProcedencia"
+              [matAutocomplete]="autoPais">
+            <mat-autocomplete autoActiveFirstOption #autoPais="matAutocomplete">
+              <mat-option *ngFor="let pais of filteredOptions.filteredPais | async" [value]="pais">
+                {{pais}}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="paisDeProcedencia.invalid && (paisDeProcedencia.dirty
+                  || paisDeProcedencia.touched)" class="alert alert-danger">
+              <div *ngIf="paisDeProcedencia.errors.required">
+                El pais es un valor requerido
+              </div>
+              <div *ngIf="paisDeProcedencia.errors.maxlength">
+                El país de procedencia no debe debe tener más de 15 caracteres
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Estado Civil:</label>
-              <select type="text" name="estadoCivil" formControlName="estadoCivil" [(ngModel)]="manipulador.estadoCivil"
-                placeholder="Digite aquí el estado civil" class="form-control">
-                <option value="Soltero">Soltero</option>
-                <option value="Casado">Casado</option>
-                <option value="Divorciado">Divorciado</option>
-                <option value="Viudo">Viudo</option>
-              </select>
-              <div *ngIf="estadoCivil.invalid && (estadoCivil.dirty ||
+          <div class="form-group col-md-4">
+            <label>Estado Civil:</label>
+            <mat-label></mat-label>
+            <input type="text" class="form-control" placeholder="Escoja el estado civil" matInput
+              formControlName="estadoCivil" [(ngModel)]="manipulador.estadoCivil" [matAutocomplete]="autoEstadoCivil">
+            <mat-autocomplete autoActiveFirstOption #autoEstadoCivil="matAutocomplete">
+              <mat-option *ngFor="let estadoCivil of filteredOptions.filteredEstadoCivil | async" [value]="estadoCivil">
+                {{estadoCivil}}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="estadoCivil.invalid && (estadoCivil.dirty ||
                 estadoCivil.touched)" class="alert alert-danger">
-                <div *ngIf="estadoCivil.errors.required">
-                  El estado civil es un valor requerido
-                </div>
+              <div *ngIf="estadoCivil.errors.required">
+                El estado civil es un valor requerido
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>Nivel Educativo:</label>
-              <select name="nivelEducativo" formControlName="nivelEducativo" [(ngModel)]="manipulador.nivelEducativo"
-                class="form-control">
-                <option value="Preescolar">Preescolar</option>
-                <option value="Básica">Educación Básica</option>
-                <option value="Media">Educación Media</option>
-                <option value="Pregrado">Pregrado</option>
-                <option value="Posgrado">Posgrado</option>
-              </select>
-              <div *ngIf="nivelEducativo.invalid && (nivelEducativo.dirty ||
+          <div class="form-group col-md-4">
+            <label>Nivel Educativo:</label>
+            <mat-label></mat-label>
+            <input type="text" class="form-control" placeholder="Escoja el nivel educativo" matInput
+              formControlName="nivelEducativo" [(ngModel)]="manipulador.nivelEducativo"
+              [matAutocomplete]="autoNivelEducativo">
+            <mat-autocomplete autoActiveFirstOption #autoNivelEducativo="matAutocomplete">
+              <mat-option *ngFor="let nivelEducativo of filteredOptions.filteredNivelAcademico | async"
+                [value]="nivelEducativo">
+                {{nivelEducativo}}
+              </mat-option>
+            </mat-autocomplete>
+            <div *ngIf="nivelEducativo.invalid && (nivelEducativo.dirty ||
                 nivelEducativo.touched)" class="alert alert-danger">
-                <div *ngIf="nivelEducativo.errors.required">
-                  El nivel educativo es un valor requerido
-                </div>
+              <div *ngIf="nivelEducativo.errors.required">
+                El nivel educativo es un valor requerido
               </div>
             </div>
           </div>

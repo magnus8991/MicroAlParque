@@ -1,8 +1,15 @@
-export class Paises {
-    listado: string[];
+export class Listados {
+    paises: string[];
+    estadosCiviles: string[];
+    nivelesAcademicos: string[];
+    sexos: string[];
 
     constructor() {
-        this.listado = [
+        this.estadosCiviles = ["Soltero", "Casado", "Union Libre", "Divorciado", "Viudo"];
+        this.sexos = ["Masculino", "Femenino"];
+        this.nivelesAcademicos = ["Preescolar", "Educación Básica", "Educación Media", "Pregrado", "Postgrado", 
+        "Tecnico/Tecnologo"];
+        this.paises = [
             "Afganistán", "Akrotiri", "Albania", "Alemania", "Andorra", "Angola", "Anguila", "Antártida",
             "Antigua y Barbuda", "Antillas Neerlandesas", "Arabia Saudí", "Arctic Ocean", "Argelia", "Argentina",
             "Armenia", "Aruba", "Ashmore andCartier Islands", "Atlantic Ocean", "Australia", "Austria", "Azerbaiyán",
