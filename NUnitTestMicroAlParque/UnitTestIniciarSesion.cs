@@ -16,12 +16,12 @@ namespace NUnitTestMicroAlParque
 
         [TestCase("","")]
         [Test]
-        public void inicioSesionTest(string nombreUsuario, string contraseña)
+        public void inicioSesionTest(string nombreUsuario, string contrasena)
         {
             IWebElement inputUsuario = webDriver.FindElement(By.Name("nombreUsuario"));
             IWebElement inputConstrasena = webDriver.FindElement(By.Name("contrasena"));
             inputUsuario.SendKeys(nombreUsuario);
-            inputConstrasena.SendKeys(contraseña);
+            inputConstrasena.SendKeys(contrasena);
             IWebElement btnIniciarSesion = webDriver.FindElement(By.Name("btnIniciarSesion"));
 
             Assert.Pass();
