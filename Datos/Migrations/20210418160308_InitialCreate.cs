@@ -25,7 +25,7 @@ namespace Datos.Migrations
                 name: "Propietario",
                 columns: table => new
                 {
-                    Identificacion = table.Column<string>(maxLength: 11, nullable: false),
+                    Identificacion = table.Column<string>(maxLength: 10, nullable: false),
                     Nombres = table.Column<string>(maxLength: 30, nullable: true),
                     PrimerApellido = table.Column<string>(maxLength: 15, nullable: true),
                     SegundoApellido = table.Column<string>(maxLength: 15, nullable: true),
@@ -42,7 +42,7 @@ namespace Datos.Migrations
                 columns: table => new
                 {
                     NombreUsuario = table.Column<string>(maxLength: 20, nullable: false),
-                    Identificacion = table.Column<string>(maxLength: 11, nullable: true),
+                    Identificacion = table.Column<string>(maxLength: 10, nullable: true),
                     Nombres = table.Column<string>(maxLength: 30, nullable: true),
                     PrimerApellido = table.Column<string>(maxLength: 15, nullable: true),
                     SegundoApellido = table.Column<string>(maxLength: 15, nullable: true),
@@ -63,7 +63,7 @@ namespace Datos.Migrations
                 columns: table => new
                 {
                     NIT = table.Column<string>(maxLength: 15, nullable: false),
-                    Nombre = table.Column<string>(maxLength: 35, nullable: true),
+                    Nombre = table.Column<string>(maxLength: 20, nullable: true),
                     PropietarioIdentificacion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -84,7 +84,7 @@ namespace Datos.Migrations
                     SedeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(maxLength: 20, nullable: true),
-                    Direccion = table.Column<string>(maxLength: 40, nullable: true),
+                    Direccion = table.Column<string>(maxLength: 30, nullable: true),
                     Telefono = table.Column<string>(maxLength: 10, nullable: true),
                     RestauranteId = table.Column<string>(maxLength: 15, nullable: true)
                 },
@@ -123,15 +123,15 @@ namespace Datos.Migrations
                 name: "Manipuladores",
                 columns: table => new
                 {
-                    Identificacion = table.Column<string>(maxLength: 11, nullable: false),
+                    Identificacion = table.Column<string>(maxLength: 10, nullable: false),
                     Nombres = table.Column<string>(maxLength: 30, nullable: true),
                     PrimerApellido = table.Column<string>(maxLength: 15, nullable: true),
                     SegundoApellido = table.Column<string>(maxLength: 15, nullable: true),
                     Sexo = table.Column<string>(maxLength: 9, nullable: true),
                     Edad = table.Column<int>(nullable: false),
                     EstadoCivil = table.Column<string>(maxLength: 15, nullable: true),
-                    PaisDeProcedencia = table.Column<string>(maxLength: 15, nullable: true),
-                    NivelEducativo = table.Column<string>(maxLength: 15, nullable: true),
+                    PaisDeProcedencia = table.Column<string>(maxLength: 20, nullable: true),
+                    NivelEducativo = table.Column<string>(maxLength: 20, nullable: true),
                     SedeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -179,7 +179,7 @@ namespace Datos.Migrations
                 {
                     RespuestaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ContenidoRespuesta = table.Column<string>(maxLength: 100, nullable: true),
+                    ContenidoRespuesta = table.Column<string>(maxLength: 200, nullable: true),
                     PreguntaId = table.Column<int>(nullable: false),
                     Identificacion = table.Column<string>(nullable: true)
                 },

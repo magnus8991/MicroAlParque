@@ -69,6 +69,41 @@ namespace Logica
             }
             return respuesta;
         }
+        public Peticion<ManipuladorDeAlimento> Modificar(ManipuladorDeAlimento manipulador)
+        {
+            Peticion<ManipuladorDeAlimento> respuesta = new Peticion<ManipuladorDeAlimento>(manipulador);
+            try
+            {
+                respuesta = BuscarPorIdentificacion(manipulador.Identificacion);
+                respuesta = (!respuesta.Error) ?
+                    new Peticion<ManipuladorDeAlimento>(respuesta.Elemento, "Datos actualizados correctamente", false) :
+                    new Peticion<ManipuladorDeAlimento>(null, "El manipulador que intentar modificar no se encuentra registrado", true);
+                if (!respuesta.Error)
+                {
+                    MapearManipulador(respuesta.Elemento, manipulador);
+                    _contexto.Manipuladores.Update(respuesta.Elemento);
+                    _contexto.SaveChanges();
+                }
+            }
+            catch (Exception E)
+            {
+                respuesta = new Peticion<ManipuladorDeAlimento>(null, "Error de la aplicación: " + E.Message, true);
+            }
+            return respuesta;
+        }
 
+        public ManipuladorDeAlimento MapearManipulador(ManipuladorDeAlimento manipuladorAntiguo, 
+            ManipuladorDeAlimento manipuladorNuevo)
+        {
+            manipuladorAntiguo.Nombres = manipuladorNuevo.Nombres;
+            manipuladorAntiguo.PrimerApellido = manipuladorNuevo.PrimerApellido;
+            manipuladorAntiguo.SegundoApellido = manipuladorNuevo.SegundoApellido;
+            manipuladorAntiguo.Edad = manipuladorNuevo.Edad;
+            manipuladorAntiguo.Sexo = manipuladorNuevo.Sexo;
+            manipuladorAntiguo.EstadoCivil = manipuladorNuevo.EstadoCivil;
+            manipuladorAntiguo.NivelEducativo = manipuladorNuevo.NivelEducativo;
+            manipuladorAntiguo.PaisDeProcedencia = manipuladorNuevo.PaisDeProcedencia;
+            return manipuladorAntiguo;
+        }
     }
 }

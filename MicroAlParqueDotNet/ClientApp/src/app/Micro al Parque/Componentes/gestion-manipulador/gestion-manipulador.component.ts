@@ -7,6 +7,7 @@ import { Mensajes } from '../../Servicios/mensajes';
 import {MatTableDataSource} from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { SignalRServiceManipulador } from '../../Servicios/signal-r.service';
+import { ActualizacionManipuladorComponent } from '../actualizacion-manipulador/act-manipulador.component';
 
 
 @Component({
@@ -57,10 +58,22 @@ export class GestionManipuladorComponent implements OnInit {
     componentInstance.sedeId = this.sedeId;
   }
 
+  Modificar(identificacion: string) {
+    const modelo = this.modalService.open(ActualizacionManipuladorComponent, { size: 'xl' });
+    var manipulador = this.manipuladores.find(m => m.identificacion == identificacion);
+    modelo.componentInstance.manipuladorEntrante = manipulador;
+  }
+
   abrirConexionSignalR() {
     this.signalRService.ManipuladorReceived.subscribe((Manipulador: ManipuladorDeAlimento) => {
       this.manipuladores.push(Manipulador);
       this.dataSource  = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
+    });
+    this.signalRService.ManipuladorModified.subscribe((Manipulador: ManipuladorDeAlimento) => {
+      var index = this.manipuladores.findIndex(m => m.identificacion == Manipulador.identificacion);
+      this.manipuladores.splice(index,1);
+      this.manipuladores.push(Manipulador);
+      this.dataSource = new MatTableDataSource<ManipuladorDeAlimento>(this.manipuladores);
     });
   }
 }

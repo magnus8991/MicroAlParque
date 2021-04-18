@@ -9,7 +9,7 @@ namespace Entidad
     {
         [Key]
         public int RespuestaId { get; set; }
-        [StringLength(100)]
+        [StringLength(200)]
         public string ContenidoRespuesta { get; set; }
         public int PreguntaId { get; set; }
         public string Identificacion { get; set; }

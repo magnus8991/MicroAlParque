@@ -10,7 +10,8 @@
           </div>
           <div class="col-md-6">
             <button name="AddManipulador" class="notabla" mat-button (click)="openModalManipulador()">
-            <mat-icon>person_add</mat-icon> Nuevo Manipulador</button>
+              <mat-icon>person_add</mat-icon> Nuevo Manipulador
+            </button>
           </div>
           <div class="col-md-6">
             <button class="notabla condicion" mat-button [routerLink]="['/gestionSede', restauranteId]">
@@ -28,7 +29,8 @@
         </div>
         <div class="col-md-4">
           <button name="AddManipulador" class="notabla" mat-button (click)="openModalManipulador()">
-          <mat-icon>person_add</mat-icon> Nuevo Manipulador</button>
+            <mat-icon>person_add</mat-icon> Nuevo Manipulador
+          </button>
         </div>
         <div class="col-md-4">
           <button class="notabla condicion" mat-button [routerLink]="['/gestionSede', restauranteId]">
@@ -69,7 +71,7 @@
       <ng-container matColumnDef="Acciones">
         <th class="ultimo" mat-header-cell *matHeaderCellDef> Acciones </th>
         <td class="ultimo" mat-cell *matCellDef="let element">
-          <button mat-mini-fab color="primary">
+          <button mat-mini-fab color="primary" (click)="Modificar(element.identificacion)">
             <mat-icon>edit</mat-icon>
           </button>
         </td>

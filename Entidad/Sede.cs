@@ -8,7 +8,7 @@ namespace Entidad
         public int SedeId { get; set; }
         [StringLength(20)]
         public string Nombre { get; set; }
-        [StringLength(40)]
+        [StringLength(30)]
         public string Direccion { get; set; }
         [StringLength(10)]
         public string Telefono { get; set; }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(MicroAlParqueContext))]
-    [Migration("20210317182624_InitialCreate")]
+    [Migration("20210418160308_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,8 +44,8 @@ namespace Datos.Migrations
             modelBuilder.Entity("Entidad.ManipuladorDeAlimento", b =>
                 {
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Edad")
                         .HasColumnType("int");
@@ -55,16 +55,16 @@ namespace Datos.Migrations
                         .HasMaxLength(15);
 
                     b.Property<string>("NivelEducativo")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Nombres")
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
                     b.Property<string>("PaisDeProcedencia")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("PrimerApellido")
                         .HasColumnType("nvarchar(15)")
@@ -111,8 +111,8 @@ namespace Datos.Migrations
             modelBuilder.Entity("Entidad.Propietario", b =>
                 {
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Edad")
                         .HasColumnType("int");
@@ -146,11 +146,11 @@ namespace Datos.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ContenidoRespuesta")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("PreguntaId")
                         .HasColumnType("int");
@@ -200,11 +200,11 @@ namespace Datos.Migrations
                         .HasMaxLength(15);
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(35)")
-                        .HasMaxLength(35);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("PropietarioIdentificacion")
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("NIT");
 
@@ -221,8 +221,8 @@ namespace Datos.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(40)")
-                        .HasMaxLength(40);
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(20)")
@@ -265,8 +265,8 @@ namespace Datos.Migrations
                         .HasMaxLength(8);
 
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("Nombres")
                         .HasColumnType("nvarchar(30)")

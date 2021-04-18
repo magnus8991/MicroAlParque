@@ -25,7 +25,7 @@ export class RespuestaService {
       );
   }
 
-  Consultar(manipuladorId :string): Observable<PeticionConsulta<Respuesta>> {
+  Consultar(manipuladorId: string): Observable<PeticionConsulta<Respuesta>> {
     return this.http.get<PeticionConsulta<Respuesta>>(this.baseUrl + 'api/Respuesta/' + manipuladorId)
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
@@ -33,4 +33,11 @@ export class RespuestaService {
       );
   }
 
+  Modificar(Respuestas: Respuesta[]): Observable<PeticionConsulta<Respuesta>> {
+    return this.http.put<PeticionConsulta<Respuesta>>(this.baseUrl + 'api/Respuesta', Respuestas)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<PeticionConsulta<Respuesta>>('Modificar Respuestas', null))
+      );
+  }
 }

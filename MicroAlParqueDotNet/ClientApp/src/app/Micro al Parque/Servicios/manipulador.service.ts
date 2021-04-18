@@ -25,7 +25,7 @@ export class ManipuladorService {
       );
   }
 
-  Consultar(sedeId :number): Observable<PeticionConsulta<ManipuladorDeAlimento>> {
+  Consultar(sedeId: number): Observable<PeticionConsulta<ManipuladorDeAlimento>> {
     return this.http.get<PeticionConsulta<ManipuladorDeAlimento>>(this.baseUrl + 'api/Manipulador/' + sedeId)
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
@@ -38,6 +38,14 @@ export class ManipuladorService {
       .pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Peticion<ManipuladorDeAlimento>>('Consulta ManipuladorDeAlimento', null))
+      );
+  }
+
+  Modificar(manipulador: ManipuladorDeAlimento): Observable<Peticion<ManipuladorDeAlimento>> {
+    return this.http.put<Peticion<ManipuladorDeAlimento>>(this.baseUrl + 'api/Manipulador', manipulador)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Peticion<ManipuladorDeAlimento>>('Actualizar Manipulador', null))
       );
   }
 }

@@ -29,7 +29,7 @@ namespace MicroAlParque.Models
         [SexoValidacion(ErrorMessage = "El Sexo de ser Masculino o Femenino")]
         [Required]
         public string Sexo { get; set; }
-        [Required, Range(18, 120, ErrorMessage = "La edad debe estar entre 18 y 120 a�os")]
+        [Required, Range(18, 120, ErrorMessage = "La edad debe estar entre 18 y 120 anhos")]
         public int Edad { get; set; }
         [Required]
         public string EstadoCivil { get; set; }

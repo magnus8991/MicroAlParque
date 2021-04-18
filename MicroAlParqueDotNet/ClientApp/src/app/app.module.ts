@@ -45,6 +45,7 @@ import { RegistroEncuestaChequeoComponent } from './Micro al Parque/Componentes/
 import { VerChequeoComponent } from './Micro al Parque/Componentes/ver-chequeo/ver-chequeo.component';
 import { EstadisticaComponent } from './Micro al Parque/Componentes/estadistica/estadistica.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { ActualizacionManipuladorComponent } from './Micro al Parque/Componentes/actualizacion-manipulador/act-manipulador.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
     AlertModalComponent, NosotrosComponent, RegistroSedeComponent, FiltroRestaurantePipe,
     FiltroSedePipe, ActualizacionSedeComponent, GestionSedeComponent,
     InicioDeSesionComponent, UsuarioRegistroComponent, EncuestaRestauranteComponent,
-    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent, EstadisticaComponent
+    PreguntasFrecuentesComponent, RegistroEncuestaChequeoComponent, VerChequeoComponent, EstadisticaComponent,
+    ActualizacionManipuladorComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, AppRoutingModule, ReactiveFormsModule, NgbModule,

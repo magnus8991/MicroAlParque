@@ -15,6 +15,7 @@ export abstract class SignalRService {
   SedeReceived = new EventEmitter<Sede>();
   SedeModified = new EventEmitter<Sede>();
   ManipuladorReceived = new EventEmitter<ManipuladorDeAlimento>();
+  ManipuladorModified = new EventEmitter<ManipuladorDeAlimento>();
   ListaChequeoReceived = new EventEmitter<ListaChequeo>();
   baseUrl: string;
 
@@ -86,6 +87,9 @@ export class SignalRServiceManipulador extends SignalRService {
     this.hubConnection.on("ManipuladorRegistrado", (data: ManipuladorDeAlimento) => {
       this.ManipuladorReceived.emit(data);
     });
+    this.hubConnection.on("ManipuladorActualizado", (data: ManipuladorDeAlimento) => {
+      this.ManipuladorModified.emit(data);
+    });
   }
 }
 
@@ -94,7 +98,7 @@ export class SignalRServiceManipulador extends SignalRService {
 })
 export class SignalRServiceListaChequeo extends SignalRService {
   registerSignalEvents() {
-    this.hubConnection.on("ManipuladorRegistrado", (data: ListaChequeo) => {
+    this.hubConnection.on("ListaChequeoRegistrada", (data: ListaChequeo) => {
       this.ListaChequeoReceived.emit(data);
     });
   }

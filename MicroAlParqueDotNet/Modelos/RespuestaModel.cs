@@ -11,13 +11,12 @@ namespace MicroAlParque.Models
         public string ContenidoRespuesta { get; set; }
         public int PreguntaId { get; set; }
         public string Identificacion { get; set; }
-
+        public int RespuestaId { get; set; }
         public RespuestaInputModel() { }
     }
 
     public class RespuestaViewModel : RespuestaInputModel
     {
-        public int RespuestaId { get; set; }
         public RespuestaViewModel() { }
         public RespuestaViewModel(Respuesta respuesta)
         {

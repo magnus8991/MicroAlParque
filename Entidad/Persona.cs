@@ -8,27 +8,17 @@ namespace Entidad
 {
     public class Persona
     {
-        [Required]
-        [MaxLength(10, ErrorMessage = "La identificacion debe tener entre 7 y 10 caracteres"), MinLength(7,
-            ErrorMessage = "La identificacion debe tener entre 7 y 10 caracteres")]
+        [Key]
+        [StringLength(10)]
         public string Identificacion { get; set; }
-        [Required]
-        [MaxLength(30, ErrorMessage = "El nombre debe tener entre 5 y 30 caracteres"), MinLength(5,
-            ErrorMessage = "El nombre debe tener entre 5 y 30 caracteres")]
+        [StringLength(30)]
         public string Nombres { get; set; }
-        [Required]
-        [MaxLength(15, ErrorMessage = "El primer apellido debe tener entre 5 y 15 caracteres"), MinLength(5,
-            ErrorMessage = "El primer apellido debe tener entre 5 y 15 caracteres")]
+        [StringLength(15)]
         public string PrimerApellido { get; set; }
-        [Required]
-        [MaxLength(15, ErrorMessage = "El segundo apellido debe tener entre 5 y 15 caracteres"), MinLength(5,
-            ErrorMessage = "El segundo apellido debe tener entre 5 y 15 caracteres")]
+        [StringLength(15)]
         public string SegundoApellido { get; set; }
-
-        [SexoValidacion(ErrorMessage = "El Sexo de ser Masculino o Femenino")]
-        [Required]
+        [StringLength(9)]
         public string Sexo { get; set; }
-        [Required, Range(18, 120, ErrorMessage = "La edad debe estar entre 18 y 120 años")]
         public int Edad { get; set; }
         public Persona() { }
 

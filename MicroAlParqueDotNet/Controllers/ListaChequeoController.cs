@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using MicroAlParque.Models;
 using Datos;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using MicroAlParque.Hubs;
 
 namespace MicroAlParque.Controllers
 {
@@ -19,9 +21,11 @@ namespace MicroAlParque.Controllers
     public class ListaChequeoController : ControllerBase
     {
         private readonly ServicioListaChequeo _servicioListaChequeo;
-        public ListaChequeoController(MicroAlParqueContext contexto)
+        private readonly IHubContext<SignalHub> _hubContext;
+        public ListaChequeoController(MicroAlParqueContext contexto, IHubContext<SignalHub> hubContext)
         {
             _servicioListaChequeo = new ServicioListaChequeo(contexto);
+            _hubContext = hubContext;
         }
 
         // GET: api/Lote/5
@@ -46,11 +50,20 @@ namespace MicroAlParque.Controllers
         
         // POST: api/Lote
         [HttpPost]
-        public ActionResult<Peticion<ListaChequeoViewModel>> Guardar(ListaChequeoInputModel listaChequeoInput)
+        public async Task<ActionResult<Peticion<ListaChequeoViewModel>>> Guardar(ListaChequeoInputModel listaChequeoInput)
         {
             ListaChequeo listaChequeo = MapearListaChequeo(listaChequeoInput);
             var response = _servicioListaChequeo.Guardar(listaChequeo);
-            if (response.Error) return BadRequest(response.Mensaje);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Guardar ListaChequeo", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
+            }
+            await _hubContext.Clients.All.SendAsync("ListaChequeoRegistrada", response.Elemento);
             return Ok(response);
         }
         private ListaChequeo MapearListaChequeo(ListaChequeoInputModel listaChequeoInput)

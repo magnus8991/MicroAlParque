@@ -44,18 +44,18 @@ namespace MicroAlParque.Controllers
         {
             ManipuladorDeAlimento manipulador = MapearManipulador(manipuladorInput);
             var response = _servicioManipulador.Guardar(manipulador);
-            if (response.Error) return BadRequest(response.Mensaje);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Guardar Manipulador", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
+            }
             await _hubContext.Clients.All.SendAsync("ManipuladorRegistrado", response.Elemento);
             return Ok(response);
         }
-      
-        // DELETE: api/Lote/5
-        /*[HttpDelete("{codigoP}")]
-        public ActionResult<string> Delete(string codigoP)
-        {
-            string mensaje = _LoteService.Eliminar(codigoP);
-            return Ok(mensaje);
-        }*/
         private ManipuladorDeAlimento MapearManipulador(ManipuladorInputModel manipuladorInput)
         {
             var Manipulador = new ManipuladorDeAlimento();
@@ -71,11 +71,23 @@ namespace MicroAlParque.Controllers
             Manipulador.SedeId = manipuladorInput.SedeId;
             return Manipulador;
         }
-        /*// PUT: api/Lote/5
-        [HttpPut("{codigoP}")]
-        public ActionResult<string> Put(string codigoP, Lote Lote)
+
+        [HttpPut]
+        public async Task<ActionResult<Peticion<ManipuladorViewModel>>> Modificar(ManipuladorInputModel manipuladorInput)
         {
-            throw new NotImplementedException();
-        }*/
+            ManipuladorDeAlimento manipulador = MapearManipulador(manipuladorInput);
+            var response = _servicioManipulador.Modificar(manipulador);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Modificar Manipulador", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+                return BadRequest(problemDetails);
+            }
+            await _hubContext.Clients.All.SendAsync("ManipuladorActualizado", response.Elemento);
+            return Ok(response);
+        }
     }
 }
